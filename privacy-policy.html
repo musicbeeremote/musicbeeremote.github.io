@@ -1,0 +1,66 @@
+---
+layout: policy
+---
+
+<section id="policy">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                    <h2>Privacy Policy</h2>
+                    <p class="text-muted">MusicBee Remote application privacy policy</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12  columns">
+
+                <b> MusicBee Remote does not collect or store, or send any personal information on it's users. </b>
+
+                <p class="text-justify">
+                    The MusicBee plugin contacts the kelsos.net domain when the user checks for updates, there is no
+                    data collection during the call, it is purely used as means to determine the latest version
+                    available.
+                </p>
+
+                <p>From v1.0.0 the application also includes the <a
+                        href="http://try.crashlytics.com/terms/privacy-policy.pdf">Crashlytics SDK</a>. </p>
+                <p>For any concerned user, there is also a version build without the Crashlytics SDK available on the
+                    GitHub
+                    releases page of the project.</p>
+
+                <h4>Requested Permissions</h4>
+
+                <p class="text-justify">
+                <ol>
+                    <li>
+                        Read phone status and identity (PHONE STATE permission), is only used to determine an incoming
+                        call
+                        as part of the
+                        feature to perform action on an incoming call.
+
+                        It can be safely disabled without affecting anything other than the (Pause/Stop/Reduce Volume)
+                        on
+                        call functionality.
+                        The functionality can be found on the following line:
+                        <a href="https://github.com/kelsos/mbrc/blob/v1.0.1/app/src/main/kotlin/com/kelsos/mbrc/utilities/RemoteBroadcastReceiver.kt#L40">RemoteBroadcastReceiver
+                            for more information</a>
+                    </li>
+                    <li>
+                        Full network access, view network connections and view wifi connections are required in order
+                        to implement the remote functionality as it is based on an active network connection and without
+                        it it cannot function.
+                    </li>
+                    <li>
+                        Allow Wi-Fi Multicast reception, on the newer version is used as a means of automatic service
+                        discovery, (scanning functionality)
+                    </li>
+                </ol>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

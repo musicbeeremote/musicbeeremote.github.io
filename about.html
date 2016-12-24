@@ -1,0 +1,12 @@
+---
+layout: default
+---
+{% include about_header.html %}
+<section>
+    <div class="container">
+        <div class="col-lg-12">
+            {% capture about-content %}{% include about.markdown %}{% endcapture %}
+            {{ about-content | markdownify }}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,147 @@
+---
+---
+
+@charset "utf-8";
+
+// Example Defaults
+// $base-font-family: Helvetica, Arial, sans-serif;
+// $base-font-size:   16px;
+// $small-font-size:  $base-font-size * 0.875;
+// $base-line-height: 1.5;
+
+// $spacing-unit:     30px;
+
+// $text-color:       #111;
+// $background-color: #fdfdfd;
+// $brand-color:      #2a7ae2;
+
+// $grey-color:       #828282;
+// $grey-color-light: lighten($grey-color, 40%);
+// $grey-color-dark:  darken($grey-color, 25%);
+
+// // Width of the content area
+// $content-width:    800px;
+
+// $on-palm:          600px;
+// $on-laptop:        800px;
+
+// Using media queries with like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+
+// variables.less link and gradient background
+$head-primary: #D84315;
+$head-secondary: #DD2C00;
+$theme-primary: #FFA000;
+$theme-secondary: #FFA000;
+$theme-dark: #222;
+$gallery_header: #e69000;
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import "mixins",
+"base";
+
+.gallery-bg {
+  background-color: $gallery_header;
+  color: #ffffff;
+}
+
+.download_button {
+  height: auto;
+  display: inline-block;
+  position: relative;
+  padding: 20px 25px;
+  border-radius: 10px;
+
+  background-color: $head-primary;
+  color: white;
+
+  font-family: sans-serif;
+  text-decoration: none;
+  font-size: 0.9em;
+  text-align: center;
+  text-indent: 15px;
+}
+
+.download_button:hover {
+  background-color: #333;
+  color: white;
+}
+
+.download_button:before, .download_button:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 15px;
+  top: 52%;
+}
+
+/* Download box shape  */
+.download_button:before {
+  width: 15px;
+  height: 2px;
+  border-style: solid;
+  border-width: 0 2px 2px;
+}
+
+/* Download arrow shape */
+.download_button:after {
+  width: 0;
+  height: 0;
+  margin-left: 3px;
+  margin-top: -7px;
+
+  border: 4px solid transparent;
+  border-top-color: inherit;
+  border-bottom-width: 0;
+
+  animation: downloadArrow 2s linear infinite;
+  animation-play-state: paused;
+}
+
+.download_button:hover:before {
+  border-color: $head-primary;
+}
+
+.download_button:hover:after {
+  border-top-color: $head-primary;
+  animation-play-state: running;
+}
+
+/* keyframes for the download icon anim */
+@keyframes downloadArrow {
+  /* 0% and 0.001% keyframes used as a hackish way of having the button frozen on a nice looking frame by default */
+  0% {
+    margin-top: -7px;
+    opacity: 1;
+  }
+
+  0.001% {
+    margin-top: -15px;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    margin-top: 0;
+    opacity: 0;
+  }
+}
+
+.not-main-header {
+  height: 300px;
+  min-height: 20%;
+}
+
+.not-main-header .header-content {
+  height: 300px;
+  min-height: 20%;
+}
+
