@@ -44,6 +44,6 @@ This project is something that happens on my free time. This means that
 
 **[Konstantinos Paparas](http://gr.linkedin.com/in/kelsos)** Is responsible for the programming of the application and plugin along with a part of the design and graphics.
 
-**[Iordanis Georgiadis](http://gr.linkedin.com/pub/iordanis-georgiadis/21/66/353)** Is responsible for the concept and the creation of the application logo.
+**[Jordan Georgiadis](https://www.linkedin.com/in/jordan-georgiadis)** Is responsible for the concept and the creation of the application logo.
 
 **[Anastasios Papazoglou Chalikias](http://gr.linkedin.com/in/sushiperv")** Is responsible for the graphics and layout for the version 0.2.3.x and the refinement of the application
