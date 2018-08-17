@@ -3,8 +3,8 @@ title: MusicBee Remote for Android
 email: kelsos@kelsos.net
 description: A remote control application that allows you to control Musicbee from your Android device.
 
-baseurl: "/musicbeeremote" # the subpath of your site, e.g. /blog/ (If you use organization leave empty)
-url: "http://kelsos.net/" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog/ (If you use organization leave empty)
+url: "https://mbrc.kelsos.net/" # the base hostname & protocol for your site
 
 collections:
   - help
@@ -29,9 +29,9 @@ social:
   - title: google-plus
     url: https://plus.google.com/106603781998988521234
   - title: github
-    url: http://github.com/kelsos/mbrc
+    url: https://github.com/kelsos/mbrc
   - title: github
-    url: http://github.com/kelsos/mbrc-plugin
+    url: https://github.com/kelsos/mbrc-plugin
 
 
 # Build settings
