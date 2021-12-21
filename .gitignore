@@ -50,3 +50,14 @@ _site/
 .jekyll-metadata
 
 /.ruby-version
+
+hs_err*.log
+replay_pid*.log
+*.properties
+resources_usage.csv
+unused_resources.csv
+.gradle
+app
+build
+captures
+changelog
