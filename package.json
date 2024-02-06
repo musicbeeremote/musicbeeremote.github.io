@@ -1,0 +1,37 @@
+{
+  "name": "mbrc.kelsos.net",
+  "version": "3.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.5",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@commitlint/cli": "19.7.1",
+    "@commitlint/config-conventional": "19.7.1",
+    "@rotki/eslint-config": "3.7.1",
+    "@tailwindcss/typography": "0.5.16",
+    "@types/markdown-it": "14.1.2",
+    "autoprefixer": "10.4.20",
+    "eslint": "9.20.1",
+    "feed": "4.2.2",
+    "grey-matter": "0.0.0",
+    "husky": "9.1.7",
+    "lint-staged": "15.4.3",
+    "postcss": "8.5.2",
+    "tailwindcss": "3.4.17",
+    "vitepress": "1.6.3",
+    "vue": "3.5.13"
+  },
+  "engines": {
+    "node": ">=20 <21",
+    "pnpm": ">=9 <10"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue,md,json,yml}": "eslint"
+  }
+}

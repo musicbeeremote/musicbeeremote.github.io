@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://mbrc.kelsos.net/sitemap.xml
+
+# Common directories to exclude
+Disallow: /assets/
