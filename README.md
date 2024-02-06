@@ -1,5 +1,4 @@
-MusicBee Remote Website
-=========================
+# MusicBee Remote Website
 
 MusicBee remote site v2.0.0
 
