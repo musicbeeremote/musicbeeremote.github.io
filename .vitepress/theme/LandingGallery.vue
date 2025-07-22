@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onBeforeMount, onMounted, ref } from 'vue';
 import { withBase } from 'vitepress';
+import { onBeforeMount, onMounted, ref } from 'vue';
 import Image from './Image.vue';
 
 interface Image {

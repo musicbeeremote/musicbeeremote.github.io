@@ -1,5 +1,5 @@
-import tailwind from 'tailwindcss';
 import tailwindTypography from '@tailwindcss/typography';
+import tailwind from 'tailwindcss';
 
 export default {
   plugins: [

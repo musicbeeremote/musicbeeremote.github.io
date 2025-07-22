@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import Home from './News.vue';
 import Article from './Article.vue';
+import Home from './News.vue';
 import NotFound from './NotFound.vue';
 
 const { page, frontmatter } = useData();

@@ -1,15 +1,14 @@
-// https://vitepress.dev/guide/custom-theme
-import { h } from 'vue';
+import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
-import NotFound from './NotFound.vue';
-import News from './News.vue';
+import { h } from 'vue';
+import Article from './Article.vue';
 import Author from './Author.vue';
 import Date from './Date.vue';
-import Article from './Article.vue';
-import NewsItem from './NewsItem.vue';
-import Landing from './Landing.vue';
 import Image from './Image.vue';
-import type { Theme } from 'vitepress';
+import Landing from './Landing.vue';
+import News from './News.vue';
+import NewsItem from './NewsItem.vue';
+import NotFound from './NotFound.vue';
 import './style.css';
 
 export default {

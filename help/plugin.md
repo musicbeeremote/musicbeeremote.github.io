@@ -73,7 +73,6 @@ During your first run, the plugin setup dialog will appear.
 3. The plugin supports IP filtering, which means that it can block
    connections that have different addresses than the ones specified. By default,
    it is configured to accept all the incoming connections.
-
    - **Range Filter**: When you select the Range filter, you block access
      to any device that has an address that doesn't belong to the specified range.
      e.g., You select 192.168.90.1 in the address field and 10 to the end part

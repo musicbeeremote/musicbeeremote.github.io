@@ -86,7 +86,6 @@ the application should connect automatically.
 1. When enabled, it performs a preselected action when there is an incoming call while the application is connected.
    The option is disabled by default and requires the PHONE_STATE permission to work.
    There are three actions that can be performed.
-
    - **Reduce Volume**: Reduces the volume to 20% of the current volume
    - **Stop**: Stops the playback on incoming call.
    - **Pause**: Pauses the playing track on incoming call.

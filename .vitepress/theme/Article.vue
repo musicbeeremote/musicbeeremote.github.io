@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useData, useRoute } from 'vitepress';
-import Date from './Date.vue';
+import { computed } from 'vue';
 import Author from './Author.vue';
+import Date from './Date.vue';
 import { data as news } from './news.data.js';
 
 const { frontmatter: data } = useData();
