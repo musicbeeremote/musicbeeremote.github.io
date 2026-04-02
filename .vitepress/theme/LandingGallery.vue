@@ -1,23 +1,19 @@
 <script setup lang="ts">
 import { withBase } from 'vitepress';
-import { onBeforeMount, onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import Image from './Image.vue';
 
-interface Image {
+interface GalleryImage {
   src: string;
   alt: string;
 }
 
-interface LandingGalleryProps {
-  images: Image[];
-}
-
-const { images } = defineProps<LandingGalleryProps>();
+const { images } = defineProps<{ images: GalleryImage[] }>();
 
 const visibleIndex = ref<number>();
-const selection = ref<Image>();
+const selection = ref<GalleryImage>();
 
-function openImage(image: Image) {
+function openImage(image: GalleryImage) {
   selection.value = image;
   visibleIndex.value = images.indexOf(image);
   document.body.style.overflow = 'hidden';
@@ -32,14 +28,14 @@ function closeImage() {
 function nextImage() {
   if (visibleIndex.value !== undefined && visibleIndex.value < images.length - 1) {
     visibleIndex.value++;
-    selection.value = props.images[visibleIndex.value];
+    selection.value = images[visibleIndex.value];
   }
 }
 
 function prevImage() {
   if (visibleIndex.value !== undefined && visibleIndex.value > 0) {
     visibleIndex.value--;
-    selection.value = props.images[visibleIndex.value];
+    selection.value = images[visibleIndex.value];
   }
 }
 
@@ -63,49 +59,45 @@ onMounted(() => {
   window.addEventListener('keydown', handleKeydown);
 });
 
-onBeforeMount(() => {
+onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeydown);
 });
 </script>
 
 <template>
-  <section class="bg-white py-16">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-          Image Gallery
-        </h2>
-        <p class="mt-4 text-lg text-gray-600">
-          See MusicBee Remote in action.
-        </p>
-      </div>
+  <section class="gallery-section">
+    <div class="gallery-container">
+      <h2 class="gallery-title">
+        Screenshots
+      </h2>
+      <p class="gallery-subtitle">
+        See MusicBee Remote in action.
+      </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="gallery-grid">
         <div
           v-for="(item, index) in images"
           :key="index"
-          class="overflow-hidden rounded-lg shadow"
+          class="gallery-item"
           @click="openImage(item)"
         >
           <Image
             :image="item"
-            class="object-cover w-full h-60"
+            class="gallery-thumb"
           />
         </div>
       </div>
     </div>
 
-    <Transition
-      name="fade-zoom"
-      @after-leave="closeImage()"
-    >
+    <Transition name="fade-zoom">
       <div
         v-if="visibleIndex !== undefined"
-        class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50"
+        class="lightbox-overlay"
+        @click.self="closeImage()"
       >
         <button
           type="button"
-          class="absolute top-4 right-4 text-white text-2xl font-bold"
+          class="lightbox-close"
           @click="closeImage()"
         >
           &times;
@@ -114,26 +106,29 @@ onBeforeMount(() => {
         <button
           v-if="visibleIndex > 0"
           type="button"
-          class="absolute left-4 text-white text-4xl font-bold focus:outline-none"
+          class="lightbox-nav lightbox-prev"
           @click="prevImage()"
         >
-          ‹
+          &lsaquo;
         </button>
 
-        <img
-          v-if="selection"
-          :src="withBase(selection.src)"
-          :alt="selection.alt"
-          class="max-w-full max-h-full rounded-lg shadow-lg"
-        />
+        <div class="lightbox-phone-frame">
+          <div class="lightbox-phone-notch" />
+          <img
+            v-if="selection"
+            :src="withBase(selection.src)"
+            :alt="selection.alt"
+            class="lightbox-image"
+          />
+        </div>
 
         <button
           v-if="visibleIndex < images.length - 1"
           type="button"
-          class="absolute right-4 text-white text-4xl font-bold focus:outline-none"
+          class="lightbox-nav lightbox-next"
           @click="nextImage()"
         >
-          ›
+          &rsaquo;
         </button>
       </div>
     </Transition>
@@ -141,24 +136,166 @@ onBeforeMount(() => {
 </template>
 
 <style scoped>
+.gallery-section {
+  padding: 5rem 1.5rem;
+  background: #fafafa;
+}
+
+.gallery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.gallery-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.gallery-subtitle {
+  font-size: 1.125rem;
+  color: #666;
+  margin-bottom: 2.5rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+  }
+}
+
+.gallery-item {
+  cursor: pointer;
+  background: #1a1a1a;
+  border-radius: 20px;
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-thumb {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 50;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 51;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+  z-index: 51;
+}
+
+.lightbox-prev {
+  left: 1rem;
+}
+
+.lightbox-next {
+  right: 1rem;
+}
+
+.lightbox-phone-frame {
+  background: #1a1a1a;
+  border-radius: 32px;
+  padding: 10px;
+  max-height: 85vh;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-phone-notch {
+  width: 80px;
+  height: 5px;
+  background: #333;
+  border-radius: 3px;
+  margin: 2px auto 6px;
+}
+
+.lightbox-image {
+  max-height: calc(85vh - 40px);
+  width: auto;
+  display: block;
+  border-radius: 22px;
+}
+
+/* Transitions */
 .fade-zoom-enter-active,
 .fade-zoom-leave-active {
-  @apply transition duration-300 ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .fade-zoom-enter-from {
-  @apply opacity-0 scale-50;
+  opacity: 0;
+  transform: scale(0.9);
 }
 
 .fade-zoom-enter-to {
-  @apply opacity-100 scale-100;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .fade-zoom-leave-from {
-  @apply opacity-100 scale-100;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .fade-zoom-leave-to {
-  @apply opacity-0 scale-50;
+  opacity: 0;
+  transform: scale(0.9);
 }
 </style>

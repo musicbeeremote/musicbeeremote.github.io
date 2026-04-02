@@ -6,7 +6,7 @@ interface Actions {
   link: string;
 }
 
-interface Image {
+interface HeroImage {
   alt: string;
   src: string;
 }
@@ -16,7 +16,7 @@ interface Hero {
   text: string;
   tagline: string;
   actions: Actions[];
-  image: Image;
+  image: HeroImage;
 }
 
 interface LandingHeroProps {
@@ -27,37 +27,201 @@ defineProps<LandingHeroProps>();
 </script>
 
 <template>
-  <section class="text-gray-600 body-font py-16">
-    <div class="max-w-7xl mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-      <div
-        class="lg:flex-grow md:w-1/2 md:ml-24 pt-6 flex flex-col md:items-start md:text-left mb-40 items-center text-center"
-      >
-        <h1 class="sm:text-6xl text-5xl items-center xl:w-2/2 text-gray-900 font-bold">
-          {{ hero.name }}
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="hero-title-gradient">{{ hero.name }}</span>
         </h1>
-        <div class="text-gray-500 mb-5 text-lg">
+        <div class="hero-subtitle">
           {{ hero.text }}
         </div>
-        <p class="mb-4 xl:w-3/4 text-gray-600 text-lg">
+        <p class="hero-tagline">
           {{ hero.tagline }}
         </p>
-        <div class="flex justify-center gap-4 mt-2">
+        <div class="hero-actions">
           <a
-            v-for="button in hero.actions"
+            v-for="(button, index) in hero.actions"
             :key="button.link"
-            class="inline-block px-6 py-3 text-white bg-blue-600 font-medium text-lg rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition"
+            class="hero-button"
+            :class="index === 0 ? 'hero-button-primary' : 'hero-button-secondary'"
             :href="button.link"
           >
-            <span class="h-full flex items-center font-medium"> {{ button.text }}</span>
+            {{ button.text }}
           </a>
         </div>
       </div>
-      <div class="xl:mr-44 sm:mr-0 sm:mb-28 mb-0 lg:mb-0 mr-48 md:pl-10">
-        <Image
-          class="w-80 md:ml-1 ml-24"
-          :image="hero.image"
-        />
+      <div class="hero-image-wrapper">
+        <div class="phone-frame">
+          <div class="phone-notch" />
+          <div class="phone-screen">
+            <Image
+              :image="hero.image"
+              class="phone-screenshot"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.hero-section {
+  padding: 4rem 1.5rem 6rem;
+  background: linear-gradient(135deg, #fff7f0 0%, #fff 50%, #fff0e6 100%);
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title-gradient {
+  background: linear-gradient(120deg, #d84315 30%, #e65100 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.hero-tagline {
+  font-size: 1.125rem;
+  color: #555;
+  line-height: 1.7;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.hero-button-primary {
+  color: #fff;
+  background: linear-gradient(135deg, #e65100, #d84315);
+  box-shadow: 0 4px 14px rgba(216, 67, 21, 0.3);
+}
+
+.hero-button-primary:hover {
+  box-shadow: 0 6px 20px rgba(216, 67, 21, 0.4);
+  transform: translateY(-1px);
+}
+
+.hero-button-secondary {
+  color: #d84315;
+  background: #fff;
+  border: 2px solid #e65100;
+}
+
+.hero-button-secondary:hover {
+  background: #fff7f0;
+  transform: translateY(-1px);
+}
+
+/* Phone frame */
+.hero-image-wrapper {
+  flex-shrink: 0;
+}
+
+.phone-frame {
+  position: relative;
+  width: 280px;
+  background: #1a1a1a;
+  border-radius: 36px;
+  padding: 12px;
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transform: perspective(1000px) rotateY(-5deg);
+  transition: transform 0.4s ease;
+}
+
+.phone-frame:hover {
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+.phone-notch {
+  width: 100px;
+  height: 6px;
+  background: #333;
+  border-radius: 3px;
+  margin: 4px auto 8px;
+}
+
+.phone-screen {
+  border-radius: 24px;
+  overflow: hidden;
+  background: #000;
+}
+
+.phone-screenshot {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-tagline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .phone-frame {
+    width: 220px;
+    transform: none;
+  }
+
+  .phone-frame:hover {
+    transform: none;
+  }
+}
+</style>

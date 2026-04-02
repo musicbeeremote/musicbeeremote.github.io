@@ -13,7 +13,7 @@ defineProps<LandingFeaturesProps>();
 </script>
 
 <template>
-  <section class="bg-gray-100 py-12">
+  <section class="bg-gray-50 py-16">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
