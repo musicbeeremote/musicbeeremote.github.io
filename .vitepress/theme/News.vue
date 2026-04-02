@@ -1,74 +1,27 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import Date from './Date.vue';
 import { data as news } from './news.data.js';
+import NewsList from './NewsList.vue';
 
 const { frontmatter } = useData();
 </script>
 
 <template>
-  <div
-    class="doc has-sidebar"
-  >
+  <div class="doc has-sidebar">
     <div class="container">
-      <div class="content">
-        <div class="content-container">
-          <main class="main">
-            <div class="divide-y divide-gray-200 dark:divide-slate-200/5">
-              <div>
-                <h1>
-                  {{ frontmatter.title }}
-                </h1>
-                <p>
-                  {{ frontmatter.subtitle }}
-                </p>
-              </div>
-              <ul class="divide-y divide-gray-200 dark:divide-slate-200/5">
-                <li
-                  v-for="{ title, url, subtitle, date, excerpt } of news"
-                  :key="url"
-                  class="py-12"
-                >
-                  <article
-                    class="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline"
-                  >
-                    <Date :date="date" />
-                    <div class="space-y-5 xl:col-span-3">
-                      <div class="space-y-6">
-                        <h2 class="text-2xl leading-8 font-bold tracking-tight">
-                          <a
-                            class="text-gray-900 dark:text-white"
-                            :href="url"
-                          >
-                            {{
-                              title
-                            }}
-                          </a>
-                        </h2>
-                        <div>{{ subtitle }}</div>
-                        <div
-                          v-if="excerpt"
-                          class="prose dark:prose-invert max-w-none text-gray-500 dark:text-gray-300"
-                          v-html="excerpt"
-                        />
-                      </div>
-                      <div class="text-base leading-6 font-medium">
-                        <a
-                          class="link"
-                          aria-label="read more"
-                          :href="url"
-                        >
-                          Read more →
-                        </a>
-                      </div>
-                    </div>
-                  </article>
-                </li>
-              </ul>
-            </div>
-          </main>
+      <main class="content">
+        <div class="divide-y divide-gray-200 dark:divide-slate-200/5">
+          <div>
+            <h1>
+              {{ frontmatter.title }}
+            </h1>
+            <p>
+              {{ frontmatter.subtitle }}
+            </p>
+          </div>
+          <NewsList :news="news" />
         </div>
-      </div>
+      </main>
     </div>
   </div>
 </template>
@@ -131,6 +84,7 @@ const { frontmatter } = useData();
   position: relative;
   margin: 0 auto;
   width: 100%;
+  padding: 0 48px;
 }
 
 @media (min-width: 960px) {
@@ -145,14 +99,6 @@ const { frontmatter } = useData();
     margin: 0;
     min-width: 640px;
   }
-}
-
-.content-container {
-  margin: 0 auto;
-}
-
-main {
-  padding: 0 48px;
 }
 
 .doc h1 {

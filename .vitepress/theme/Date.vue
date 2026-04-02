@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { News } from './news.data.js';
 
-const props = defineProps<{ date: News['date'] }>();
+const { date } = defineProps<{ date: News['date'] }>();
 
 function getDateTime() {
-  return new Date(props.date.time).toISOString();
+  return new Date(date.time).toISOString();
 }
 </script>
 

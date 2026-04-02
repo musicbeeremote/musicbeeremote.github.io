@@ -12,14 +12,14 @@ interface LandingGalleryProps {
   images: Image[];
 }
 
-const props = defineProps<LandingGalleryProps>();
+const { images } = defineProps<LandingGalleryProps>();
 
 const visibleIndex = ref<number>();
 const selection = ref<Image>();
 
 function openImage(image: Image) {
   selection.value = image;
-  visibleIndex.value = props.images.indexOf(image);
+  visibleIndex.value = images.indexOf(image);
   document.body.style.overflow = 'hidden';
 }
 
@@ -30,7 +30,7 @@ function closeImage() {
 }
 
 function nextImage() {
-  if (visibleIndex.value !== undefined && visibleIndex.value < props.images.length - 1) {
+  if (visibleIndex.value !== undefined && visibleIndex.value < images.length - 1) {
     visibleIndex.value++;
     selection.value = props.images[visibleIndex.value];
   }
@@ -104,6 +104,7 @@ onBeforeMount(() => {
         class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50"
       >
         <button
+          type="button"
           class="absolute top-4 right-4 text-white text-2xl font-bold"
           @click="closeImage()"
         >
@@ -112,6 +113,7 @@ onBeforeMount(() => {
 
         <button
           v-if="visibleIndex > 0"
+          type="button"
           class="absolute left-4 text-white text-4xl font-bold focus:outline-none"
           @click="prevImage()"
         >
@@ -126,7 +128,8 @@ onBeforeMount(() => {
         />
 
         <button
-          v-if="visibleIndex < props.images.length - 1"
+          v-if="visibleIndex < images.length - 1"
+          type="button"
           class="absolute right-4 text-white text-4xl font-bold focus:outline-none"
           @click="nextImage()"
         >
