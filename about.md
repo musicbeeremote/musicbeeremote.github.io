@@ -2,48 +2,49 @@
 
 ## What is MusicBee Remote
 
-MusicBee Remote is a remote control application for Android, designed to provide remote control
-functionality to the MusicBee player by using your Android device.
+MusicBee Remote is a remote control application for Android, designed to control the
+[MusicBee](https://getmusicbee.com/) music player from your mobile device.
 
-It uses a client-server architectures based on TCP sockets, with the MusicBee plugin acting as a server,
-and the android application acting as a a client.
+It uses a client-server architecture based on TCP sockets, with the MusicBee plugin acting as a server
+and the Android application acting as a client.
 
-The application requires at least Android 4.1 in order to function and MusicBee v3.0.0 along with a
-working network connection. Though it could possibly be configured to work over Cellular Data a WiFi connection
-is actually preferred.
+The application requires Android 6.0 (Marshmallow) or later and MusicBee v3.0.0 or later,
+along with a working network connection. While it could be configured to work over cellular data,
+a Wi-Fi connection on the same network as the MusicBee PC is recommended.
 
-## Basic Features (v1.0.x)
+## Features
 
-- Basic track information display (artist, title, album, year of release and artwork).
-- Basic player control. (play, pause, stop, next, previous, volume change, mute, shuffle, repeat)
-- Last.fm account scrobbling on/off.
-- Playback progress display and control.
-- Lyrics support.
-- Now playing list display, along with the ability to choose a track to play, reorder or remove tracks.
-- Library browsing & search support
-- Basic Playlist support
-- Option to reduce the volume, pause or stop playback on incoming call.
-- Volume control using the hardware buttons.
-
-For more information on the technologies and libraries used you can check the projects GitHub.
-[Plugin](https://github.com/kelsos/mbrc-plugin) and [Application](https://github.com/kelsos/mbrc)
+- **Playback control** — Play, pause, stop, next, previous, volume, mute, shuffle, repeat
+- **Track information** — Artist, title, album, year, album art
+- **Library browsing** — Browse by genre, artist, album, and track with sorting options
+- **Album grid view** — Visual album browsing with auto-detection for tablets
+- **Now Playing queue** — View, reorder, remove, and search tracks in the queue
+- **Playlist support** — Browse playlists with folder navigation
+- **Radio stations** — Browse and play radio stations
+- **Ratings** — Star ratings (with half-star support), bomb ratings, and Last.fm love/ban
+- **Track details** — Extended metadata including composer, genre, bitrate, and play statistics
+- **Lyrics** — View lyrics for the currently playing track
+- **Search** — Search across your entire music library
+- **Notifications** — Media notification with playback controls
+- **Themes** — Dark and light mode support
+- **Auto-reconnect** — Resilient connection with automatic retry on disconnect
+- **Widgets** — Resizable home screen widgets for quick control
 
 ## Development & Support
 
-The application is a solo project. Despite a few contributions by friends on the graphics front,
-the development of both the plugin and application is all done by one person.
+The application is developed and maintained by a single person. Both the Android app and the
+MusicBee plugin are open source.
 
-Behind everything, support, bug fixing, social media presence there is a single person.
-I try to answer your requests but some times it might take a while so please be patient.
+- **Application**: [musicbeeremote/mbrc](https://github.com/musicbeeremote/mbrc)
+- **Plugin**: [musicbeeremote/mbrc-plugin](https://github.com/musicbeeremote/mbrc-plugin)
 
-This project is something that happens on my free time. This means that
-even if I love adding features and improving the application, real life obligations
-along with work obligations are always prioritized.
+For bug reports and feature requests, please use the
+[GitHub Issues](https://github.com/musicbeeremote/mbrc/issues) page.
 
 ## Contributors
 
-**[Konstantinos Paparas](http://gr.linkedin.com/in/kelsos)** Is responsible for the programming of the application and plugin along with a part of the design and graphics.
+**[Konstantinos Paparas](https://gr.linkedin.com/in/kelsos)** — Development of the application and plugin, design and graphics.
 
-**[Jordan Georgiadis](https://www.linkedin.com/in/jordan-georgiadis)** Is responsible for the concept and the creation of the application logo.
+**[Jordan Georgiadis](https://www.linkedin.com/in/jordan-georgiadis)** — Concept and creation of the application logo.
 
-**[Anastasios Papazoglou Chalikias](http://gr.linkedin.com/in/sushiperv")** Is responsible for the graphics and layout for the version 0.2.3.x and the refinement of the application
+**[Anastasios Papazoglou Chalikias](https://gr.linkedin.com/in/sushiperv)** — Graphics and layout for version 0.2.3.x and design refinement.

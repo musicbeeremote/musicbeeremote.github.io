@@ -20,3 +20,26 @@ manual intervention to reconnect.
 In such a case you might need to manually configure Android to not terminate the service.
 
 You can find more information on this on https://dontkillmyapp.com/
+
+## How does auto-reconnect work?
+
+When the connection drops unexpectedly, the app will automatically attempt to reconnect
+up to 3 times over approximately 45 seconds. You can see the reconnection progress in
+the navigation drawer. If all attempts fail, the background service stops automatically
+to conserve battery.
+
+## How do I switch between list and grid view for albums?
+
+On the Albums tab in the Library, tap the view switcher icon in the toolbar to toggle
+between list and grid view. On tablets, grid view is enabled automatically.
+
+## How do I sort my library?
+
+On any library tab, tap the sort icon to open the sort options. You can choose different
+sort fields (e.g., name, year for albums) and toggle between ascending and descending order.
+
+## How do I rate tracks?
+
+Tap the star icon on the player screen to open the rating dialog. You can set star ratings
+(1-5), use bomb rating to mark tracks as disliked, or clear the rating entirely.
+Half-star precision can be enabled in Settings.

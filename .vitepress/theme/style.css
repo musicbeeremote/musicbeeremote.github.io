@@ -131,3 +131,11 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
+
+/**
+ * Help docs: constrain phone screenshots
+ * -------------------------------------------------------------------------- */
+
+.vp-doc img[src*="/img/help/"] {
+  max-width: 300px;
+}
