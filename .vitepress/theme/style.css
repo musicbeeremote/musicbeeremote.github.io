@@ -140,3 +140,68 @@
 .vp-doc img[src*='/img/help/'] {
   max-width: 300px;
 }
+
+/**
+ * Component: Nav - Download button style
+ * -------------------------------------------------------------------------- */
+
+a.VPNavBarMenuLink.VPLink[href*='releases'],
+a.VPNavScreenMenuLink.VPLink[href*='releases'] {
+  background: var(--vp-c-brand-3) !important;
+  color: #fff !important;
+  padding: 6px 16px !important;
+  border-radius: 16px !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  height: auto !important;
+  transition: background 0.2s ease;
+}
+
+a.VPNavBarMenuLink.VPLink[href*='releases']:hover,
+a.VPNavScreenMenuLink.VPLink[href*='releases']:hover {
+  background: var(--vp-c-brand-2) !important;
+  color: #fff !important;
+}
+
+/* Hide the external link icon on the download button */
+a.VPNavBarMenuLink.VPLink[href*='releases']::after,
+a.VPNavBarMenuLink.VPLink[href*='releases'] .vpi-external-link {
+  display: none !important;
+}
+
+/**
+ * Component: Nav - vertical alignment
+ * -------------------------------------------------------------------------- */
+
+.VPNavBarMenu.menu {
+  align-items: center;
+}
+
+/**
+ * Component: Footer
+ * -------------------------------------------------------------------------- */
+
+.VPFooter {
+  border-top: none;
+  background: #1a1a1a !important;
+  color: #999 !important;
+}
+
+.VPFooter .copyright {
+  color: #666 !important;
+}
+
+.VPFooter .message {
+  font-size: 0.9rem;
+}
+
+.VPFooter .message a {
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.VPFooter .message a:hover {
+  text-decoration: underline;
+}
