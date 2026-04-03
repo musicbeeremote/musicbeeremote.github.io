@@ -137,7 +137,7 @@ export default defineConfig({
         text: 'Docs',
         items: [
           { text: 'App Guide (v1.6)', link: '/help/1.6/' },
-          { text: 'Plugin Setup', link: '/help/plugin' },
+          { text: 'Plugin Setup', link: '/help/plugin/' },
           { text: 'FAQ', link: '/faq' },
         ],
       },
@@ -168,7 +168,13 @@ export default defineConfig({
             items: [
               {
                 text: 'Plugin',
-                link: '/help/plugin',
+                link: '/help/plugin/',
+                collapsed: true,
+                items: [
+                  { text: 'Downloading', link: '/help/plugin/downloading' },
+                  { text: 'Installation', link: '/help/plugin/installation' },
+                  { text: 'Configuration', link: '/help/plugin/configuration' },
+                ],
               },
               {
                 text: 'Application (v1.6)',

@@ -39,7 +39,7 @@ Here you can learn how to get started with MusicBee Remote.
 
 ## Plugin
 
-For information on setting up the MusicBee plugin, see the [Plugin Guide](./plugin).
+For information on setting up the MusicBee plugin, see the [Plugin Guide](./plugin/).
 
 ## Application
 
