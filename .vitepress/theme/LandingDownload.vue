@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { data as releases } from './releases.data.js';
+
 interface Download {
   name: string;
   description: string;
@@ -6,11 +9,23 @@ interface Download {
   icon: string;
 }
 
-interface LandingDownloadProps {
-  downloads: Download[];
+const { downloads } = defineProps<{ downloads: Download[] }>();
+
+function formatSize(bytes: number): string {
+  return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 }
 
-defineProps<LandingDownloadProps>();
+const appApk = computed(() =>
+  releases.app?.assets.find(a => a.name.includes('github') && a.name.endsWith('.apk')),
+);
+
+const pluginExe = computed(() =>
+  releases.plugin?.assets.find(a => a.name.endsWith('.exe') && !a.name.endsWith('.sha512')),
+);
+
+const pluginZip = computed(() =>
+  releases.plugin?.assets.find(a => a.name.endsWith('.zip') && !a.name.endsWith('.sha512')),
+);
 </script>
 
 <template>
@@ -23,26 +38,96 @@ defineProps<LandingDownloadProps>();
         Download both the Android app and the MusicBee plugin to get started.
       </p>
       <div class="download-grid">
-        <a
-          v-for="item in downloads"
-          :key="item.link"
-          class="download-card"
-          :href="item.link"
-        >
+        <!-- App card -->
+        <div class="download-card">
           <div
             class="download-icon"
-            v-html="item.icon"
+            v-html="downloads[0].icon"
           />
           <h3 class="download-name">
-            {{ item.name }}
+            {{ downloads[0].name }}
           </h3>
           <p class="download-description">
-            {{ item.description }}
+            {{ downloads[0].description }}
           </p>
-          <span class="download-link">
-            Download &rarr;
-          </span>
-        </a>
+          <div
+            v-if="releases.app"
+            class="download-meta"
+          >
+            <span class="download-version">{{ releases.app.version }}</span>
+            <span class="download-date">{{ releases.app.date }}</span>
+          </div>
+          <div class="download-actions">
+            <a
+              v-if="appApk"
+              class="download-button"
+              :href="appApk.url"
+            >
+              Download APK
+              <span class="download-size">({{ formatSize(appApk.size) }})</span>
+            </a>
+            <div class="download-links">
+              <a
+                class="download-fallback"
+                :href="downloads[0].link"
+              >
+                All releases &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plugin card -->
+        <div class="download-card">
+          <div
+            class="download-icon"
+            v-html="downloads[1].icon"
+          />
+          <h3 class="download-name">
+            {{ downloads[1].name }}
+          </h3>
+          <p class="download-description">
+            {{ downloads[1].description }}
+          </p>
+          <div
+            v-if="releases.plugin"
+            class="download-meta"
+          >
+            <span class="download-version">{{ releases.plugin.version }}</span>
+            <span class="download-date">{{ releases.plugin.date }}</span>
+          </div>
+          <div class="download-actions">
+            <a
+              v-if="pluginExe"
+              class="download-button"
+              :href="pluginExe.url"
+            >
+              Download Installer
+              <span class="download-size">({{ formatSize(pluginExe.size) }})</span>
+            </a>
+            <div class="download-links">
+              <a
+                v-if="pluginZip"
+                class="download-fallback"
+                :href="pluginZip.url"
+              >
+                ZIP archive
+              </a>
+              <span
+                v-if="pluginZip"
+                class="download-separator"
+              >
+                &middot;
+              </span>
+              <a
+                class="download-fallback"
+                :href="downloads[1].link"
+              >
+                All releases &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
       <p class="download-note">
         Requires Android 6.0+ and MusicBee 3.0+. Both devices must be on the same network.
@@ -91,14 +176,6 @@ defineProps<LandingDownloadProps>();
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.download-card:hover {
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 8px 24px rgba(230, 81, 0, 0.1);
-  transform: translateY(-2px);
 }
 
 .download-icon {
@@ -122,10 +199,79 @@ defineProps<LandingDownloadProps>();
   margin-bottom: 1rem;
 }
 
-.download-link {
-  font-size: 0.875rem;
+.download-meta {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.download-version {
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+}
+
+.download-date {
+  font-size: 0.8125rem;
+  color: var(--vp-c-text-3);
+}
+
+.download-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--vp-c-brand-3);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.download-button:hover {
+  background: var(--vp-c-brand-2);
+}
+
+.download-size {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.download-fallback {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+}
+
+.download-fallback:hover {
+  text-decoration: underline;
+}
+
+.download-links {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-separator {
+  color: var(--vp-c-text-3);
+  font-size: 0.75rem;
 }
 
 .download-note {

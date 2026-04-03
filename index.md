@@ -63,7 +63,7 @@ downloads:
   - name: Android App
     description: "Download the latest APK from GitHub Releases. Available in GitHub (clean) and Play (with Crashlytics) variants."
     link: https://github.com/musicbeeremote/mbrc/releases/latest
-    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 18V20H6V18H18ZM12.5 3V13.292L16.5 9.293L17.914 10.707L12 16.621L6.086 10.707L7.5 9.293L11.5 13.292V3H12.5Z"></path></svg>
+    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.344 8.71c-.707 0-1.279.572-1.279 1.278v4.53a1.278 1.278 0 1 0 2.558 0v-4.53c0-.706-.572-1.278-1.279-1.278zm-12.688 0c-.707 0-1.279.572-1.279 1.278v4.53a1.278 1.278 0 1 0 2.558 0v-4.53A1.277 1.277 0 0 0 5.656 8.71zm8.889-3.478h.001l.747-1.355a.157.157 0 0 0-.06-.214.156.156 0 0 0-.214.06l-.758 1.374a4.82 4.82 0 0 0-2.262-.554 4.794 4.794 0 0 0-2.26.554L9.24 3.723a.157.157 0 0 0-.274.154l.747 1.355C8.168 6.01 7.136 7.573 7.03 9.39h9.94c-.106-1.818-1.138-3.381-2.685-4.158zM9.783 7.575a.436.436 0 1 1 .001-.872.436.436 0 0 1-.001.872zm4.434 0a.436.436 0 1 1 .002-.872.436.436 0 0 1-.002.872zM7.158 9.78v5.837c0 .423.344.766.766.766h.634v1.983a1.278 1.278 0 1 0 2.558 0v-1.983h1.77v1.983a1.278 1.278 0 1 0 2.558 0v-1.983h.633a.769.769 0 0 0 .766-.766V9.78H7.158z"/></svg>
   - name: MusicBee Plugin
     description: "Install the companion plugin in MusicBee to enable remote control over your local network."
     link: https://github.com/musicbeeremote/mbrc-plugin/releases/latest
