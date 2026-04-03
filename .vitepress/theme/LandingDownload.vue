@@ -54,7 +54,7 @@ defineProps<LandingDownloadProps>();
 <style scoped>
 .download-section {
   padding: 5rem 1.5rem;
-  background: linear-gradient(180deg, #fff 0%, #fff7f0 100%);
+  background: linear-gradient(180deg, var(--vp-c-bg) 0%, var(--vp-c-brand-soft) 100%);
 }
 
 .download-container {
@@ -66,13 +66,13 @@ defineProps<LandingDownloadProps>();
 .download-title {
   font-size: 2.25rem;
   font-weight: 800;
-  color: #1a1a1a;
+  color: var(--vp-c-text-1);
   margin-bottom: 0.75rem;
 }
 
 .download-subtitle {
   font-size: 1.125rem;
-  color: #666;
+  color: var(--vp-c-text-2);
   margin-bottom: 2.5rem;
 }
 
@@ -88,15 +88,15 @@ defineProps<LandingDownloadProps>();
   flex-direction: column;
   align-items: center;
   padding: 2rem 1.5rem;
-  background: #fff;
-  border: 1px solid #eee;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 .download-card:hover {
-  border-color: #e65100;
+  border-color: var(--vp-c-brand-1);
   box-shadow: 0 8px 24px rgba(230, 81, 0, 0.1);
   transform: translateY(-2px);
 }
@@ -104,20 +104,20 @@ defineProps<LandingDownloadProps>();
 .download-icon {
   width: 48px;
   height: 48px;
-  color: #e65100;
+  color: var(--vp-c-brand-1);
   margin-bottom: 1rem;
 }
 
 .download-name {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--vp-c-text-1);
   margin-bottom: 0.5rem;
 }
 
 .download-description {
   font-size: 0.875rem;
-  color: #666;
+  color: var(--vp-c-text-2);
   line-height: 1.5;
   margin-bottom: 1rem;
 }
@@ -125,12 +125,12 @@ defineProps<LandingDownloadProps>();
 .download-link {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #e65100;
+  color: var(--vp-c-brand-1);
 }
 
 .download-note {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--vp-c-text-3);
 }
 
 @media (max-width: 600px) {

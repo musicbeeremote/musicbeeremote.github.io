@@ -5,53 +5,69 @@ const { frontmatter } = useData();
 </script>
 
 <template>
-  <dl class="pt-6 pb-10 xl:pt-11 xl:border-b xl:border-gray-200 dark:xl:border-slate-200/5">
-    <dt class="sr-only">
-      Authors
-    </dt>
-    <dd>
-      <ul
-        class="flex justify-center xl:block space-x-8 sm:space-x-12 xl:space-x-0 xl:space-y-8"
+  <div
+    v-if="frontmatter.author"
+    class="author"
+  >
+    <img
+      v-if="frontmatter.gravatar"
+      :src="`https://gravatar.com/avatar/${frontmatter.gravatar}`"
+      alt="author image"
+      class="author-avatar"
+    />
+    <img
+      v-else-if="frontmatter.avatar"
+      :src="frontmatter.avatar"
+      alt="author image"
+      class="author-avatar"
+    />
+    <div class="author-info">
+      <span class="author-name">{{ frontmatter.author }}</span>
+      <a
+        v-if="frontmatter.bsky"
+        :href="`https://bsky.app/profile/${frontmatter.bsky}`"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="author-handle"
       >
-        <li class="flex items-center space-x-2">
-          <img
-            v-if="frontmatter.gravatar"
-            :src="`https://gravatar.com/avatar/${frontmatter.gravatar}`"
-            alt="author image"
-            class="w-10 h-10 rounded-full"
-          />
-          <img
-            v-else-if="frontmatter.avatar"
-            :src="frontmatter.avatar"
-            alt="author image"
-            class="w-10 h-10 rounded-full"
-          />
-          <dl class="text-sm font-medium leading-5 whitespace-nowrap">
-            <dt class="sr-only">
-              Name
-            </dt>
-            <dd class="text-gray-900 dark:text-white">
-              {{ frontmatter.author }}
-            </dd>
-            <dt
-              v-if="frontmatter.bsky"
-              class="sr-only"
-            >
-              Bluesky
-            </dt>
-            <dd v-if="frontmatter.bsky">
-              <a
-                :href="`https://bsky.app/profile/${frontmatter.bsky}`"
-                target="_blank"
-                rel="noopnener noreferrer"
-                class="link"
-              >
-                @{{ frontmatter.bsky }}
-              </a>
-            </dd>
-          </dl>
-        </li>
-      </ul>
-    </dd>
-  </dl>
+        @{{ frontmatter.bsky }}
+      </a>
+    </div>
+  </div>
 </template>
+
+<style scoped>
+.author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.author-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+.author-handle {
+  font-size: 0.8125rem;
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.author-handle:hover {
+  color: var(--vp-c-brand-2);
+}
+</style>

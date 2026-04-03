@@ -41,17 +41,23 @@ extras:
 
 gallery:
   - src: /img/help/1.6/01_player_dark.webp
-    alt: The player screen in dark theme
-  - src: /img/help/1.6/12_library_albums_list.webp
-    alt: Browsing albums in the library
+    alt: Player in dark theme
+  - src: /img/help/1.6/02_player_light.webp
+    alt: Player in light theme
   - src: /img/help/1.6/13_library_albums_grid.webp
     alt: Album grid view
   - src: /img/help/1.6/09_now_playing.webp
-    alt: The now playing queue
-  - src: /img/help/1.6/19_playlists.webp
-    alt: Playlist folder navigation
+    alt: Now playing queue
   - src: /img/help/1.6/05_lyrics.webp
     alt: Lyrics overlay
+  - src: /img/help/1.6/07_drawer_connected.webp
+    alt: Navigation drawer
+  - src: /img/help/1.6/23_settings.webp
+    alt: Settings
+  - src: /img/help/1.6/06_rating.webp
+    alt: Rating tracks
+  - src: /img/help/1.6/26_widget.webp
+    alt: Home screen widget
 
 downloads:
   - name: Android App

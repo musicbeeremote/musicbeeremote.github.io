@@ -89,7 +89,7 @@ const { features, extras } = defineProps<{
 <style scoped>
 .features-section {
   padding: 5rem 1.5rem 2rem;
-  background: #fff;
+  background: var(--vp-c-bg);
 }
 
 .features-container,
@@ -101,7 +101,7 @@ const { features, extras } = defineProps<{
 .section-title {
   font-size: 2.25rem;
   font-weight: 800;
-  color: #1a1a1a;
+  color: var(--vp-c-text-1);
   text-align: center;
   margin-bottom: 3rem;
 }
@@ -125,13 +125,13 @@ const { features, extras } = defineProps<{
 .feature-name {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--vp-c-text-1);
   margin-bottom: 0.75rem;
 }
 
 .feature-details {
   font-size: 1.05rem;
-  color: #555;
+  color: var(--vp-c-text-2);
   line-height: 1.7;
 }
 
@@ -170,7 +170,7 @@ const { features, extras } = defineProps<{
 /* Extra features */
 .extras-section {
   padding: 3rem 1.5rem 5rem;
-  background: #fafafa;
+  background: var(--mbrc-c-surface);
 }
 
 .extras-grid {
@@ -187,8 +187,8 @@ const { features, extras } = defineProps<{
 
 .extra-card {
   padding: 2rem 1.5rem;
-  background: #fff;
-  border: 1px solid #f0f0f0;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   text-align: center;
   transition:
@@ -197,27 +197,27 @@ const { features, extras } = defineProps<{
 }
 
 .extra-card:hover {
-  border-color: #e65100;
+  border-color: var(--vp-c-brand-1);
   box-shadow: 0 4px 16px rgba(230, 81, 0, 0.08);
 }
 
 .extra-icon {
   width: 36px;
   height: 36px;
-  color: #e65100;
+  color: var(--vp-c-brand-1);
   margin: 0 auto 0.75rem;
 }
 
 .extra-name {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--vp-c-text-1);
   margin-bottom: 0.5rem;
 }
 
 .extra-details {
   font-size: 0.875rem;
-  color: #666;
+  color: var(--vp-c-text-2);
   line-height: 1.6;
 }
 </style>

@@ -58,6 +58,13 @@
   --vp-c-brand-3: #d84315;
   --vp-c-brand-soft: rgba(230, 81, 0, 0.14);
 
+  /* Surface colors for components */
+  --mbrc-c-surface: #fafafa;
+  --mbrc-c-surface-elevated: #1a1a1a;
+  --mbrc-c-text-primary: #1a1a1a;
+  --mbrc-c-text-secondary: #666;
+  --mbrc-c-text-muted: #999;
+
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
   --vp-c-tip-3: var(--vp-c-brand-3);
@@ -72,6 +79,20 @@
   --vp-c-danger-2: var(--vp-c-red-2);
   --vp-c-danger-3: var(--vp-c-red-3);
   --vp-c-danger-soft: var(--vp-c-red-soft);
+}
+
+.dark {
+  --vp-c-brand-1: #ff7b33;
+  --vp-c-brand-2: #ff6d1f;
+  --vp-c-brand-3: #e65100;
+  --vp-c-brand-soft: rgba(255, 123, 51, 0.14);
+
+  --mbrc-c-surface: #1a1a1a;
+  --mbrc-c-surface-elevated: #2a2a2a;
+  --mbrc-c-text-primary: #e5e5e5;
+  --mbrc-c-text-secondary: #a0a0a0;
+  --mbrc-c-text-muted: #666;
+
 }
 
 /**
@@ -308,12 +329,12 @@ a.VPNavBarMenuLink.VPLink[href*='releases'] .vpi-external-link {
 
 .VPFooter {
   border-top: none;
-  background: #1a1a1a !important;
-  color: #999 !important;
+  background: var(--mbrc-c-surface-elevated) !important;
+  color: var(--mbrc-c-text-muted) !important;
 }
 
 .VPFooter .copyright {
-  color: #666 !important;
+  color: var(--mbrc-c-text-muted) !important;
 }
 
 .VPFooter .message {

@@ -100,7 +100,7 @@ export default defineConfig({
     hostname: 'https://mbrc.kelsos.net',
   },
 
-  appearance: false,
+  appearance: true,
 
   transformPageData: (page, ctx) => {
     const frontmatter = page.frontmatter;

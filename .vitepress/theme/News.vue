@@ -7,142 +7,59 @@ const { frontmatter } = useData();
 </script>
 
 <template>
-  <div class="doc has-sidebar">
-    <div class="container">
-      <main class="content">
-        <div class="divide-y divide-gray-200 dark:divide-slate-200/5">
-          <div>
-            <h1>
-              {{ frontmatter.title }}
-            </h1>
-            <p>
-              {{ frontmatter.subtitle }}
-            </p>
-          </div>
-          <NewsList :news="news" />
-        </div>
-      </main>
+  <div class="news-page">
+    <div class="news-header">
+      <h1 class="news-title">
+        {{ frontmatter.title }}
+      </h1>
+      <p class="news-subtitle">
+        {{ frontmatter.subtitle }}
+      </p>
+    </div>
+    <div class="news-container">
+      <NewsList :news="news" />
     </div>
   </div>
 </template>
 
-<style scoped lang="css">
-.doc {
-  padding: 32px 24px 96px;
+<style scoped>
+.news-page {
   width: 100%;
 }
 
-@media (min-width: 768px) {
-  .doc {
-    padding: 48px 32px 128px;
-  }
+.news-header {
+  padding: 4rem 1.5rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-@media (min-width: 960px) {
-  .doc {
-    padding: 48px 32px 0;
-  }
-
-  .doc:not(.has-sidebar) .container {
-    display: flex;
-    justify-content: center;
-    max-width: 992px;
-  }
-
-  .doc:not(.has-sidebar) .content {
-    max-width: 752px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .doc .container {
-    display: flex;
-    justify-content: center;
-  }
-
-  .doc .aside {
-    display: block;
-  }
-}
-
-@media (min-width: 1440px) {
-  .doc:not(.has-sidebar) .content {
-    max-width: 784px;
-  }
-
-  .doc:not(.has-sidebar) .container {
-    max-width: 1104px;
-  }
-}
-
-.container {
-  margin: 0 auto;
-  width: 100%;
-}
-
-.content {
-  position: relative;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 48px;
-}
-
-@media (min-width: 960px) {
-  .content {
-    padding: 0 32px 128px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .content {
-    order: 1;
-    margin: 0;
-    min-width: 640px;
-  }
-}
-
-.doc h1 {
-  position: relative;
-  font-weight: 600;
-  outline: none;
+.news-title {
+  font-size: 2.25rem;
+  font-weight: 800;
   letter-spacing: -0.02em;
-  line-height: 40px;
-  font-size: 28px;
+  color: var(--vp-c-text-1);
+  margin: 0;
 }
 
-.doc h1:hover .header-anchor,
-.doc h1 .header-anchor:focus {
-  opacity: 1;
+.news-subtitle {
+  font-size: 1.125rem;
+  color: var(--vp-c-text-2);
+  margin: 0.5rem 0 0;
 }
 
-.doc .header-anchor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-left: -0.87em;
-  font-weight: 500;
-  user-select: none;
-  opacity: 0;
-  text-decoration: none;
-  transition:
-    color 0.25s,
-    opacity 0.25s;
-}
-
-.doc .header-anchor:before {
-  content: var(--vp-header-anchor-symbol);
-}
-
-.doc p {
-  line-height: 28px;
-  margin: 16px 0;
+.news-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
 }
 
 @media (min-width: 768px) {
-  .doc h1 {
-    letter-spacing: -0.02em;
-    line-height: 40px;
-    font-size: 32px;
+  .news-header {
+    padding: 5rem 2rem 2.5rem;
+  }
+
+  .news-container {
+    padding: 0 2rem 6rem;
   }
 }
 </style>

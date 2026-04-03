@@ -100,13 +100,13 @@ defineProps<LandingHeroProps>();
 
 .hero-subtitle {
   font-size: 1.5rem;
-  color: #666;
+  color: var(--mbrc-c-text-secondary);
   margin-bottom: 1rem;
 }
 
 .hero-tagline {
   font-size: 1.125rem;
-  color: #555;
+  color: var(--vp-c-text-2);
   line-height: 1.7;
   max-width: 500px;
   margin-bottom: 2rem;
@@ -141,13 +141,13 @@ defineProps<LandingHeroProps>();
 }
 
 .hero-button-secondary {
-  color: #d84315;
-  background: #fff;
-  border: 2px solid #e65100;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg);
+  border: 2px solid var(--vp-c-brand-1);
 }
 
 .hero-button-secondary:hover {
-  background: #fff7f0;
+  background: var(--vp-c-brand-soft);
   transform: translateY(-1px);
 }
 
@@ -223,5 +223,11 @@ defineProps<LandingHeroProps>();
   .phone-frame:hover {
     transform: none;
   }
+}
+</style>
+
+<style>
+.dark .hero-section {
+  background: linear-gradient(135deg, #1a1008 0%, var(--vp-c-bg) 50%, #1a0f06 100%);
 }
 </style>

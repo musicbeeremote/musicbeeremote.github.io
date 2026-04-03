@@ -9,12 +9,25 @@ function getDateTime() {
 </script>
 
 <template>
-  <dl>
+  <dl class="date-wrapper">
     <dt class="sr-only">
       Published on
     </dt>
-    <dd class="text-base leading-6 font-medium text-gray-500 dark:text-gray-300">
+    <dd class="date-text">
       <time :datetime="getDateTime()">{{ date.string }}</time>
     </dd>
   </dl>
 </template>
+
+<style scoped>
+.date-wrapper {
+  margin: 0;
+}
+
+.date-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--vp-c-text-3);
+  margin: 0;
+}
+</style>
