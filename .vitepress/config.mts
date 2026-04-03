@@ -133,13 +133,24 @@ export default defineConfig({
     logo: { src: '/logo.png', width: 24, height: 24 },
     nav: [
       { text: 'Home', link: '/' },
+      {
+        text: 'Docs',
+        items: [
+          { text: 'App Guide (v1.6)', link: '/help/1.6/' },
+          { text: 'Plugin Setup', link: '/help/plugin' },
+          { text: 'FAQ', link: '/faq' },
+        ],
+      },
       { text: 'News', link: '/news/' },
-      { text: 'Help', link: '/help' },
-      { text: 'FAQ', link: '/faq' },
       { text: 'About', link: '/about' },
+      {
+        text: 'Download',
+        link: 'https://github.com/musicbeeremote/mbrc/releases/latest',
+      },
     ],
 
     footer: {
+      message: '<a href="/privacy-policy">Privacy Policy</a> · <a href="/faq">FAQ</a> · <a href="https://github.com/musicbeeremote/mbrc/issues">Report a Bug</a>',
       copyright: 'Copyright © 2017-present Konstantinos Paparas',
     },
 
@@ -188,19 +199,13 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/musicbeeremote', ariaLabel: 'GitHub' },
-      { icon: 'twitter', link: 'https://twitter.com/musicbeeremote', ariaLabel: 'Twitter' },
-      { icon: 'facebook', link: 'https://facebook.com/MusicbeeRemote', ariaLabel: 'Facebook' },
-      {
-        icon: 'discord',
-        link: 'https://discord.gg/rceTb57',
-        ariaLabel: 'Discord',
-      },
+      { icon: 'discord', link: 'https://discord.gg/rceTb57', ariaLabel: 'Discord' },
       {
         icon: {
-          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM12.0606 11.6829L5.64722 6.2377L4.35278 7.7623L12.0731 14.3171L19.6544 7.75616L18.3456 6.24384L12.0606 11.6829Z"></path></svg>',
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.574 6.27.698 2.211 3.2 2.967 5.478 2.674-3.808.634-4.755 2.736-2.532 4.532 4.43 3.576 7.03-1.017 7.888-3.08.63-1.51.617-2.09.592-2.09-.025 0-.038.58.592 2.09.858 2.063 3.458 6.656 7.888 3.08 2.223-1.796 1.276-3.898-2.532-4.532 2.278.293 4.78-.463 5.478-2.674.196-.62.574-5.58.574-6.27 0-.688-.139-1.86-.902-2.203-.659-.3-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z"/></svg>',
         },
-        link: 'mailto:kelsos@kelsos.net',
-        ariaLabel: 'Email',
+        link: 'https://bsky.app/profile/musicbeeremote.bsky.social',
+        ariaLabel: 'Bluesky',
       },
     ],
   },

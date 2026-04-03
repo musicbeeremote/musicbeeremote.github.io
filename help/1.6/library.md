@@ -53,7 +53,7 @@ You can also **pull down to refresh** on any library tab to trigger a sync.
 
 ![Sort Bottom Sheet](/img/help/1.6/15_sort_bottom_sheet.webp)
 
-Tap the **sort icon** in the toolbar to open sort options. Each tab has relevant sort fields (e.g., name, year for albums) with ascending/descending order.
+Tap the **sort icon** in the toolbar to open sort options. Each tab has relevant sort fields (e.g., name, artist for albums) with ascending/descending order.
 
 ## Grid View
 
