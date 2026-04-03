@@ -4,9 +4,10 @@ outline: deep
 
 # Player
 
-![Player Screen (Dark)](/img/help/1.6/01_player_dark.webp)
-
-![Player Screen (Light)](/img/help/1.6/02_player_light.webp)
+<Row>
+  <Phone src="/img/help/1.6/01_player_dark.webp" alt="Dark theme" />
+  <Phone src="/img/help/1.6/02_player_light.webp" alt="Light theme" />
+</Row>
 
 The player is the home screen of the app and supports both dark and light themes. It shows:
 
@@ -22,7 +23,10 @@ For streaming content (radio stations), an animated wave indicator replaces the 
 
 ## Player Menu
 
-![Player Bottom Sheet](/img/help/1.6/03_player_bottom_sheet.webp)
+<Row>
+  <Phone src="/img/help/1.6/03_player_bottom_sheet.webp" alt="Player menu" />
+  <Phone src="/img/help/1.6/06_rating.webp" alt="Rating bar" />
+</Row>
 
 Tap the **three-dot menu** on the player to open the player menu. From here you can:
 
@@ -34,8 +38,6 @@ Tap the **three-dot menu** on the player to open the player menu. From here you 
 
 ## Ratings
 
-![Rating](/img/help/1.6/06_rating.webp)
-
 The rating bar in the player menu supports:
 
 - **Star ratings** — 1 to 5 stars (half-star precision can be enabled in Settings)
@@ -46,18 +48,24 @@ The current rating can optionally be displayed on the player screen (enable in S
 
 ## Track Details
 
-![Track Details](/img/help/1.6/04_track_details.webp)
+<Row>
+  <Phone src="/img/help/1.6/04_track_details.webp" alt="Track details" />
+</Row>
 
 Open **Track Details** from the player menu to view extended metadata: album artist, genre, composer, track/disc numbers, grouping, publisher, encoder, comments, and file properties (path, size, date, bitrate, channels, format).
 
 ## Lyrics
 
-![Lyrics](/img/help/1.6/05_lyrics.webp)
+<Row>
+  <Phone src="/img/help/1.6/05_lyrics.webp" alt="Lyrics overlay" />
+</Row>
 
 Tap the **lyrics button** on the player to open a full-screen lyrics overlay. Lyrics load automatically when the track changes. The overlay includes playback controls and a seek bar so you can control playback while reading.
 
 ## Output Selection
 
-![Output Selection](/img/help/1.6/27_output_selection.webp)
+<Row>
+  <Phone src="/img/help/1.6/27_output_selection.webp" alt="Output selection" />
+</Row>
 
 Tap the **speaker icon** on the player to select the audio output device. A list of available output devices is shown and you can switch between them.

@@ -4,15 +4,14 @@ outline: deep
 
 # Library
 
-![Library Albums](/img/help/1.6/12_library_albums_list.webp)
-
 The library browser (accessible from the drawer) has four tabs: **Genres**, **Artists**, **Albums**, and **Tracks**.
 
-![Genres](/img/help/1.6/10_library_genres.webp)
-
-![Artists](/img/help/1.6/11_library_artists.webp)
-
-![Tracks](/img/help/1.6/14_library_tracks.webp)
+<Row>
+  <Phone src="/img/help/1.6/10_library_genres.webp" alt="Genres" />
+  <Phone src="/img/help/1.6/11_library_artists.webp" alt="Artists" />
+  <Phone src="/img/help/1.6/12_library_albums_list.webp" alt="Albums" />
+  <Phone src="/img/help/1.6/14_library_tracks.webp" alt="Tracks" />
+</Row>
 
 ## Browsing
 
@@ -25,7 +24,9 @@ Each tab displays your synced metadata. Long-press or use the context menu on an
 
 ### Track Actions
 
-![Track Context Menu](/img/help/1.6/30_track_context_menu.webp)
+<Row>
+  <Phone src="/img/help/1.6/30_track_context_menu.webp" alt="Track context menu" />
+</Row>
 
 Tracks have additional context menu actions:
 
@@ -34,13 +35,17 @@ Tracks have additional context menu actions:
 
 ### Genre Actions
 
-![Genre Context Menu](/img/help/1.6/31_genre_context_menu.webp)
+<Row>
+  <Phone src="/img/help/1.6/31_genre_context_menu.webp" alt="Genre context menu" />
+</Row>
 
 Genres have a **Go to Albums** action that navigates directly to albums within that genre, in addition to the standard actions.
 
 ## Library Menu
 
-![Library Menu](/img/help/1.6/29_library_menu.webp)
+<Row>
+  <Phone src="/img/help/1.6/29_library_menu.webp" alt="Library menu" />
+</Row>
 
 Tap the **three-dot menu** in the library toolbar for additional options:
 
@@ -51,13 +56,17 @@ You can also **pull down to refresh** on any library tab to trigger a sync.
 
 ## Sorting
 
-![Sort Bottom Sheet](/img/help/1.6/15_sort_bottom_sheet.webp)
+<Row>
+  <Phone src="/img/help/1.6/15_sort_bottom_sheet.webp" alt="Sort options" />
+</Row>
 
 Tap the **sort icon** in the toolbar to open sort options. Each tab has relevant sort fields (e.g., name, artist for albums) with ascending/descending order.
 
 ## Grid View
 
-![Albums Grid](/img/help/1.6/13_library_albums_grid.webp)
+<Row>
+  <Phone src="/img/help/1.6/13_library_albums_grid.webp" alt="Album grid view" />
+</Row>
 
 Albums can be displayed in a grid view. This is auto-detected on tablets and can be toggled manually via the view switcher icon in the toolbar.
 
@@ -69,11 +78,11 @@ Navigate deeper into your library:
 - **Artist** → Albums by that artist
 - **Album** → Tracks in that album
 
-![Genre Drilldown](/img/help/1.6/16_genre_artists.webp)
-
-![Artist Drilldown](/img/help/1.6/17_artist_albums.webp)
-
-![Album Drilldown](/img/help/1.6/18_album_tracks.webp)
+<Row>
+  <Phone src="/img/help/1.6/16_genre_artists.webp" alt="Genre → Artists" />
+  <Phone src="/img/help/1.6/17_artist_albums.webp" alt="Artist → Albums" />
+  <Phone src="/img/help/1.6/18_album_tracks.webp" alt="Album → Tracks" />
+</Row>
 
 Each drilldown level supports the same sorting and context menu actions.
 

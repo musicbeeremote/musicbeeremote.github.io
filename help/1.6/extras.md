@@ -6,7 +6,9 @@ outline: deep
 
 ## Mini Control
 
-![Mini Control](/img/help/1.6/24_mini_control.webp)
+<Row>
+  <Phone src="/img/help/1.6/24_mini_control.webp" alt="Mini control" />
+</Row>
 
 A mini player control bar appears at the bottom of most screens (Library, Playlists, Radio, Queue). It shows:
 
@@ -19,7 +21,9 @@ Tap the track info to navigate to the full player screen.
 
 ## Notification
 
-![Notification](/img/help/1.6/25_notification.webp)
+<Row>
+  <Phone src="/img/help/1.6/25_notification.webp" alt="Media notification" />
+</Row>
 
 The app provides a media notification with:
 
@@ -31,6 +35,8 @@ The notification is required for the background service that maintains the conne
 
 ## Widget
 
-![Widget](/img/help/1.6/26_widget.webp)
+<Row>
+  <Phone src="/img/help/1.6/26_widget.webp" alt="Home screen widget" />
+</Row>
 
 The app includes a resizable home screen widget for quick playback control without opening the app. It shows album art, track info, and playback controls. Long-press the widget to resize it.

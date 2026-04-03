@@ -6,7 +6,9 @@ outline: deep
 
 ## Settings
 
-![Settings](/img/help/1.6/23_settings.webp)
+<Row>
+  <Phone src="/img/help/1.6/23_settings.webp" alt="Settings" />
+</Row>
 
 Access **Settings** from the navigation drawer. Available options:
 
@@ -30,7 +32,10 @@ Access **Settings** from the navigation drawer. Available options:
 
 ## Connection Manager
 
-![Connection Manager](/img/help/1.6/21_connection_manager.webp)
+<Row>
+  <Phone src="/img/help/1.6/21_connection_manager.webp" alt="Connection manager" />
+  <Phone src="/img/help/1.6/22_connection_form.webp" alt="Add connection" />
+</Row>
 
 Access the **Connection Manager** from the navigation drawer. Here you can:
 
@@ -40,17 +45,15 @@ Access the **Connection Manager** from the navigation drawer. Here you can:
 - Scan for connections on the network
 - Tap the **+** button to add a connection manually
 
-### Adding a Connection
-
-![Add Connection](/img/help/1.6/22_connection_form.webp)
-
-To add a connection manually, you need the **IP address** and **port** (default: 3000) from the MusicBee plugin settings panel.
-
 ### Editing a Connection
 
-![Edit Connection](/img/help/1.6/32_edit_connection.webp)
+<Row>
+  <Phone src="/img/help/1.6/32_edit_connection.webp" alt="Edit connection" />
+</Row>
 
 Tap the **edit icon** (pencil) on an existing connection to modify its address, port, or name.
+
+To add a connection manually, you need the **IP address** and **port** (default: 3000) from the MusicBee plugin settings panel.
 
 ## Help & Feedback
 

@@ -4,7 +4,10 @@ outline: deep
 
 # Queue
 
-![Now Playing](/img/help/1.6/09_now_playing.webp)
+<Row>
+  <Phone src="/img/help/1.6/09_now_playing.webp" alt="Now playing queue" />
+  <Phone src="/img/help/1.6/28_queue_context_menu.webp" alt="Track actions" />
+</Row>
 
 The **Queue** screen (accessible from the drawer) shows MusicBee's active playing queue:
 
@@ -18,8 +21,6 @@ The **Queue** screen (accessible from the drawer) shows MusicBee's active playin
 The queue refreshes automatically when you navigate to the screen.
 
 ## Track Actions
-
-![Queue Context Menu](/img/help/1.6/28_queue_context_menu.webp)
 
 Long-press a track in the queue to access its context menu:
 

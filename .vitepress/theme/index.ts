@@ -9,6 +9,8 @@ import Landing from './Landing.vue';
 import News from './News.vue';
 import NewsItem from './NewsItem.vue';
 import NotFound from './NotFound.vue';
+import PhoneScreenshot from './PhoneScreenshot.vue';
+import ScreenshotRow from './ScreenshotRow.vue';
 import './style.css';
 
 export default {
@@ -25,5 +27,7 @@ export default {
     app.component('Article', Article);
     app.component('landing', Landing);
     app.component('Image', Image);
+    app.component('Phone', PhoneScreenshot);
+    app.component('Row', ScreenshotRow);
   },
 } satisfies Theme;

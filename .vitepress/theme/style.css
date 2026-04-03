@@ -134,11 +134,126 @@
 }
 
 /**
- * Help docs: constrain phone screenshots
+ * Help docs: hide raw images (use <Phone> component instead)
  * -------------------------------------------------------------------------- */
 
 .vp-doc img[src*='/img/help/'] {
-  max-width: 300px;
+  max-width: 260px;
+  border-radius: 12px;
+}
+
+/**
+ * Help docs: modern typography and spacing
+ * -------------------------------------------------------------------------- */
+
+.vp-doc h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  border-bottom: 2px solid var(--vp-c-brand-soft);
+  padding-bottom: 0.5rem;
+}
+
+.vp-doc h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 3rem;
+  border-top: none;
+  border-bottom: 2px solid var(--vp-c-divider);
+  padding-top: 0;
+  padding-bottom: 0.5rem;
+}
+
+/**
+ * Component: Hide bottom page navigation
+ * -------------------------------------------------------------------------- */
+
+.VPDocFooter .pager {
+  display: none;
+}
+
+/**
+ * Component: Sidebar
+ * -------------------------------------------------------------------------- */
+
+.VPSidebarItem.level-0 > .item > .text {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--vp-c-text-2);
+}
+
+.VPSidebarItem.level-1 > .item > .text,
+.VPSidebarItem.level-1 > .item > .link > .text {
+  font-size: 0.88rem;
+}
+
+.VPSidebarItem.level-2 > .item > .text,
+.VPSidebarItem.level-2 > .item > .link > .text {
+  font-size: 0.82rem;
+}
+
+/* Active sidebar item — only the current page gets the indicator */
+.VPSidebarItem.is-active.is-link > .item > .link > .text {
+  color: var(--vp-c-brand-1) !important;
+  font-weight: 600;
+}
+
+.VPSidebarItem.is-active.is-link > .item .indicator {
+  background-color: var(--vp-c-brand-1) !important;
+}
+
+/* Hide indicator on parent/group items that are only "active" because a child is */
+.VPSidebarItem.is-active:not(.is-link) > .item .indicator {
+  display: none;
+}
+
+/* Remove the default grey left border on sidebar groups */
+.VPSidebarItem .items {
+  border-left: none !important;
+}
+
+/**
+ * Component: Outline (On this page)
+ * -------------------------------------------------------------------------- */
+
+.VPDocOutlineItem .outline-link {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  transition: color 0.15s ease;
+}
+
+.VPDocOutlineItem .outline-link:hover {
+  color: var(--vp-c-brand-1);
+}
+
+.VPDocOutlineItem .outline-link.active {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+.VPDocAsideOutline .outline-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--vp-c-text-3);
+}
+
+.vp-doc h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* Tighter list styling */
+.vp-doc ul {
+  padding-left: 1.25rem;
+}
+
+.vp-doc li + li {
+  margin-top: 0.25rem;
 }
 
 /**

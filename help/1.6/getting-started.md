@@ -29,7 +29,10 @@ When you first start the connection, the app automatically attempts to discover 
 
 ### Navigation Drawer
 
-![Drawer Connected](/img/help/1.6/07_drawer_connected.webp)
+<Row>
+  <Phone src="/img/help/1.6/07_drawer_connected.webp" alt="Connected" />
+  <Phone src="/img/help/1.6/08_drawer_disconnected.webp" alt="Disconnected" />
+</Row>
 
 The navigation drawer is the main way to move between screens. At the top, the **connection button** shows the current status:
 
@@ -40,7 +43,5 @@ The navigation drawer is the main way to move between screens. At the top, the *
 Tap the connection button to connect or disconnect. Below it you'll find navigation to all screens: **Home** (player), **Queue**, **Library**, **Playlists**, **Radio**, **Connection Manager**, **Settings**, and **Help & Feedback**.
 
 ### Auto-Reconnect
-
-![Drawer Disconnected](/img/help/1.6/08_drawer_disconnected.webp)
 
 If the connection drops unexpectedly, the app automatically attempts to reconnect up to 3 times over approximately 45 seconds. The drawer shows reconnection progress. If all attempts fail, the background service stops to conserve battery.
