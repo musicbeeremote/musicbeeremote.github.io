@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import Giscus from '@giscus/vue';
 import { useData, useRoute } from 'vitepress';
 import { computed } from 'vue';
 import Author from './Author.vue';
 import Date from './Date.vue';
 import { data as news } from './news.data.js';
 
-const { frontmatter: data } = useData();
+const { frontmatter: data, isDark } = useData();
 
 const route = useRoute();
 
@@ -16,6 +17,7 @@ function findCurrentIndex() {
 const date = computed(() => news[findCurrentIndex()].date);
 const nextPost = computed(() => news[findCurrentIndex() - 1]);
 const prevPost = computed(() => news[findCurrentIndex() + 1]);
+const giscusTheme = computed(() => isDark.value ? 'dark' : 'light');
 </script>
 
 <template>
@@ -44,6 +46,22 @@ const prevPost = computed(() => news[findCurrentIndex() + 1]);
       <div class="article-content">
         <Content class="article-body" />
       </div>
+    </div>
+
+    <div class="article-comments">
+      <Giscus
+        repo="musicbeeremote/musicbeeremote.github.io"
+        repo-id="R_kgDOH7Ql_Q"
+        category="Comments"
+        category-id="DIC_kwDOH7Ql_c4C5-8b"
+        mapping="pathname"
+        reactions-enabled="1"
+        emit-metadata="0"
+        input-position="top"
+        :theme="giscusTheme"
+        lang="en"
+        loading="lazy"
+      />
     </div>
 
     <footer class="article-footer">
@@ -177,6 +195,12 @@ const prevPost = computed(() => news[findCurrentIndex() + 1]);
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
   font-size: 0.875em;
+}
+
+.article-comments {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--vp-c-divider);
 }
 
 .article-footer {
