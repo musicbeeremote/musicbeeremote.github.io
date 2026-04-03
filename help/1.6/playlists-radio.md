@@ -1,5 +1,11 @@
 ---
 outline: deep
+prev:
+  text: Queue
+  link: /help/1.6/queue
+next:
+  text: Settings & Connections
+  link: /help/1.6/settings
 ---
 
 # Playlists & Radio

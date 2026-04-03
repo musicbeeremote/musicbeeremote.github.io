@@ -1,5 +1,9 @@
 ---
 outline: deep
+prev:
+  text: Settings & Connections
+  link: /help/1.6/settings
+next: false
 ---
 
 # Extras

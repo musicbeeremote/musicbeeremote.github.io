@@ -1,5 +1,11 @@
 ---
 outline: deep
+prev:
+  text: Library
+  link: /help/1.6/library
+next:
+  text: Playlists & Radio
+  link: /help/1.6/playlists-radio
 ---
 
 # Queue

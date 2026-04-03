@@ -166,11 +166,20 @@
 }
 
 /**
- * Component: Hide bottom page navigation
+ * Component: Doc footer page navigation
  * -------------------------------------------------------------------------- */
 
-.VPDocFooter .pager {
-  display: none;
+.pager-link {
+  border: 1px solid var(--vp-c-divider) !important;
+  border-radius: 10px !important;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+.pager-link:hover {
+  border-color: var(--vp-c-brand-1) !important;
+  box-shadow: 0 2px 8px rgba(230, 81, 0, 0.08) !important;
 }
 
 /**

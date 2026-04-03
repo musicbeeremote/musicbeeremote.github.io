@@ -1,5 +1,11 @@
 ---
 outline: deep
+prev:
+  text: Plugin Guide
+  link: /help/plugin/
+next:
+  text: Installation
+  link: /help/plugin/installation
 ---
 
 # Downloading the Plugin

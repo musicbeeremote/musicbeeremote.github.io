@@ -1,5 +1,11 @@
 ---
 outline: deep
+prev:
+  text: Player
+  link: /help/1.6/player
+next:
+  text: Queue
+  link: /help/1.6/queue
 ---
 
 # Library

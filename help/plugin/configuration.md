@@ -1,5 +1,9 @@
 ---
 outline: deep
+prev:
+  text: Installation
+  link: /help/plugin/installation
+next: false
 ---
 
 # Configuring the Plugin

@@ -137,6 +137,7 @@ export default defineConfig({
         text: 'Docs',
         items: [
           { text: 'App Guide (v1.6)', link: '/help/1.6/' },
+          { text: 'App Guide (v1.5)', link: '/help/1.5/application' },
           { text: 'Plugin Setup', link: '/help/plugin/' },
           { text: 'FAQ', link: '/faq' },
         ],
@@ -158,50 +159,7 @@ export default defineConfig({
       provider: 'local',
     },
 
-    sidebar: [
-      {
-        items: [
-          { text: 'Home', link: '/' },
-          { text: 'News', link: '/news/' },
-          {
-            text: 'Help',
-            items: [
-              {
-                text: 'Plugin',
-                link: '/help/plugin/',
-                collapsed: true,
-                items: [
-                  { text: 'Downloading', link: '/help/plugin/downloading' },
-                  { text: 'Installation', link: '/help/plugin/installation' },
-                  { text: 'Configuration', link: '/help/plugin/configuration' },
-                ],
-              },
-              {
-                text: 'Application (v1.6)',
-                link: '/help/1.6/',
-                collapsed: true,
-                items: [
-                  { text: 'Getting Started', link: '/help/1.6/getting-started' },
-                  { text: 'Player', link: '/help/1.6/player' },
-                  { text: 'Library', link: '/help/1.6/library' },
-                  { text: 'Queue', link: '/help/1.6/queue' },
-                  { text: 'Playlists & Radio', link: '/help/1.6/playlists-radio' },
-                  { text: 'Settings & Connections', link: '/help/1.6/settings' },
-                  { text: 'Extras', link: '/help/1.6/extras' },
-                ],
-              },
-              {
-                text: 'Application (v1.5)',
-                link: '/help/1.5/application',
-              },
-            ],
-          },
-          { text: 'FAQ', link: '/faq' },
-          { text: 'About', link: '/about' },
-          { text: 'Privacy Policy', link: '/privacy-policy' },
-        ],
-      },
-    ],
+    sidebar: false,
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/musicbeeremote', ariaLabel: 'GitHub' },

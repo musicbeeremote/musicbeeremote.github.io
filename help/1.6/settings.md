@@ -1,5 +1,11 @@
 ---
 outline: deep
+prev:
+  text: Playlists & Radio
+  link: /help/1.6/playlists-radio
+next:
+  text: Extras
+  link: /help/1.6/extras
 ---
 
 # Settings & Connections

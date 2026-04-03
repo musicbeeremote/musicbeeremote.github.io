@@ -8,14 +8,17 @@ Learn how to download, install, and configure the MusicBee Remote plugin.
 
 <div class="guide-cards">
   <a href="./downloading" class="guide-card">
+    <span class="guide-card-icon">⬇️</span>
     <span class="guide-card-title">Downloading</span>
     <span class="guide-card-desc">Where to get the plugin</span>
   </a>
   <a href="./installation" class="guide-card">
+    <span class="guide-card-icon">📦</span>
     <span class="guide-card-title">Installation</span>
     <span class="guide-card-desc">Installer or manual setup</span>
   </a>
   <a href="./configuration" class="guide-card">
+    <span class="guide-card-icon">⚙️</span>
     <span class="guide-card-title">Configuration</span>
     <span class="guide-card-desc">Settings, filtering, and firewall</span>
   </a>
@@ -44,6 +47,11 @@ Learn how to download, install, and configure the MusicBee Remote plugin.
   border-color: var(--vp-c-brand-1);
   box-shadow: 0 4px 12px rgba(230, 81, 0, 0.08);
   text-decoration: none !important;
+}
+
+.guide-card-icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .guide-card-title {

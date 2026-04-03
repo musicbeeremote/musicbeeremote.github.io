@@ -1,5 +1,11 @@
 ---
 outline: deep
+prev:
+  text: Getting Started
+  link: /help/1.6/getting-started
+next:
+  text: Library
+  link: /help/1.6/library
 ---
 
 # Player
