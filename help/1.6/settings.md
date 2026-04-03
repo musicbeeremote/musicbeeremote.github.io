@@ -11,9 +11,11 @@ outline: deep
 Access **Settings** from the navigation drawer. Available options:
 
 **Appearance**
+
 - **Theme** — Choose between Dark, Light, or System default
 
 **Playback**
+
 - **Plugin updates** — Check for updated plugin versions
 - **Debug logging** — Enable detailed logs for troubleshooting
 - **Incoming call action** — Reduce volume, pause, or stop playback on incoming calls
@@ -22,6 +24,7 @@ Access **Settings** from the navigation drawer. Available options:
 - **Show rating on player** — Display the track rating on the player screen
 
 **Links**
+
 - **App License** — View the application license
 - **Open Source Licenses** — View third-party library licenses
 
