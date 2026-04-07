@@ -3,9 +3,11 @@
   "extends": ["config:base"],
   "dependencyDashboard": true,
   "dependencyDashboardApproval": true,
+  "rangeStrategy": "pin",
+  "minimumReleaseAge": "7 days",
   "packageRules": [
     {
-      "allowedVersions": "/^(20)\\./",
+      "allowedVersions": "/^(24)\\./",
       "groupName": "Node.js",
       "matchPackageNames": ["@types/node", "node"]
     }
