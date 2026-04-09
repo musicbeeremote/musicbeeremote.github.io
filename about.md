@@ -48,3 +48,15 @@ For bug reports and feature requests, please use the
 **[Jordan Georgiadis](https://www.linkedin.com/in/jordan-georgiadis)** — Concept and creation of the application logo.
 
 **[Anastasios Papazoglou Chalikias](https://gr.linkedin.com/in/sushiperv)** — Graphics and layout for version 0.2.3.x and design refinement.
+
+## Credits
+
+Some of the artwork and lyrics shown in the documentation screenshots are from works released under Creative Commons licenses.
+
+**[ProleteR](https://freemusicarchive.org/music/ProleteR)** — Album artwork from _Curses from Past Times_ (2012).
+Licensed under [CC BY-NC-ND 3.0](https://creativecommons.org/licenses/by-nc-nd/3.0/).
+
+**[Josh Woodward](https://www.joshwoodward.com)** — Lyrics from "Coffee" (2011).
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+All other album artwork and trademarks appearing in screenshots are the property of their respective owners and are shown solely to illustrate the app's functionality. MusicBee Remote is not affiliated with or endorsed by any of the artists or labels shown.
