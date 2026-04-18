@@ -63,7 +63,7 @@ function getHash(path: string): string {
 }
 
 function generateHashedImageName(ctx: TransformPageContext, relativePath: string): string {
-  const imagePath = path.join(ctx.siteConfig.srcDir, relativePath);
+  const imagePath = path.join(ctx.siteConfig.srcDir, 'public', relativePath);
   const imageExtension = path.extname(imagePath);
   const fileNameWithoutExt = path.basename(imagePath, imageExtension);
   const assetsOutputPath = path.join(ctx.siteConfig.outDir, ctx.siteConfig.assetsDir);
