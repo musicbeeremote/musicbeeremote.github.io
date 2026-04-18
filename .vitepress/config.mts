@@ -109,6 +109,11 @@ export default defineConfig({
       for (const element of gallery) {
         element.src = generateHashedImageName(ctx, element.src);
       }
+      const features = frontmatter.features;
+      for (const feature of features) {
+        if (feature.image)
+          feature.image = generateHashedImageName(ctx, feature.image);
+      }
       frontmatter.hero.image.src = generateHashedImageName(ctx, frontmatter.hero.image.src);
     }
     createNewsRedirect(page, ctx.siteConfig.outDir);
