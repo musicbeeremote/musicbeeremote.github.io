@@ -11,9 +11,9 @@ const { frontmatter } = useData();
 
 <template>
   <div class="announcement-bar">
-    <a href="/news/2026-04-03-v1-6-0-preview">
+    <a href="/news/2026-04-18-v1-6-0-rc-2">
       <span class="announcement-badge">New</span>
-      v1.6.0 coming soon <span class="announcement-arrow">&rarr;</span>
+      v1.6.0-rc.2 available for testing <span class="announcement-arrow">&rarr;</span>
     </a>
   </div>
   <LandingHero :hero="frontmatter.hero" />
