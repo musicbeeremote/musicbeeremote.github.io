@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useData } from 'vitepress';
+import { computed } from 'vue';
 import LandingDownload from './LandingDownload.vue';
 import LandingFeatures from './LandingFeatures.vue';
 import LandingGallery from './LandingGallery.vue';
@@ -14,14 +14,19 @@ const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 
 const latestAnnouncement = computed(() => {
   const latest = news[0];
-  if (!latest) return null;
-  if (Date.now() - latest.date.time > THIRTY_DAYS_MS) return null;
+  if (!latest)
+    return null;
+  if (Date.now() - latest.date.time > THIRTY_DAYS_MS)
+    return null;
   return latest;
 });
 </script>
 
 <template>
-  <div v-if="latestAnnouncement" class="announcement-bar">
+  <div
+    v-if="latestAnnouncement"
+    class="announcement-bar"
+  >
     <a :href="latestAnnouncement.url">
       <span class="announcement-badge">New</span>
       {{ latestAnnouncement.title }} <span class="announcement-arrow">&rarr;</span>
