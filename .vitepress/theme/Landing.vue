@@ -1,19 +1,30 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useData } from 'vitepress';
 import LandingDownload from './LandingDownload.vue';
 import LandingFeatures from './LandingFeatures.vue';
 import LandingGallery from './LandingGallery.vue';
 import LandingHero from './LandingHero.vue';
 import LandingOpenSource from './LandingOpenSource.vue';
+import { data as news } from './news.data';
 
 const { frontmatter } = useData();
+
+const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
+
+const latestAnnouncement = computed(() => {
+  const latest = news[0];
+  if (!latest) return null;
+  if (Date.now() - latest.date.time > THIRTY_DAYS_MS) return null;
+  return latest;
+});
 </script>
 
 <template>
-  <div class="announcement-bar">
-    <a href="/news/2026-04-18-v1-6-0-rc-2">
+  <div v-if="latestAnnouncement" class="announcement-bar">
+    <a :href="latestAnnouncement.url">
       <span class="announcement-badge">New</span>
-      v1.6.0-rc.2 available for testing <span class="announcement-arrow">&rarr;</span>
+      {{ latestAnnouncement.title }} <span class="announcement-arrow">&rarr;</span>
     </a>
   </div>
   <LandingHero :hero="frontmatter.hero" />
