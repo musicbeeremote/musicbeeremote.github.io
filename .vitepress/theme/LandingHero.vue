@@ -53,7 +53,7 @@ defineProps<LandingHeroProps>();
               <img
                 src="/img/google-play-badge.svg"
                 alt="Get it on Google Play"
-              >
+              />
             </a>
             <a
               v-else
