@@ -6,7 +6,9 @@ hero:
   text: "for Android"
   tagline: "Control MusicBee from your Android device. Browse your library, manage playlists, and enjoy your music — from anywhere in your home."
   actions:
-    - text: Download App
+    - text: Get it on Google Play
+      link: https://play.google.com/store/apps/details?id=com.kelsos.mbrc
+    - text: Download APK
       link: https://github.com/musicbeeremote/mbrc/releases/latest
     - text: Download Plugin
       link: https://github.com/musicbeeremote/mbrc-plugin/releases/latest

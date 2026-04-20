@@ -58,14 +58,26 @@ const pluginZip = computed(() =>
             <span class="download-date">{{ releases.app.date }}</span>
           </div>
           <div class="download-actions">
-            <a
-              v-if="appApk"
-              class="download-button"
-              :href="appApk.url"
-            >
-              Download APK
-              <span class="download-size">({{ formatSize(appApk.size) }})</span>
-            </a>
+            <div class="download-buttons-row">
+              <a
+                v-if="appApk"
+                class="download-button"
+                :href="appApk.url"
+              >
+                Download APK
+                <span class="download-size">({{ formatSize(appApk.size) }})</span>
+              </a>
+              <a
+                class="download-play-badge"
+                href="https://play.google.com/store/apps/details?id=com.kelsos.mbrc"
+                aria-label="Get it on Google Play"
+              >
+                <img
+                  src="/img/google-play-badge.svg"
+                  alt="Get it on Google Play"
+                >
+              </a>
+            </div>
             <div class="download-links">
               <a
                 class="download-fallback"
@@ -143,7 +155,7 @@ const pluginZip = computed(() =>
 }
 
 .download-container {
-  max-width: 800px;
+  max-width: 960px;
   margin: 0 auto;
   text-align: center;
 }
@@ -222,6 +234,14 @@ const pluginZip = computed(() =>
 
 .download-actions {
   display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-buttons-row {
+  display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
@@ -249,6 +269,22 @@ const pluginZip = computed(() =>
 .download-size {
   font-weight: 400;
   opacity: 0.8;
+}
+
+.download-play-badge {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.download-play-badge img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.download-play-badge:hover {
+  transform: translateY(-1px);
 }
 
 .download-fallback {

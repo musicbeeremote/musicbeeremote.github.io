@@ -40,15 +40,30 @@ defineProps<LandingHeroProps>();
           {{ hero.tagline }}
         </p>
         <div class="hero-actions">
-          <a
+          <template
             v-for="(button, index) in hero.actions"
             :key="button.link"
-            class="hero-button"
-            :class="index === 0 ? 'hero-button-primary' : 'hero-button-secondary'"
-            :href="button.link"
           >
-            {{ button.text }}
-          </a>
+            <a
+              v-if="button.link.includes('play.google.com')"
+              class="hero-play-badge"
+              :href="button.link"
+              :aria-label="button.text"
+            >
+              <img
+                src="/img/google-play-badge.svg"
+                alt="Get it on Google Play"
+              >
+            </a>
+            <a
+              v-else
+              class="hero-button"
+              :class="index === 0 ? 'hero-button-primary' : 'hero-button-secondary'"
+              :href="button.link"
+            >
+              {{ button.text }}
+            </a>
+          </template>
         </div>
       </div>
       <div class="hero-image-wrapper">
@@ -116,6 +131,23 @@ defineProps<LandingHeroProps>();
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.hero-play-badge {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.hero-play-badge img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
+.hero-play-badge:hover {
+  transform: translateY(-1px);
 }
 
 .hero-button {
