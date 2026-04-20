@@ -14,7 +14,17 @@ next:
 
 There are two ways to install the application:
 
-### GitHub Release (recommended)
+### Google Play Store (open testing)
+
+MusicBee Remote is currently available through the **open testing** channel on Google Play. Anyone with the link can join — no invitation is required.
+
+1. Open the [MusicBee Remote listing on Google Play](https://play.google.com/store/apps/details?id=com.kelsos.mbrc) on your Android device.
+2. Scroll to the **Join the beta** section and tap **Join**. It can take a few minutes for your account to be enrolled.
+3. Once enrolled, install or update the app from the same page. Future updates arrive automatically through Play.
+
+To leave the beta, return to the listing and tap **Leave** under the beta section. You will then be moved back to the stable track once v1.6.0 is promoted to production.
+
+### GitHub Release
 
 Download the latest APK from the [GitHub Releases](https://github.com/musicbeeremote/mbrc/releases/latest) page. Two variants are available:
 
@@ -22,10 +32,6 @@ Download the latest APK from the [GitHub Releases](https://github.com/musicbeere
 - **Play release** — Includes Firebase Crashlytics for crash tracking
 
 To install, download the APK on your device and enable installation from unknown sources if prompted.
-
-### Google Play Store
-
-The application will be available on the Google Play Store soon. Check the [website](https://mbrc.kelsos.net) for updates.
 
 ## Connection
 
