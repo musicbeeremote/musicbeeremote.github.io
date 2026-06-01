@@ -206,9 +206,15 @@ export default defineConfig({
       return; // skip the 404 page
 
     const url = pageCanonicalUrl(pageData.relativePath);
-    const ogImage = `${HOSTNAME}/og-image.png`;
     const isNewsPost = pageData.relativePath.startsWith('news/')
       && pageData.relativePath !== 'news/index.md';
+
+    // A page may override the share image via a frontmatter `image` (absolute path
+    // under public/, e.g. `/img/foo.png`); otherwise fall back to the default card.
+    const usingDefaultImage = !frontmatter.image;
+    const ogImage = usingDefaultImage
+      ? `${HOSTNAME}/og-image.png`
+      : `${HOSTNAME}${frontmatter.image}`;
 
     const head: HeadConfig[] = [
       ['link', { rel: 'canonical', href: url }],
@@ -218,11 +224,33 @@ export default defineConfig({
       ['meta', { property: 'og:description', content: description }],
       ['meta', { property: 'og:url', content: url }],
       ['meta', { property: 'og:image', content: ogImage }],
+      ['meta', { property: 'og:image:alt', content: title }],
       ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
       ['meta', { name: 'twitter:title', content: title }],
       ['meta', { name: 'twitter:description', content: description }],
       ['meta', { name: 'twitter:image', content: ogImage }],
     ];
+
+    // The default share image has known dimensions; advertise them so platforms
+    // can render the card without first fetching the image.
+    if (usingDefaultImage) {
+      head.push(
+        ['meta', { property: 'og:image:width', content: '1200' }],
+        ['meta', { property: 'og:image:height', content: '630' }],
+      );
+    }
+
+    // Open Graph article-namespace tags for news posts.
+    if (isNewsPost) {
+      if (frontmatter.date)
+        head.push(['meta', { property: 'article:published_time', content: new Date(frontmatter.date).toISOString() }]);
+      if (frontmatter.author)
+        head.push(['meta', { property: 'article:author', content: frontmatter.author }]);
+      if (Array.isArray(frontmatter.categories)) {
+        frontmatter.categories.forEach((category: string) =>
+          head.push(['meta', { property: 'article:tag', content: category }]));
+      }
+    }
 
     if (pageData.relativePath === 'index.md') {
       head.push(['script', { type: 'application/ld+json' }, JSON.stringify({
