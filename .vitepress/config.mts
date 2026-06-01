@@ -3,7 +3,7 @@ import fs, { copyFileSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import * as process from 'node:process';
 import { Feed } from 'feed';
-import { createContentLoader, defineConfig, type PageData, type SiteConfig } from 'vitepress';
+import { createContentLoader, defineConfig, type HeadConfig, type PageData, type SiteConfig } from 'vitepress';
 
 const TAG_ID = 'UA-34909088-2';
 const HOSTNAME = 'https://mbrc.kelsos.net';
@@ -75,6 +75,15 @@ function generateHashedImageName(ctx: TransformPageContext, relativePath: string
   hashedImages.push({ imagePath, targetImagePath });
 
   return path.join(ctx.siteConfig.assetsDir, hashedImageName);
+}
+
+function pageCanonicalUrl(relativePath: string): string {
+  let urlPath = relativePath.replace(/\.md$/, '');
+  if (urlPath === 'index')
+    urlPath = '';
+  else if (urlPath.endsWith('/index'))
+    urlPath = urlPath.slice(0, -'index'.length);
+  return `${HOSTNAME}/${urlPath}`;
 }
 
 async function generateNewsFeed(siteConfig: SiteConfig): Promise<void> {
@@ -179,10 +188,76 @@ export default defineConfig({
     }
     createNewsRedirect(page, ctx.siteConfig.outDir);
 
+    // Derive a per-page meta description from the frontmatter subtitle so the
+    // built-in <meta name="description"> is page-specific instead of the global default.
+    // pageData.description is resolved before this hook, so set it directly.
+    if (!frontmatter.description && frontmatter.subtitle)
+      page.description = frontmatter.subtitle;
+
     if (frontmatter.sidebar != null)
       return page;
     frontmatter.sidebar = frontmatter.layout !== 'landing';
     return page;
+  },
+
+  transformHead: ({ pageData, title, description }) => {
+    const frontmatter = pageData.frontmatter;
+    if (!pageData.relativePath || pageData.relativePath === '404.md')
+      return; // skip the 404 page
+
+    const url = pageCanonicalUrl(pageData.relativePath);
+    const ogImage = `${HOSTNAME}/og-image.png`;
+    const isNewsPost = pageData.relativePath.startsWith('news/')
+      && pageData.relativePath !== 'news/index.md';
+
+    const head: HeadConfig[] = [
+      ['link', { rel: 'canonical', href: url }],
+      ['meta', { property: 'og:type', content: isNewsPost ? 'article' : 'website' }],
+      ['meta', { property: 'og:site_name', content: 'MusicBee Remote' }],
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: description }],
+      ['meta', { property: 'og:url', content: url }],
+      ['meta', { property: 'og:image', content: ogImage }],
+      ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+      ['meta', { name: 'twitter:title', content: title }],
+      ['meta', { name: 'twitter:description', content: description }],
+      ['meta', { name: 'twitter:image', content: ogImage }],
+    ];
+
+    if (pageData.relativePath === 'index.md') {
+      head.push(['script', { type: 'application/ld+json' }, JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        'name': 'MusicBee Remote',
+        'operatingSystem': 'Android',
+        'applicationCategory': 'MultimediaApplication',
+        'url': HOSTNAME,
+        'description': description,
+        'image': ogImage,
+        'downloadUrl': 'https://github.com/musicbeeremote/mbrc/releases/latest',
+        'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'USD' },
+      })]);
+    }
+    else if (isNewsPost) {
+      head.push(['script', { type: 'application/ld+json' }, JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        'headline': frontmatter.title,
+        'description': description,
+        'datePublished': frontmatter.date ? new Date(frontmatter.date).toISOString() : undefined,
+        'author': frontmatter.author ? { '@type': 'Person', 'name': frontmatter.author } : undefined,
+        'image': ogImage,
+        'url': url,
+        'mainEntityOfPage': url,
+        'publisher': {
+          '@type': 'Organization',
+          'name': 'MusicBee Remote',
+          'logo': { '@type': 'ImageObject', 'url': `${HOSTNAME}/android-chrome-512x512.png` },
+        },
+      })]);
+    }
+
+    return head;
   },
 
   async buildEnd(siteConfig) {
