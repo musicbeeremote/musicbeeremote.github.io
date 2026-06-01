@@ -213,3 +213,6 @@ dist
 
 .vitepress/cache
 
+# Obsidian per-user vault config
+.obsidian
+

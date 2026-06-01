@@ -8,7 +8,8 @@
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@commitlint/cli": "20.5.0",
@@ -34,6 +35,6 @@
     "pnpm": ">=10 <11"
   },
   "lint-staged": {
-    "*.{js,ts,vue,md,json,yml}": "eslint"
+    "*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,json,jsonc,json5,yml,yaml,md,html,toml}": "eslint --fix"
   }
 }

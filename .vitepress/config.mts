@@ -296,7 +296,7 @@ export default defineConfig({
     await generateNewsFeed(siteConfig);
   },
 
-  srcExclude: ['**/README.md', '**/TODO.md'],
+  srcExclude: ['**/README.md', '**/TODO.md', 'templates/**'],
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
