@@ -86,6 +86,66 @@ function pageCanonicalUrl(relativePath: string): string {
   return `${HOSTNAME}/${urlPath}`;
 }
 
+// Open Graph article-namespace tags for news posts.
+function articleMetaTags(frontmatter: Record<string, any>): HeadConfig[] {
+  const tags: HeadConfig[] = [];
+  if (frontmatter.date)
+    tags.push(['meta', { property: 'article:published_time', content: new Date(frontmatter.date).toISOString() }]);
+  if (frontmatter.author)
+    tags.push(['meta', { property: 'article:author', content: frontmatter.author }]);
+  if (Array.isArray(frontmatter.categories)) {
+    frontmatter.categories.forEach((category: string) =>
+      tags.push(['meta', { property: 'article:tag', content: category }]));
+  }
+  return tags;
+}
+
+interface StructuredDataContext {
+  frontmatter: Record<string, any>;
+  description: string;
+  ogImage: string;
+  url: string;
+  isNewsPost: boolean;
+}
+
+// JSON-LD structured data: SoftwareApplication for the landing page, Article for news posts.
+function structuredDataTag(relativePath: string, ctx: StructuredDataContext): HeadConfig | undefined {
+  const { frontmatter, description, ogImage, url, isNewsPost } = ctx;
+  if (relativePath === 'index.md') {
+    return ['script', { type: 'application/ld+json' }, JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      'name': 'MusicBee Remote',
+      'operatingSystem': 'Android',
+      'applicationCategory': 'MultimediaApplication',
+      'url': HOSTNAME,
+      'description': description,
+      'image': ogImage,
+      'downloadUrl': 'https://github.com/musicbeeremote/mbrc/releases/latest',
+      'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'USD' },
+    })];
+  }
+  if (isNewsPost) {
+    return ['script', { type: 'application/ld+json' }, JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      'headline': frontmatter.title,
+      'description': description,
+      'datePublished': frontmatter.date ? new Date(frontmatter.date).toISOString() : undefined,
+      'author': frontmatter.author ? { '@type': 'Person', 'name': frontmatter.author } : undefined,
+      'image': ogImage,
+      'url': url,
+      'mainEntityOfPage': url,
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'MusicBee Remote',
+        'logo': { '@type': 'ImageObject', 'url': `${HOSTNAME}/android-chrome-512x512.png` },
+      },
+    })];
+  }
+  return undefined;
+}
+
 async function generateNewsFeed(siteConfig: SiteConfig): Promise<void> {
   const feed = new Feed({
     title: 'MusicBee Remote — News',
@@ -240,50 +300,12 @@ export default defineConfig({
       );
     }
 
-    // Open Graph article-namespace tags for news posts.
-    if (isNewsPost) {
-      if (frontmatter.date)
-        head.push(['meta', { property: 'article:published_time', content: new Date(frontmatter.date).toISOString() }]);
-      if (frontmatter.author)
-        head.push(['meta', { property: 'article:author', content: frontmatter.author }]);
-      if (Array.isArray(frontmatter.categories)) {
-        frontmatter.categories.forEach((category: string) =>
-          head.push(['meta', { property: 'article:tag', content: category }]));
-      }
-    }
+    if (isNewsPost)
+      head.push(...articleMetaTags(frontmatter));
 
-    if (pageData.relativePath === 'index.md') {
-      head.push(['script', { type: 'application/ld+json' }, JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'SoftwareApplication',
-        'name': 'MusicBee Remote',
-        'operatingSystem': 'Android',
-        'applicationCategory': 'MultimediaApplication',
-        'url': HOSTNAME,
-        'description': description,
-        'image': ogImage,
-        'downloadUrl': 'https://github.com/musicbeeremote/mbrc/releases/latest',
-        'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'USD' },
-      })]);
-    }
-    else if (isNewsPost) {
-      head.push(['script', { type: 'application/ld+json' }, JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Article',
-        'headline': frontmatter.title,
-        'description': description,
-        'datePublished': frontmatter.date ? new Date(frontmatter.date).toISOString() : undefined,
-        'author': frontmatter.author ? { '@type': 'Person', 'name': frontmatter.author } : undefined,
-        'image': ogImage,
-        'url': url,
-        'mainEntityOfPage': url,
-        'publisher': {
-          '@type': 'Organization',
-          'name': 'MusicBee Remote',
-          'logo': { '@type': 'ImageObject', 'url': `${HOSTNAME}/android-chrome-512x512.png` },
-        },
-      })]);
-    }
+    const structuredData = structuredDataTag(pageData.relativePath, { frontmatter, description, ogImage, url, isNewsPost });
+    if (structuredData)
+      head.push(structuredData);
 
     return head;
   },
