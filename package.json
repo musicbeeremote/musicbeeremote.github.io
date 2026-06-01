@@ -2,7 +2,7 @@
   "name": "mbrc.kelsos.net",
   "version": "3.0.0",
   "private": true,
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@11.3.0",
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev",
@@ -32,7 +32,7 @@
   },
   "engines": {
     "node": ">=24 <25",
-    "pnpm": ">=10 <11"
+    "pnpm": ">=11 <12"
   },
   "lint-staged": {
     "*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,json,jsonc,json5,yml,yaml,md,html,toml}": "eslint --fix"

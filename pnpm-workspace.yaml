@@ -5,5 +5,12 @@ shellEmulator: true
 
 strictDepBuilds: true
 trustPolicy: no-downgrade
+# Established packages whose trust-evidence *type* changed between releases
+# (e.g. trusted-publisher -> provenance), which no-downgrade flags as a
+# downgrade despite being legitimate. Pinned to exact versions so any future
+# bump re-triggers the policy and must be re-reviewed before being trusted.
+trustPolicyExclude:
+  - vite@5.4.21
+  - tinyexec@1.2.2
 allowBuilds:
   esbuild: true
