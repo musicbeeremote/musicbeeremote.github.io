@@ -2,9 +2,11 @@ import { createHash } from 'node:crypto';
 import fs, { copyFileSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import * as process from 'node:process';
-import { defineConfig, type PageData } from 'vitepress';
+import { Feed } from 'feed';
+import { createContentLoader, defineConfig, type PageData, type SiteConfig } from 'vitepress';
 
 const TAG_ID = 'UA-34909088-2';
+const HOSTNAME = 'https://mbrc.kelsos.net';
 
 interface HashedImage {
   imagePath: string;
@@ -75,6 +77,56 @@ function generateHashedImageName(ctx: TransformPageContext, relativePath: string
   return path.join(ctx.siteConfig.assetsDir, hashedImageName);
 }
 
+async function generateNewsFeed(siteConfig: SiteConfig): Promise<void> {
+  const feed = new Feed({
+    title: 'MusicBee Remote — News',
+    description: 'Release notes and updates for MusicBee Remote',
+    id: `${HOSTNAME}/news/`,
+    link: `${HOSTNAME}/news/`,
+    language: 'en',
+    image: `${HOSTNAME}/android-chrome-512x512.png`,
+    favicon: `${HOSTNAME}/favicon.ico`,
+    copyright: `Copyright © 2017-${new Date().getFullYear()} Konstantinos Paparas`,
+    feedLinks: {
+      rss: `${HOSTNAME}/news/feed.xml`,
+      atom: `${HOSTNAME}/news/atom.xml`,
+      json: `${HOSTNAME}/news/feed.json`,
+    },
+  });
+
+  const posts = await createContentLoader('news/!(index).md', {
+    excerpt: true,
+    render: true,
+  }).load();
+
+  posts
+    .filter(post => post.frontmatter.date)
+    .sort((a, b) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date))
+    .forEach((post) => {
+      const link = `${HOSTNAME}${post.url}`;
+      feed.addItem({
+        title: post.frontmatter.title,
+        id: link,
+        link,
+        description: post.frontmatter.subtitle ?? post.excerpt,
+        content: post.html,
+        date: new Date(post.frontmatter.date),
+        author: post.frontmatter.author
+          ? [{ name: post.frontmatter.author }]
+          : undefined,
+        category: Array.isArray(post.frontmatter.categories)
+          ? post.frontmatter.categories.map((name: string) => ({ name }))
+          : undefined,
+      });
+    });
+
+  const newsOutDir = path.join(siteConfig.outDir, 'news');
+  fs.mkdirSync(newsOutDir, { recursive: true });
+  fs.writeFileSync(path.join(newsOutDir, 'feed.xml'), feed.rss2());
+  fs.writeFileSync(path.join(newsOutDir, 'atom.xml'), feed.atom1());
+  fs.writeFileSync(path.join(newsOutDir, 'feed.json'), feed.json1());
+}
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'MusicBee Remote',
@@ -94,10 +146,19 @@ export default defineConfig({
       gtag('js', new Date());
       gtag('config', '${TAG_ID}');`,
     ],
+    [
+      'link',
+      {
+        rel: 'alternate',
+        type: 'application/rss+xml',
+        title: 'MusicBee Remote — News',
+        href: `${HOSTNAME}/news/feed.xml`,
+      },
+    ],
   ],
 
   sitemap: {
-    hostname: 'https://mbrc.kelsos.net',
+    hostname: HOSTNAME,
   },
 
   appearance: true,
@@ -124,11 +185,12 @@ export default defineConfig({
     return page;
   },
 
-  buildEnd() {
+  async buildEnd(siteConfig) {
     redirectPaths.forEach(writeRedirects);
     hashedImages.forEach(({ imagePath, targetImagePath }) => {
       copyFileSync(imagePath, targetImagePath);
     });
+    await generateNewsFeed(siteConfig);
   },
 
   srcExclude: ['**/README.md', '**/TODO.md'],
