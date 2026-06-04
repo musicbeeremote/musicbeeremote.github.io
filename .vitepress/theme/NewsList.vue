@@ -6,36 +6,39 @@ defineProps<{ news: News[] }>();
 </script>
 
 <template>
-  <ul class="news-list">
+  <ul class="m-0 list-none p-0">
     <li
       v-for="{ title, url, subtitle, date, excerpt } of news"
       :key="url"
-      class="news-item"
+      class="border-b border-[var(--vp-c-divider)] py-8 first:pt-10 last:border-b-0"
     >
-      <article class="news-article">
+      <article class="flex flex-col gap-2 sm:flex-row sm:gap-8">
         <Date
           :date="date"
-          class="news-date"
+          class="shrink-0 sm:min-w-[140px] sm:pt-1"
         />
-        <div class="news-body">
-          <h2 class="news-article-title">
-            <a :href="url">
+        <div>
+          <h2 class="m-0 text-2xl font-bold leading-[1.3]">
+            <a
+              :href="url"
+              class="text-[var(--vp-c-text-1)] no-underline transition-colors duration-200 hover:text-[var(--vp-c-brand-1)]"
+            >
               {{ title }}
             </a>
           </h2>
           <p
             v-if="subtitle"
-            class="news-article-subtitle"
+            class="mt-1 mb-0 text-base text-[var(--vp-c-text-2)]"
           >
             {{ subtitle }}
           </p>
           <div
             v-if="excerpt"
-            class="news-excerpt"
+            class="news-excerpt mt-3 text-[0.9375rem] leading-[1.7] text-[var(--vp-c-text-2)]"
             v-html="excerpt"
           />
           <a
-            class="news-read-more"
+            class="mt-3 inline-block text-[0.9375rem] font-semibold text-[var(--vp-c-brand-1)] no-underline transition-colors duration-200 hover:text-[var(--vp-c-brand-2)]"
             :href="url"
           >
             Read more &rarr;
@@ -47,92 +50,8 @@ defineProps<{ news: News[] }>();
 </template>
 
 <style scoped>
-.news-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.news-item {
-  padding: 2rem 0;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.news-item:first-child {
-  padding-top: 2.5rem;
-}
-
-.news-item:last-child {
-  border-bottom: none;
-}
-
-.news-article {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.news-date {
-  flex-shrink: 0;
-}
-
-.news-article-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin: 0;
-}
-
-.news-article-title a {
-  color: var(--vp-c-text-1);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.news-article-title a:hover {
-  color: var(--vp-c-brand-1);
-}
-
-.news-article-subtitle {
-  color: var(--vp-c-text-2);
-  font-size: 1rem;
-  margin: 0.25rem 0 0;
-}
-
-.news-excerpt {
-  color: var(--vp-c-text-2);
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  margin-top: 0.75rem;
-}
-
+/* Excerpt HTML is injected via v-html, so its <p> is styled with a deep selector. */
 .news-excerpt :deep(p) {
   margin: 0;
-}
-
-.news-read-more {
-  display: inline-block;
-  margin-top: 0.75rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--vp-c-brand-1);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.news-read-more:hover {
-  color: var(--vp-c-brand-2);
-}
-
-@media (min-width: 640px) {
-  .news-article {
-    flex-direction: row;
-    gap: 2rem;
-  }
-
-  .news-date {
-    min-width: 140px;
-    padding-top: 0.25rem;
-  }
 }
 </style>

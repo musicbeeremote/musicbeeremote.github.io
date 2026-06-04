@@ -21,34 +21,34 @@ const giscusTheme = computed(() => isDark.value ? 'dark' : 'light');
 </script>
 
 <template>
-  <article class="article-page">
-    <header class="article-header">
+  <article class="mx-auto max-w-[800px] px-6 pb-16 pt-8 md:px-8 md:pb-24 md:pt-12">
+    <header class="border-b border-[var(--vp-c-divider)] pb-8 text-center">
       <Date
         :date="date"
-        class="article-date"
+        class="mb-3"
       />
-      <h1 class="article-title">
+      <h1 class="m-0 text-[2rem] font-extrabold leading-[1.2] tracking-[-0.02em] text-[var(--vp-c-text-1)] sm:text-[2.5rem]">
         {{ data.title }}
       </h1>
       <p
         v-if="data.subtitle"
-        class="article-subtitle"
+        class="mt-3 text-lg text-[var(--vp-c-text-2)]"
       >
         {{ data.subtitle }}
       </p>
     </header>
 
-    <div class="article-layout">
-      <aside class="article-sidebar">
+    <div class="pt-8">
+      <aside class="mb-6">
         <Author />
       </aside>
 
-      <div class="article-content">
-        <Content class="article-body" />
+      <div>
+        <Content class="article-body leading-[1.8] text-[var(--vp-c-text-1)]" />
       </div>
     </div>
 
-    <div class="article-comments">
+    <div class="mt-12 border-t border-[var(--vp-c-divider)] pt-8">
       <Giscus
         repo="musicbeeremote/musicbeeremote.github.io"
         repo-id="R_kgDOH7Ql_Q"
@@ -64,27 +64,27 @@ const giscusTheme = computed(() => isDark.value ? 'dark' : 'light');
       />
     </div>
 
-    <footer class="article-footer">
-      <nav class="article-nav">
+    <footer class="mt-12 border-t border-[var(--vp-c-divider)] pt-8">
+      <nav class="mb-6 flex flex-col gap-4">
         <a
           v-if="nextPost"
           :href="nextPost.url"
-          class="article-nav-link"
+          class="block rounded-[10px] border border-[var(--vp-c-divider)] p-4 no-underline transition-[border-color,box-shadow] duration-200 hover:border-[var(--vp-c-brand-1)] hover:shadow-[0_2px_8px_rgba(230,81,0,0.08)]"
         >
-          <span class="article-nav-label">Next</span>
-          <span class="article-nav-title">{{ nextPost.title }}</span>
+          <span class="mb-1 block text-xs font-bold uppercase tracking-[0.04em] text-[var(--vp-c-text-3)]">Next</span>
+          <span class="text-[0.9375rem] font-semibold text-[var(--vp-c-brand-1)]">{{ nextPost.title }}</span>
         </a>
         <a
           v-if="prevPost"
           :href="prevPost.url"
-          class="article-nav-link"
+          class="block rounded-[10px] border border-[var(--vp-c-divider)] p-4 no-underline transition-[border-color,box-shadow] duration-200 hover:border-[var(--vp-c-brand-1)] hover:shadow-[0_2px_8px_rgba(230,81,0,0.08)]"
         >
-          <span class="article-nav-label">Previous</span>
-          <span class="article-nav-title">{{ prevPost.title }}</span>
+          <span class="mb-1 block text-xs font-bold uppercase tracking-[0.04em] text-[var(--vp-c-text-3)]">Previous</span>
+          <span class="text-[0.9375rem] font-semibold text-[var(--vp-c-brand-1)]">{{ prevPost.title }}</span>
         </a>
       </nav>
       <a
-        class="article-back"
+        class="inline-block text-[0.9375rem] font-semibold text-[var(--vp-c-brand-1)] no-underline transition-colors duration-200 hover:text-[var(--vp-c-brand-2)]"
         href="/news/"
       >
         &larr; Back to news
@@ -94,62 +94,6 @@ const giscusTheme = computed(() => isDark.value ? 'dark' : 'light');
 </template>
 
 <style scoped>
-.article-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
-}
-
-@media (min-width: 768px) {
-  .article-page {
-    padding: 3rem 2rem 6rem;
-  }
-}
-
-.article-header {
-  text-align: center;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.article-date {
-  margin-bottom: 0.75rem;
-}
-
-.article-title {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--vp-c-text-1);
-  line-height: 1.2;
-  margin: 0;
-}
-
-@media (min-width: 640px) {
-  .article-title {
-    font-size: 2.5rem;
-  }
-}
-
-.article-subtitle {
-  color: var(--vp-c-text-2);
-  font-size: 1.125rem;
-  margin: 0.75rem 0 0;
-}
-
-.article-layout {
-  padding-top: 2rem;
-}
-
-.article-sidebar {
-  margin-bottom: 1.5rem;
-}
-
-.article-body {
-  line-height: 1.8;
-  color: var(--vp-c-text-1);
-}
-
 .article-body :deep(p) {
   margin: 1rem 0;
 }
@@ -180,8 +124,14 @@ const giscusTheme = computed(() => isDark.value ? 'dark' : 'light');
   color: var(--vp-c-text-1);
 }
 
-.article-body :deep(ul),
+.article-body :deep(ul) {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
 .article-body :deep(ol) {
+  list-style: decimal;
   padding-left: 1.5rem;
   margin: 1rem 0;
 }

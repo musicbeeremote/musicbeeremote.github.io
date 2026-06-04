@@ -1,15 +1,5 @@
 <template>
-  <div class="screenshot-row">
+  <div class="my-6 flex flex-wrap justify-center gap-6">
     <slot />
   </div>
 </template>
-
-<style scoped>
-.screenshot-row {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 1.5rem 0;
-}
-</style>

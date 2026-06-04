@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import fs, { copyFileSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import * as process from 'node:process';
+import tailwindcss from '@tailwindcss/vite';
 import { Feed } from 'feed';
 import { createContentLoader, defineConfig, type HeadConfig, type PageData, type SiteConfig } from 'vitepress';
 
@@ -201,6 +202,10 @@ export default defineConfig({
   title: 'MusicBee Remote',
   description: 'A remote control application that allows you to control MusicBee from your Android device',
   cleanUrls: true,
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 
   head: [
     [

@@ -8,56 +8,20 @@ const { src, alt } = defineProps<{
 </script>
 
 <template>
-  <figure class="phone-frame">
-    <div class="phone-body">
-      <div class="phone-notch" />
+  <figure class="m-0 inline-flex flex-col items-center">
+    <div class="max-w-[260px] rounded-[24px] bg-[#1a1a1a] p-2 shadow-[0_8px_24px_rgba(0,0,0,0.1)]">
+      <div class="mx-auto mt-0.5 mb-1.5 h-1 w-[60px] rounded-[2px] bg-[#333]" />
       <img
         :src="withBase(src)"
         :alt="alt || ''"
-        class="phone-screen"
+        class="block h-auto w-full rounded-[16px]"
       />
     </div>
-    <figcaption v-if="alt">
+    <figcaption
+      v-if="alt"
+      class="mt-2 text-center text-[0.8rem] text-[#888]"
+    >
       {{ alt }}
     </figcaption>
   </figure>
 </template>
-
-<style scoped>
-.phone-frame {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0;
-}
-
-.phone-body {
-  background: #1a1a1a;
-  border-radius: 24px;
-  padding: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  max-width: 260px;
-}
-
-.phone-notch {
-  width: 60px;
-  height: 4px;
-  background: #333;
-  border-radius: 2px;
-  margin: 2px auto 6px;
-}
-
-.phone-screen {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 16px;
-}
-
-figcaption {
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-  color: #888;
-  text-align: center;
-}
-</style>

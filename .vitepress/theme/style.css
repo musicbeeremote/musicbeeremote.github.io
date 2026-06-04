@@ -42,9 +42,21 @@
  * - `danger`: Used to show error, or dangerous message to the users. Used
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* VitePress injects its own UNLAYERED base reset (incl. `h1..h6 { font-size:
+   inherit }`). Tailwind's default `@import 'tailwindcss'` puts utilities in
+   `@layer utilities`, and any layered rule loses to unlayered CSS regardless of
+   specificity — so heading utilities like `text-4xl`/`font-bold` were being
+   silently overridden. Import the parts explicitly and keep utilities UNLAYERED
+   so a single utility class (0,1,0) beats the element-selector reset (0,0,1). */
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css';
+
+/* VitePress toggles a `.dark` class on <html>; make Tailwind's dark: variant
+   follow that class instead of the prefers-color-scheme default. */
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --vp-c-default-1: var(--vp-c-gray-1);

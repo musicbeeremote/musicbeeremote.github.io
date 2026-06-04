@@ -7,59 +7,17 @@ const { frontmatter } = useData();
 </script>
 
 <template>
-  <div class="news-page">
-    <div class="news-header">
-      <h1 class="news-title">
+  <div class="w-full">
+    <div class="border-b border-[var(--vp-c-divider)] px-6 pt-16 pb-8 text-center md:px-8 md:pt-20 md:pb-10">
+      <h1 class="m-0 text-4xl font-extrabold tracking-[-0.02em] text-[var(--vp-c-text-1)]">
         {{ frontmatter.title }}
       </h1>
-      <p class="news-subtitle">
+      <p class="mt-2 mb-0 text-lg text-[var(--vp-c-text-2)]">
         {{ frontmatter.subtitle }}
       </p>
     </div>
-    <div class="news-container">
+    <div class="mx-auto max-w-[800px] px-6 pb-16 md:px-8 md:pb-24">
       <NewsList :news="news" />
     </div>
   </div>
 </template>
-
-<style scoped>
-.news-page {
-  width: 100%;
-}
-
-.news-header {
-  padding: 4rem 1.5rem 2rem;
-  text-align: center;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.news-title {
-  font-size: 2.25rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--vp-c-text-1);
-  margin: 0;
-}
-
-.news-subtitle {
-  font-size: 1.125rem;
-  color: var(--vp-c-text-2);
-  margin: 0.5rem 0 0;
-}
-
-.news-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1.5rem 4rem;
-}
-
-@media (min-width: 768px) {
-  .news-header {
-    padding: 5rem 2rem 2.5rem;
-  }
-
-  .news-container {
-    padding: 0 2rem 6rem;
-  }
-}
-</style>

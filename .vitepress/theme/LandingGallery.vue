@@ -85,41 +85,46 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="gallery-section">
-    <div class="gallery-container">
-      <h2 class="gallery-title">
+  <section class="px-6 py-24">
+    <div class="mx-auto max-w-[1080px] text-center">
+      <h2 class="mb-3 text-4xl font-bold tracking-tight text-[var(--vp-c-text-1)]">
         Screenshots
       </h2>
-      <p class="gallery-subtitle">
+      <p class="mb-16 text-lg text-[var(--vp-c-text-2)]">
         See MusicBee Remote in action.
       </p>
 
-      <div class="gallery-grid">
+      <div class="mx-auto grid max-w-[280px] grid-cols-1 gap-6 min-[480px]:max-w-[900px] min-[480px]:grid-cols-2 md:grid-cols-3">
         <div
           v-for="(item, index) in images"
           :key="index"
-          class="gallery-item"
+          class="cursor-pointer rounded-[20px] bg-[#1a1a1a] p-2 shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-[transform,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.15)]"
           @click="openImage(item)"
         >
           <Image
             :image="item"
-            class="gallery-thumb"
+            class="block h-auto w-full rounded-xl"
           />
         </div>
       </div>
     </div>
 
-    <Transition name="fade-zoom">
+    <Transition
+      enter-active-class="transition-all duration-300 ease-out"
+      leave-active-class="transition-all duration-300 ease-out"
+      enter-from-class="opacity-0 scale-90"
+      leave-to-class="opacity-0 scale-90"
+    >
       <div
         v-if="visibleIndex !== undefined"
-        class="lightbox-overlay"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/85"
         @click.self="closeImage()"
         @touchstart.passive="handleTouchStart($event)"
         @touchend.passive="handleTouchEnd($event)"
       >
         <button
           type="button"
-          class="lightbox-close"
+          class="absolute right-6 top-4 z-[51] cursor-pointer border-none bg-transparent text-[2rem] font-bold text-white"
           @click="closeImage()"
         >
           &times;
@@ -128,28 +133,28 @@ onBeforeUnmount(() => {
         <button
           v-if="visibleIndex > 0"
           type="button"
-          class="lightbox-nav lightbox-prev"
+          class="absolute left-4 top-1/2 z-[51] -translate-y-1/2 cursor-pointer border-none bg-transparent p-4 text-[3rem] font-bold text-white"
           @click="prevImage()"
         >
           &lsaquo;
         </button>
 
-        <div class="lightbox-content">
-          <div class="lightbox-phone-frame">
-            <div class="lightbox-phone-notch" />
+        <div class="flex flex-col items-center gap-3">
+          <div class="max-h-[80vh] rounded-[32px] bg-[#1a1a1a] p-[10px] shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+            <div class="mx-auto mb-1.5 mt-0.5 h-[5px] w-20 rounded-[3px] bg-[#333]" />
             <img
               v-if="selection"
               :src="withBase(selection.src)"
               :alt="selection.alt"
-              class="lightbox-image"
+              class="block max-h-[calc(80vh-40px)] w-auto rounded-[22px]"
             />
           </div>
-          <div class="lightbox-counter">
+          <div class="text-sm font-medium tracking-[0.05em] text-white/70">
             {{ visibleIndex + 1 }} / {{ images.length }}
           </div>
           <div
             v-if="selection"
-            class="lightbox-caption"
+            class="text-[0.8125rem] text-white/50"
           >
             {{ selection.alt }}
           </div>
@@ -158,7 +163,7 @@ onBeforeUnmount(() => {
         <button
           v-if="visibleIndex < images.length - 1"
           type="button"
-          class="lightbox-nav lightbox-next"
+          class="absolute right-4 top-1/2 z-[51] -translate-y-1/2 cursor-pointer border-none bg-transparent p-4 text-[3rem] font-bold text-white"
           @click="nextImage()"
         >
           &rsaquo;
@@ -167,187 +172,3 @@ onBeforeUnmount(() => {
     </Transition>
   </section>
 </template>
-
-<style scoped>
-.gallery-section {
-  padding: 5rem 1.5rem;
-  background: var(--mbrc-c-surface);
-}
-
-.gallery-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.gallery-title {
-  font-size: 2.25rem;
-  font-weight: 800;
-  color: var(--vp-c-text-1);
-  margin-bottom: 0.5rem;
-}
-
-.gallery-subtitle {
-  font-size: 1.125rem;
-  color: var(--vp-c-text-2);
-  margin-bottom: 2.5rem;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    max-width: 280px;
-  }
-}
-
-.gallery-item {
-  cursor: pointer;
-  background: #1a1a1a;
-  border-radius: 20px;
-  padding: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.gallery-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.gallery-thumb {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-}
-
-/* Lightbox */
-.lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.85);
-  z-index: 50;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 51;
-}
-
-.lightbox-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: white;
-  font-size: 3rem;
-  font-weight: bold;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 1rem;
-  z-index: 51;
-}
-
-.lightbox-prev {
-  left: 1rem;
-}
-
-.lightbox-next {
-  right: 1rem;
-}
-
-.lightbox-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.lightbox-phone-frame {
-  background: #1a1a1a;
-  border-radius: 32px;
-  padding: 10px;
-  max-height: 80vh;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
-}
-
-.lightbox-phone-notch {
-  width: 80px;
-  height: 5px;
-  background: #333;
-  border-radius: 3px;
-  margin: 2px auto 6px;
-}
-
-.lightbox-image {
-  max-height: calc(80vh - 40px);
-  width: auto;
-  display: block;
-  border-radius: 22px;
-}
-
-.lightbox-counter {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-}
-
-.lightbox-caption {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.8125rem;
-}
-
-/* Transitions */
-.fade-zoom-enter-active,
-.fade-zoom-leave-active {
-  transition: all 0.3s ease-out;
-}
-
-.fade-zoom-enter-from {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-.fade-zoom-enter-to {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.fade-zoom-leave-from {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.fade-zoom-leave-to {
-  opacity: 0;
-  transform: scale(0.9);
-}
-</style>

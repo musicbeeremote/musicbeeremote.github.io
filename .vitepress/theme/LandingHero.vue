@@ -27,38 +27,39 @@ defineProps<LandingHeroProps>();
 </script>
 
 <template>
-  <section class="hero-section">
-    <div class="hero-container">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="hero-title-gradient">{{ hero.name }}</span>
+  <section class="px-6 py-24 md:py-32">
+    <div class="mx-auto flex max-w-[1080px] flex-col items-center gap-16 text-center md:flex-row md:gap-20 md:text-left">
+      <div class="flex-1">
+        <h1 class="text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-[var(--vp-c-text-1)] md:text-[3.5rem]">
+          {{ hero.name }}
+          <span class="block text-[var(--vp-c-brand-1)]">{{ hero.text }}</span>
         </h1>
-        <div class="hero-subtitle">
-          {{ hero.text }}
-        </div>
-        <p class="hero-tagline">
+        <p class="mx-auto mt-6 max-w-[520px] text-lg leading-[1.7] text-[var(--vp-c-text-2)] md:mx-0">
           {{ hero.tagline }}
         </p>
-        <div class="hero-actions">
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start">
           <template
             v-for="(button, index) in hero.actions"
             :key="button.link"
           >
             <a
               v-if="button.link.includes('play.google.com')"
-              class="hero-play-badge"
+              class="inline-flex items-center"
               :href="button.link"
               :aria-label="button.text"
             >
               <img
                 src="/img/google-play-badge.svg"
                 alt="Get it on Google Play"
+                class="block h-[52px] w-auto"
               />
             </a>
             <a
               v-else
-              class="hero-button"
-              :class="index === 0 ? 'hero-button-primary' : 'hero-button-secondary'"
+              class="inline-flex items-center rounded-lg px-6 py-3 text-base font-semibold no-underline transition-colors duration-200"
+              :class="index === 1
+                ? 'bg-[var(--vp-c-brand-3)] text-white hover:bg-[var(--vp-c-brand-2)]'
+                : 'border border-[var(--vp-c-brand-1)] text-[var(--vp-c-brand-1)] hover:bg-[var(--vp-c-brand-soft)]'"
               :href="button.link"
             >
               {{ button.text }}
@@ -66,13 +67,13 @@ defineProps<LandingHeroProps>();
           </template>
         </div>
       </div>
-      <div class="hero-image-wrapper">
-        <div class="phone-frame">
-          <div class="phone-notch" />
-          <div class="phone-screen">
+      <div class="shrink-0">
+        <div class="w-[240px] rounded-[36px] bg-[#1a1a1a] p-3 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.25)] md:w-[300px]">
+          <div class="mx-auto mt-1 mb-2 h-1.5 w-[100px] rounded-[3px] bg-[#333]" />
+          <div class="overflow-hidden rounded-[24px] bg-black">
             <Image
               :image="hero.image"
-              class="phone-screenshot"
+              class="block h-auto w-full"
             />
           </div>
         </div>
@@ -80,186 +81,3 @@ defineProps<LandingHeroProps>();
     </div>
   </section>
 </template>
-
-<style scoped>
-.hero-section {
-  padding: 4rem 1.5rem 6rem;
-  background: linear-gradient(135deg, #fff7f0 0%, #fff 50%, #fff0e6 100%);
-}
-
-.hero-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-}
-
-.hero-content {
-  flex: 1;
-}
-
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
-}
-
-.hero-title-gradient {
-  background: linear-gradient(120deg, #d84315 30%, #e65100 70%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  color: var(--mbrc-c-text-secondary);
-  margin-bottom: 1rem;
-}
-
-.hero-tagline {
-  font-size: 1.125rem;
-  color: var(--vp-c-text-2);
-  line-height: 1.7;
-  max-width: 500px;
-  margin-bottom: 2rem;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.hero-play-badge {
-  display: inline-flex;
-  align-items: center;
-  transition: transform 0.2s ease;
-}
-
-.hero-play-badge img {
-  height: 52px;
-  width: auto;
-  display: block;
-}
-
-.hero-play-badge:hover {
-  transform: translateY(-1px);
-}
-
-.hero-button {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.75rem 1.75rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.hero-button-primary {
-  color: #fff;
-  background: linear-gradient(135deg, #e65100, #d84315);
-  box-shadow: 0 4px 14px rgba(216, 67, 21, 0.3);
-}
-
-.hero-button-primary:hover {
-  box-shadow: 0 6px 20px rgba(216, 67, 21, 0.4);
-  transform: translateY(-1px);
-}
-
-.hero-button-secondary {
-  color: var(--vp-c-brand-1);
-  background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-brand-1);
-}
-
-.hero-button-secondary:hover {
-  background: var(--vp-c-brand-soft);
-  transform: translateY(-1px);
-}
-
-/* Phone frame */
-.hero-image-wrapper {
-  flex-shrink: 0;
-}
-
-.phone-frame {
-  position: relative;
-  width: 280px;
-  background: #1a1a1a;
-  border-radius: 36px;
-  padding: 12px;
-  box-shadow:
-    0 25px 50px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(0, 0, 0, 0.05),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  transform: perspective(1000px) rotateY(-5deg);
-  transition: transform 0.4s ease;
-}
-
-.phone-frame:hover {
-  transform: perspective(1000px) rotateY(0deg);
-}
-
-.phone-notch {
-  width: 100px;
-  height: 6px;
-  background: #333;
-  border-radius: 3px;
-  margin: 4px auto 8px;
-}
-
-.phone-screen {
-  border-radius: 24px;
-  overflow: hidden;
-  background: #000;
-}
-
-.phone-screenshot {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero-container {
-    flex-direction: column;
-    text-align: center;
-    gap: 3rem;
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-tagline {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .phone-frame {
-    width: 220px;
-    transform: none;
-  }
-
-  .phone-frame:hover {
-    transform: none;
-  }
-}
-</style>
-
-<style>
-.dark .hero-section {
-  background: linear-gradient(135deg, #1a1008 0%, var(--vp-c-bg) 50%, #1a0f06 100%);
-}
-</style>

@@ -25,11 +25,14 @@ const latestAnnouncement = computed(() => {
 <template>
   <div
     v-if="latestAnnouncement"
-    class="announcement-bar"
+    class="border-b border-[var(--vp-c-divider)] bg-[var(--mbrc-c-surface)] px-4 py-3 text-center"
   >
-    <a :href="latestAnnouncement.url">
-      <span class="announcement-badge">New</span>
-      {{ latestAnnouncement.title }} <span class="announcement-arrow">&rarr;</span>
+    <a
+      :href="latestAnnouncement.url"
+      class="inline-flex items-center gap-2.5 text-sm font-medium text-[var(--vp-c-text-2)] no-underline transition-colors hover:text-[var(--vp-c-brand-1)]"
+    >
+      <span class="inline-block rounded bg-[var(--vp-c-brand-3)] px-2 py-0.5 text-[0.7rem] font-bold tracking-[0.04em] text-white uppercase">New</span>
+      {{ latestAnnouncement.title }} <span class="text-[var(--vp-c-brand-1)]">&rarr;</span>
     </a>
   </div>
   <LandingHero :hero="frontmatter.hero" />
@@ -41,42 +44,3 @@ const latestAnnouncement = computed(() => {
   <LandingGallery :images="frontmatter.gallery" />
   <LandingDownload :downloads="frontmatter.downloads" />
 </template>
-
-<style scoped>
-.announcement-bar {
-  text-align: center;
-  padding: 0.55rem 1rem;
-  background: var(--vp-c-brand-soft);
-}
-
-.announcement-bar a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--vp-c-text-1);
-  text-decoration: none;
-}
-
-.announcement-bar a:hover {
-  color: var(--vp-c-brand-1);
-}
-
-.announcement-badge {
-  display: inline-block;
-  padding: 0.1rem 0.45rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #fff;
-  background: var(--vp-c-brand-3);
-  border-radius: 4px;
-}
-
-.announcement-arrow {
-  font-size: 0.75rem;
-  color: var(--vp-c-brand-1);
-}
-</style>

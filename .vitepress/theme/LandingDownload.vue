@@ -29,58 +29,59 @@ const pluginZip = computed(() =>
 </script>
 
 <template>
-  <section class="download-section">
-    <div class="download-container">
-      <h2 class="download-title">
+  <section class="bg-[var(--mbrc-c-surface)] px-6 py-24">
+    <div class="mx-auto max-w-[960px] text-center">
+      <h2 class="mb-3 text-4xl font-bold tracking-tight text-[var(--vp-c-text-1)]">
         Get Started
       </h2>
-      <p class="download-subtitle">
+      <p class="mb-16 text-lg text-[var(--vp-c-text-2)]">
         Download both the Android app and the MusicBee plugin to get started.
       </p>
-      <div class="download-grid">
+      <div class="mb-8 grid grid-cols-1 gap-8 min-[600px]:grid-cols-2">
         <!-- App card -->
-        <div class="download-card">
+        <div class="flex flex-col items-center rounded-2xl border border-[var(--vp-c-divider)] bg-[var(--vp-c-bg)] px-8 py-10 transition-colors duration-200 hover:border-[var(--vp-c-brand-1)]">
           <div
-            class="download-icon"
+            class="mb-4 h-12 w-12 text-[var(--vp-c-brand-1)]"
             v-html="downloads[0].icon"
           />
-          <h3 class="download-name">
+          <h3 class="mb-2 text-xl font-semibold text-[var(--vp-c-text-1)]">
             {{ downloads[0].name }}
           </h3>
-          <p class="download-description">
+          <p class="mb-4 text-base leading-[1.7] text-[var(--vp-c-text-2)]">
             {{ downloads[0].description }}
           </p>
           <div
             v-if="releases.app"
-            class="download-meta"
+            class="mb-4 flex items-center gap-3"
           >
-            <span class="download-version">{{ releases.app.version }}</span>
-            <span class="download-date">{{ releases.app.date }}</span>
+            <span class="rounded bg-[var(--vp-c-brand-soft)] px-2 py-[0.1rem] text-[0.8125rem] font-semibold text-[var(--vp-c-brand-1)]">{{ releases.app.version }}</span>
+            <span class="text-[0.8125rem] text-[var(--vp-c-text-3)]">{{ releases.app.date }}</span>
           </div>
-          <div class="download-actions">
-            <div class="download-buttons-row">
+          <div class="flex flex-col items-center justify-center gap-3">
+            <div class="flex flex-wrap items-center justify-center gap-2">
               <a
                 v-if="appApk"
-                class="download-button"
+                class="inline-flex items-center gap-1 rounded-lg bg-[var(--vp-c-brand-3)] px-4 py-2 text-sm font-semibold text-white no-underline transition-colors duration-200 hover:bg-[var(--vp-c-brand-2)]"
                 :href="appApk.url"
               >
                 Download APK
-                <span class="download-size">({{ formatSize(appApk.size) }})</span>
+                <span class="font-normal opacity-80">({{ formatSize(appApk.size) }})</span>
               </a>
               <a
-                class="download-play-badge"
+                class="inline-flex items-center transition-transform duration-200 hover:-translate-y-px"
                 href="https://play.google.com/store/apps/details?id=com.kelsos.mbrc"
                 aria-label="Get it on Google Play"
               >
                 <img
                   src="/img/google-play-badge.svg"
                   alt="Get it on Google Play"
+                  class="block h-10 w-auto"
                 />
               </a>
             </div>
-            <div class="download-links">
+            <div class="flex items-center justify-center gap-[0.4rem]">
               <a
-                class="download-fallback"
+                class="text-[0.8125rem] font-medium text-[var(--vp-c-brand-1)] no-underline hover:underline"
                 :href="downloads[0].link"
               >
                 All releases &rarr;
@@ -90,49 +91,49 @@ const pluginZip = computed(() =>
         </div>
 
         <!-- Plugin card -->
-        <div class="download-card">
+        <div class="flex flex-col items-center rounded-2xl border border-[var(--vp-c-divider)] bg-[var(--vp-c-bg)] px-8 py-10 transition-colors duration-200 hover:border-[var(--vp-c-brand-1)]">
           <div
-            class="download-icon"
+            class="mb-4 h-12 w-12 text-[var(--vp-c-brand-1)]"
             v-html="downloads[1].icon"
           />
-          <h3 class="download-name">
+          <h3 class="mb-2 text-xl font-semibold text-[var(--vp-c-text-1)]">
             {{ downloads[1].name }}
           </h3>
-          <p class="download-description">
+          <p class="mb-4 text-base leading-[1.7] text-[var(--vp-c-text-2)]">
             {{ downloads[1].description }}
           </p>
           <div
             v-if="releases.plugin"
-            class="download-meta"
+            class="mb-4 flex items-center gap-3"
           >
-            <span class="download-version">{{ releases.plugin.version }}</span>
-            <span class="download-date">{{ releases.plugin.date }}</span>
+            <span class="rounded bg-[var(--vp-c-brand-soft)] px-2 py-[0.1rem] text-[0.8125rem] font-semibold text-[var(--vp-c-brand-1)]">{{ releases.plugin.version }}</span>
+            <span class="text-[0.8125rem] text-[var(--vp-c-text-3)]">{{ releases.plugin.date }}</span>
           </div>
-          <div class="download-actions">
+          <div class="flex flex-col items-center justify-center gap-3">
             <a
               v-if="pluginExe"
-              class="download-button"
+              class="inline-flex items-center gap-1 rounded-lg bg-[var(--vp-c-brand-3)] px-4 py-2 text-sm font-semibold text-white no-underline transition-colors duration-200 hover:bg-[var(--vp-c-brand-2)]"
               :href="pluginExe.url"
             >
               Download Installer
-              <span class="download-size">({{ formatSize(pluginExe.size) }})</span>
+              <span class="font-normal opacity-80">({{ formatSize(pluginExe.size) }})</span>
             </a>
-            <div class="download-links">
+            <div class="flex items-center justify-center gap-[0.4rem]">
               <a
                 v-if="pluginZip"
-                class="download-fallback"
+                class="text-[0.8125rem] font-medium text-[var(--vp-c-brand-1)] no-underline hover:underline"
                 :href="pluginZip.url"
               >
                 ZIP archive
               </a>
               <span
                 v-if="pluginZip"
-                class="download-separator"
+                class="text-xs text-[var(--vp-c-text-3)]"
               >
                 &middot;
               </span>
               <a
-                class="download-fallback"
+                class="text-[0.8125rem] font-medium text-[var(--vp-c-brand-1)] no-underline hover:underline"
                 :href="downloads[1].link"
               >
                 All releases &rarr;
@@ -141,183 +142,9 @@ const pluginZip = computed(() =>
           </div>
         </div>
       </div>
-      <p class="download-note">
+      <p class="text-[0.8rem] text-[var(--vp-c-text-3)]">
         Requires Android 6.0+ and MusicBee 3.0+. Both devices must be on the same network.
       </p>
     </div>
   </section>
 </template>
-
-<style scoped>
-.download-section {
-  padding: 5rem 1.5rem;
-  background: linear-gradient(180deg, var(--vp-c-bg) 0%, var(--vp-c-brand-soft) 100%);
-}
-
-.download-container {
-  max-width: 960px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.download-title {
-  font-size: 2.25rem;
-  font-weight: 800;
-  color: var(--vp-c-text-1);
-  margin-bottom: 0.75rem;
-}
-
-.download-subtitle {
-  font-size: 1.125rem;
-  color: var(--vp-c-text-2);
-  margin-bottom: 2.5rem;
-}
-
-.download-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.download-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 1.5rem;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-}
-
-.download-icon {
-  width: 48px;
-  height: 48px;
-  color: var(--vp-c-brand-1);
-  margin-bottom: 1rem;
-}
-
-.download-name {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--vp-c-text-1);
-  margin-bottom: 0.5rem;
-}
-
-.download-description {
-  font-size: 0.875rem;
-  color: var(--vp-c-text-2);
-  line-height: 1.5;
-  margin-bottom: 1rem;
-}
-
-.download-meta {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.download-version {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--vp-c-brand-1);
-  background: var(--vp-c-brand-soft);
-  padding: 0.1rem 0.5rem;
-  border-radius: 4px;
-}
-
-.download-date {
-  font-size: 0.8125rem;
-  color: var(--vp-c-text-3);
-}
-
-.download-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.download-buttons-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.download-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--vp-c-brand-3);
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.2s ease;
-}
-
-.download-button:hover {
-  background: var(--vp-c-brand-2);
-}
-
-.download-size {
-  font-weight: 400;
-  opacity: 0.8;
-}
-
-.download-play-badge {
-  display: inline-flex;
-  align-items: center;
-  transition: transform 0.2s ease;
-}
-
-.download-play-badge img {
-  height: 40px;
-  width: auto;
-  display: block;
-}
-
-.download-play-badge:hover {
-  transform: translateY(-1px);
-}
-
-.download-fallback {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--vp-c-brand-1);
-  text-decoration: none;
-}
-
-.download-fallback:hover {
-  text-decoration: underline;
-}
-
-.download-links {
-  display: flex;
-  gap: 0.4rem;
-  align-items: center;
-  justify-content: center;
-}
-
-.download-separator {
-  color: var(--vp-c-text-3);
-  font-size: 0.75rem;
-}
-
-.download-note {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-3);
-}
-
-@media (max-width: 600px) {
-  .download-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>

@@ -21,35 +21,35 @@ const { features, extras } = defineProps<{
 
 <template>
   <!-- Main features with screenshots -->
-  <section class="features-section">
-    <div class="features-container">
-      <h2 class="section-title">
+  <section class="px-6 py-24">
+    <div class="mx-auto max-w-[1080px]">
+      <h2 class="mb-20 text-center text-4xl font-bold tracking-tight text-[var(--vp-c-text-1)]">
         What you can do
       </h2>
 
       <div
         v-for="(feature, index) in features"
         :key="feature.title"
-        class="feature-row"
-        :class="{ 'feature-row-reverse': index % 2 === 1 }"
+        class="mb-24 flex flex-col items-center gap-10 text-center last:mb-0 md:gap-20 md:text-left"
+        :class="index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'"
       >
-        <div class="feature-text">
-          <h3 class="feature-name">
+        <div class="flex-1">
+          <h3 class="mb-4 text-2xl font-semibold tracking-tight text-[var(--vp-c-text-1)]">
             {{ feature.title }}
           </h3>
-          <p class="feature-details">
+          <p class="text-base leading-[1.7] text-[var(--vp-c-text-2)]">
             {{ feature.details }}
           </p>
         </div>
         <div
           v-if="feature.image"
-          class="feature-image-wrapper"
+          class="shrink-0"
         >
-          <div class="feature-phone">
+          <div class="w-[200px] rounded-[28px] bg-[#1a1a1a] p-2 shadow-[0_12px_32px_-8px_rgba(0,0,0,0.15)] md:w-[240px]">
             <img
               :src="withBase(feature.image)"
               :alt="feature.title"
-              class="feature-screenshot"
+              class="block h-auto w-full rounded-[20px]"
             />
           </div>
         </div>
@@ -58,26 +58,26 @@ const { features, extras } = defineProps<{
   </section>
 
   <!-- Extra features grid -->
-  <section class="extras-section">
-    <div class="extras-container">
-      <h2 class="section-title">
+  <section class="bg-[var(--mbrc-c-surface)] px-6 py-24">
+    <div class="mx-auto max-w-[1080px]">
+      <h2 class="mb-16 text-center text-4xl font-bold tracking-tight text-[var(--vp-c-text-1)]">
         And more
       </h2>
 
-      <div class="extras-grid">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
         <div
           v-for="extra in extras"
           :key="extra.title"
-          class="extra-card"
+          class="rounded-2xl border border-[var(--vp-c-divider)] bg-[var(--vp-c-bg)] px-8 py-10 text-center transition-colors duration-200 hover:border-[var(--vp-c-brand-1)]"
         >
           <div
-            class="extra-icon"
+            class="mx-auto mb-4 h-10 w-10 text-[var(--vp-c-brand-1)]"
             v-html="extra.icon"
           />
-          <h3 class="extra-name">
+          <h3 class="mb-2 text-xl font-semibold text-[var(--vp-c-text-1)]">
             {{ extra.title }}
           </h3>
-          <p class="extra-details">
+          <p class="text-base leading-[1.7] text-[var(--vp-c-text-2)]">
             {{ extra.details }}
           </p>
         </div>
@@ -85,139 +85,3 @@ const { features, extras } = defineProps<{
     </div>
   </section>
 </template>
-
-<style scoped>
-.features-section {
-  padding: 5rem 1.5rem 2rem;
-  background: var(--vp-c-bg);
-}
-
-.features-container,
-.extras-container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.section-title {
-  font-size: 2.25rem;
-  font-weight: 800;
-  color: var(--vp-c-text-1);
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-/* Feature rows with alternating layout */
-.feature-row {
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-  margin-bottom: 5rem;
-}
-
-.feature-row-reverse {
-  flex-direction: row-reverse;
-}
-
-.feature-text {
-  flex: 1;
-}
-
-.feature-name {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--vp-c-text-1);
-  margin-bottom: 0.75rem;
-}
-
-.feature-details {
-  font-size: 1.05rem;
-  color: var(--vp-c-text-2);
-  line-height: 1.7;
-}
-
-.feature-image-wrapper {
-  flex-shrink: 0;
-}
-
-.feature-phone {
-  width: 220px;
-  background: #1a1a1a;
-  border-radius: 28px;
-  padding: 8px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-}
-
-.feature-screenshot {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 20px;
-}
-
-@media (max-width: 768px) {
-  .feature-row,
-  .feature-row-reverse {
-    flex-direction: column;
-    text-align: center;
-    gap: 2rem;
-  }
-
-  .feature-phone {
-    width: 180px;
-  }
-}
-
-/* Extra features */
-.extras-section {
-  padding: 3rem 1.5rem 5rem;
-  background: var(--mbrc-c-surface);
-}
-
-.extras-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .extras-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.extra-card {
-  padding: 2rem 1.5rem;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  text-align: center;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.extra-card:hover {
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 4px 16px rgba(230, 81, 0, 0.08);
-}
-
-.extra-icon {
-  width: 36px;
-  height: 36px;
-  color: var(--vp-c-brand-1);
-  margin: 0 auto 0.75rem;
-}
-
-.extra-name {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--vp-c-text-1);
-  margin-bottom: 0.5rem;
-}
-
-.extra-details {
-  font-size: 0.875rem;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-}
-</style>
