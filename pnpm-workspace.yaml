@@ -14,3 +14,5 @@ trustPolicyExclude:
   - tinyexec@1.2.2
 allowBuilds:
   esbuild: true
+overrides:
+  vite: 8.0.16
