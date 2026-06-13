@@ -34,7 +34,7 @@ defineProps<{ news: News[] }>();
           </p>
           <div
             v-if="excerpt"
-            class="news-excerpt mt-3 text-[0.9375rem] leading-[1.7] text-[var(--vp-c-text-2)]"
+            class="mt-3 text-[0.9375rem] leading-[1.7] text-[var(--vp-c-text-2)] [&_p]:m-0"
             v-html="excerpt"
           />
           <a
@@ -48,10 +48,3 @@ defineProps<{ news: News[] }>();
     </li>
   </ul>
 </template>
-
-<style scoped>
-/* Excerpt HTML is injected via v-html, so its <p> is styled with a deep selector. */
-.news-excerpt :deep(p) {
-  margin: 0;
-}
-</style>

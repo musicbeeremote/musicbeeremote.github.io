@@ -8,7 +8,7 @@ const { page, frontmatter } = useData();
 </script>
 
 <template>
-  <div class="antialiased dark:bg-slate-900">
+  <div class="antialiased">
     <main class="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0">
       <Home v-if="frontmatter.index" />
       <NotFound v-else-if="page.isNotFound" />
