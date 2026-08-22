@@ -330,7 +330,16 @@ a.VPNavBarMenuLink.VPLink[href*='releases'] .vpi-external-link {
  * Component: Nav - vertical alignment
  * -------------------------------------------------------------------------- */
 
-.VPNavBarMenu.menu {
+/* The nav items live in a `ul.list` flex container, so the centering has to be
+   applied there and on each `li` rather than on `.VPNavBarMenu` itself.
+   Without this the `height: auto` download pill collapses to the top of the
+   64px bar instead of sitting centered next to the other links. */
+.VPNavBarMenu.menu .list {
+  align-items: center;
+}
+
+.VPNavBarMenu.menu .list > li {
+  display: flex;
   align-items: center;
 }
 
