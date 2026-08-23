@@ -30,6 +30,19 @@ Files you may find there:
 - `core_settings.json` — every setting, including the few with no panel control
 - `mbrc.redb` — the cached library metadata and artwork
 
+### Files from earlier versions
+
+The first time 1.5.0 starts it removes what earlier versions left behind — the pre-1.5.0 logs
+(`mbrc.log`, `mbrc.0.log` and so on), the old `settings.xml` once its contents have been
+carried over, and `firewall-utility.exe` from the plugins folder, which `mbrc-helper.exe`
+replaced. On the installation this was tested against that was about 10 MB.
+
+It only ever removes files this project shipped and no longer uses, by exact name. Nothing
+else in either folder is touched, including files belonging to other MusicBee plugins.
+
+Your settings are not affected: `settings.xml` is only removed once `core_settings.json`
+exists, so the migration has already happened by then.
+
 **Debug logging** in the settings panel increases the detail. Leave it off for normal use: it
 is verbose, and the default level already records errors.
 
@@ -113,5 +126,7 @@ you had.
 ## Reinstalling from scratch
 
 Removing `core_settings.json` from the storage folder resets every setting to its default; the
-plugin recreates it on the next start. Deleting `mbrc.redb` clears the cached library data,
+plugin recreates it on the next start. (On a machine upgraded from 1.4.x this is only true from
+1.5.0 onward — earlier builds would have restored your old `settings.xml` instead of falling
+back to defaults.) Deleting `mbrc.redb` clears the cached library data,
 which is rebuilt on the next connection — worth trying if artwork or metadata look wrong.

@@ -41,9 +41,10 @@ All three belong in the Plugins folder, side by side. Installing only `mb_remote
 work.
 
 ::: tip Upgrading from 1.4.x
-Install 1.5.0 over your existing installation — your settings are kept. The old
-`firewall-utility.exe` from 1.4.x is no longer used and can be deleted; `mbrc-helper.exe`
-replaces it.
+Install 1.5.0 over your existing installation — your settings are kept. There is nothing to
+tidy up by hand: `mbrc-helper.exe` replaces the old `firewall-utility.exe`, and 1.5.0 removes
+that and the other files earlier versions left behind the first time it starts. See
+[Troubleshooting](/help/plugin/1.5/troubleshooting#files-from-earlier-versions).
 :::
 
 ## Verifying your download
