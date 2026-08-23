@@ -24,15 +24,15 @@ so the folder you see in Explorer is not the path MusicBee itself reports.
 
 Files you may find there:
 
-- `mbrc-core.log` — the plugin's own log; older runs are kept compressed alongside it
-- `mbrc-helper.log` — written only when an update is applied; it is where an update that did
+- `mbrc-core.log`: the plugin's own log; older runs are kept compressed alongside it
+- `mbrc-helper.log`: written only when an update is applied; it is where an update that did
   nothing explains itself
-- `core_settings.json` — every setting, including the few with no panel control
-- `mbrc.redb` — the cached library metadata and artwork
+- `core_settings.json`: every setting, including the few with no panel control
+- `mbrc.redb`: the cached library metadata and artwork
 
 ### Files from earlier versions
 
-The first time 1.5.0 starts it removes what earlier versions left behind — the pre-1.5.0 logs
+The first time 1.5.0 starts it removes what earlier versions left behind, the pre-1.5.0 logs
 (`mbrc.log`, `mbrc.0.log` and so on), the old `settings.xml` once its contents have been
 carried over, and `firewall-utility.exe` from the plugins folder, which `mbrc-helper.exe`
 replaced. On the installation this was tested against that was about 10 MB.
@@ -67,7 +67,7 @@ A capture stops on its own after 30 minutes, so forgetting about one cannot fill
 **Cancel** discards it without saving anything.
 
 The saved bundle contains the relevant slice of the log, your settings, your music folder
-paths, and this PC's local network addresses — no passwords. Those paths and addresses are
+paths, and this PC's local network addresses. No passwords. Those paths and addresses are
 kept because they are usually the point of the report, so look inside before sending it
 anywhere. Attach it to a [GitHub issue](https://github.com/musicbeeremote/mbrc-plugin/issues).
 
@@ -81,7 +81,7 @@ technically valid file with nothing useful in it.
 Check, in order:
 
 1. **The plugin is listening.** The settings panel shows the status and the port. If it is not
-   running, the port is probably taken by something else — change it and press Save.
+   running, the port is probably taken by something else, change it and press Save.
 2. **The addresses match.** The **Reachable at** row lists the addresses the plugin is
    reachable on. Your phone must be on the same network as one of them. If several are listed,
    the right one is the network your phone is on.
@@ -93,7 +93,7 @@ Check, in order:
 
 Windows must allow incoming connections on the plugin's port. With **Add a Windows firewall rule on save**
 ticked, the plugin adds the rule itself using `mbrc-helper.exe`, which needs administrator
-permission once — you will see a prompt.
+permission once, you will see a prompt.
 
 If you prefer to add it manually, allow **TCP** on your chosen port (default 3000) for private
 networks.
@@ -107,7 +107,7 @@ what the firewall is blocking.
 ## An update did nothing
 
 MusicBee closed and reopened but the version did not change, or it closed and did not reopen.
-`mbrc-helper.log` in the storage folder says why — it records every step of an update, and it
+`mbrc-helper.log` in the storage folder says why, it records every step of an update, and it
 is written even when the update fails.
 
 Common causes:
@@ -120,13 +120,13 @@ Common causes:
   fetch it again.
 
 If the plugin is missing entirely after an update, the previous files are in a `backup` folder
-inside the storage folder — copy them back into the plugins folder to return to the version
+inside the storage folder, copy them back into the plugins folder to return to the version
 you had.
 
 ## Reinstalling from scratch
 
 Removing `core_settings.json` from the storage folder resets every setting to its default; the
 plugin recreates it on the next start. (On a machine upgraded from 1.4.x this is only true from
-1.5.0 onward — earlier builds would have restored your old `settings.xml` instead of falling
+1.5.0 onward, earlier builds would have restored your old `settings.xml` instead of falling
 back to defaults.) Deleting `mbrc.redb` clears the cached library data,
-which is rebuilt on the next connection — worth trying if artwork or metadata look wrong.
+which is rebuilt on the next connection, worth trying if artwork or metadata look wrong.

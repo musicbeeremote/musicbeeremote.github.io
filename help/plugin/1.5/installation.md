@@ -13,7 +13,7 @@ next:
 Make sure MusicBee is **not running** during installation. The plugin files are in use while
 it is open and cannot be replaced.
 
-All three files — `mb_remote.dll`, `mbrc_core.dll` and `mbrc-helper.exe` — must end up in the
+All three files, `mb_remote.dll`, `mbrc_core.dll` and `mbrc-helper.exe`: must end up in the
 Plugins folder together.
 
 ## Using the installer
@@ -36,7 +36,7 @@ Extract the **contents** of the zip into the MusicBee Plugins folder:
 - **Standard installation:** `C:\Program Files (x86)\MusicBee\Plugins`
 - **Portable installation:** `<MusicBee folder>\Plugins`
 
-Do not create a subfolder — MusicBee only looks in `Plugins` itself. `LICENSE` and
+Do not create a subfolder, MusicBee only looks in `Plugins` itself. `LICENSE` and
 `README.txt` are in the zip for reference and do not need to be copied.
 
 Start MusicBee afterwards. The settings dialog appears on first run.
@@ -55,14 +55,14 @@ MusicBee unpacks it into the right place. The MusicBee Remote settings dialog ap
 afterwards.
 
 ::: tip
-Use the zip for the Store version, not the installer — the installer writes to a normal
+Use the zip for the Store version, not the installer, the installer writes to a normal
 MusicBee installation and will not find the Store one.
 :::
 
 ## Confirming it worked
 
 Start MusicBee and open **Tools → MusicBee Remote**. The settings panel opens, and its footer
-shows the plugin version — it should read **v1.5.0**.
+shows the plugin version, it should read **v1.5.0**.
 
 If the entry is missing, check that the plugin is enabled under **Preferences → Plugins**, and
 that all three files are in the Plugins folder.
@@ -70,4 +70,4 @@ that all three files are in the Plugins folder.
 ## Updating later
 
 Once 1.5.0 is installed you do not have to repeat any of this. The plugin can download and
-install its own updates — see [Updating](/help/plugin/1.5/updating).
+install its own updates, see [Updating](/help/plugin/1.5/updating).

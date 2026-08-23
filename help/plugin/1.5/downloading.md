@@ -15,8 +15,8 @@ Before using MusicBee Remote you need the companion plugin on your PC. The curre
 
 ## Download links
 
-- [GitHub Releases](https://github.com/musicbeeremote/mbrc-plugin/releases/latest) — always the latest version
-- [MusicBee Plugins page](http://getmusicbee.com/addons/plugins/75/musicbee-remote-plugin) — the MusicBee add-ons directory
+- [GitHub Releases](https://github.com/musicbeeremote/mbrc-plugin/releases/latest), always the latest version
+- [MusicBee Plugins page](http://getmusicbee.com/addons/plugins/75/musicbee-remote-plugin), the MusicBee add-ons directory
 
 ## Which file
 
@@ -41,7 +41,7 @@ All three belong in the Plugins folder, side by side. Installing only `mb_remote
 work.
 
 ::: tip Upgrading from 1.4.x
-Install 1.5.0 over your existing installation — your settings are kept. There is nothing to
+Install 1.5.0 over your existing installation, your settings are kept. There is nothing to
 tidy up by hand: `mbrc-helper.exe` replaces the old `firewall-utility.exe`, and 1.5.0 removes
 that and the other files earlier versions left behind the first time it starts. See
 [Troubleshooting](/help/plugin/1.5/troubleshooting#files-from-earlier-versions).
@@ -51,7 +51,7 @@ that and the other files earlier versions left behind the first time it starts. 
 
 Each release publishes a `manifest.json` listing the SHA-512 of every file, together with a
 `manifest.json.minisig` signature over it. That signature is what proves a download came from
-this project — a checksum on its own only proves the file was not corrupted in transit.
+this project, a checksum on its own only proves the file was not corrupted in transit.
 
 To check a download yourself, open PowerShell in your download folder:
 

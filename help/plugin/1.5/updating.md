@@ -11,7 +11,7 @@ next:
 # Updating the Plugin
 
 From 1.5.0 the plugin can update itself. It checks GitHub for a new release, verifies the
-download against a signature, and swaps the files while MusicBee is closed — putting the old
+download against a signature, and swaps the files while MusicBee is closed, putting the old
 ones back if anything goes wrong.
 
 ## Checking is opt-in
@@ -41,7 +41,7 @@ The Updates group shows one status line and one button, and the button changes a
 ![An update downloaded and ready to install](/img/help/plugin/1.5/02_update_ready.webp)
 
 Nothing is installed without you pressing the button. A downloaded update sits on disk until
-you choose to apply it, and it survives a later check — so you will not lose it by pressing
+you choose to apply it, and it survives a later check, so you will not lose it by pressing
 **Check now** again.
 
 ## What happens when you press Install and restart
@@ -78,12 +78,12 @@ between installations.
 | **Portable** (anywhere you chose)                 | writable by you              | No                   |
 | **Microsoft Store**                               | inside the app's own storage | No                   |
 
-The plugin decides by trying to write to the plugins folder, not by guessing from the path — so
+The plugin decides by trying to write to the plugins folder, not by guessing from the path, so
 an installer-based MusicBee placed somewhere writable will not prompt either.
 
 ### When you are prompted
 
-The confirmation dialog above warns you this is coming — "Windows may ask for permission to
+The confirmation dialog above warns you this is coming: "Windows may ask for permission to
 update the plugin files". The prompt itself appears **immediately after you confirm, while
 MusicBee is still open**. That is deliberate: if you decline, the plugin can tell you so and leave the downloaded
 update in place. Nothing has been changed, and you can press the button again later.
@@ -93,7 +93,7 @@ so Windows will describe the publisher as unknown.
 
 ::: tip Why administrator permission is needed at all
 Only to write into `C:\Program Files (x86)`, which Windows protects. The plugin itself never
-runs with administrator rights, and neither does MusicBee — the helper is the only part that
+runs with administrator rights, and neither does MusicBee. The helper is the only part that
 does, it runs for a few seconds, and it only writes the files listed in the signed release.
 :::
 
@@ -122,8 +122,8 @@ project key.
 
 There are two channels:
 
-- **stable** — released versions only. This is the default.
-- **testing** — pre-releases as well, for trying fixes before they ship.
+- **stable**: released versions only. This is the default.
+- **testing**: pre-releases as well, for trying fixes before they ship.
 
 There is no setting for this in the panel; switching channel is a deliberate act. Edit
 `update_channel` in `%AppData%\MusicBee\mb_remote\core_settings.json`:
@@ -136,7 +136,7 @@ There is no setting for this in the panel; switching channel is a deliberate act
 
 The accepted values are `stable` and `testing`.
 
-Restart MusicBee afterwards — the setting is read when the plugin starts. Saving the settings
+Restart MusicBee afterwards, because the setting is read when the plugin starts. Saving the settings
 panel will not overwrite it.
 
 Switching channel never downgrades you in either direction. Moving from testing back to stable
@@ -146,13 +146,13 @@ want off a pre-release immediately, install the stable version by hand.
 ## Updating by hand
 
 Automatic updating is a convenience, not the only route. You can always download the new
-version and install it the same way you installed the first one — see
+version and install it the same way you installed the first one. See
 [Installation](/help/plugin/1.5/installation). Doing so is the way to move between channels
 immediately, to recover from a failed update, or to install a version the updater refuses.
 
 ::: warning Upgrading from a 1.5.0 beta
 Because of a versioning fault in the 1.5.0 beta builds, plugins from `1.5.0-beta.1` through
-`1.5.0-beta.3` report their version as plain `1.5.0` and will never be offered an update —
+`1.5.0-beta.3` report their version as plain `1.5.0` and will never be offered an update,
 including 1.5.0 itself. If you ran one of those betas, install 1.5.0 by hand once, and
 automatic updating will work normally from then on.
 :::

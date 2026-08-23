@@ -10,7 +10,7 @@ next: false
 
 ::: warning Documentation for plugin v1.4.x
 This page describes the **1.4.x** plugin. If you are running **1.5.0 or newer**, see the
-[current plugin guide](/help/plugin/1.5/) instead — 1.5.0 changed how the plugin is
+[current plugin guide](/help/plugin/1.5/) instead. 1.5.0 changed how the plugin is
 installed, updated and configured.
 :::
 

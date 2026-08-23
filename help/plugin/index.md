@@ -6,8 +6,8 @@ outline: deep
 
 Documentation for the MusicBee Remote plugin, the companion that runs on your PC.
 
-The plugin changed substantially in 1.5.0 — it now updates itself, ships as three files, and
-has a reorganised settings panel — so each version has its own guide. The version is shown in
+The plugin changed substantially in 1.5.0. It now updates itself, ships as three files, and
+has a reorganised settings panel, so each version has its own guide. The version is shown in
 the footer of the plugin's settings panel, under **Tools → MusicBee Remote**.
 
 <div class="guide-cards">

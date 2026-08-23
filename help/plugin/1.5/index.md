@@ -38,12 +38,12 @@ newer.
 ## New in 1.5.0
 
 - **The plugin updates itself.** It checks for a new release, verifies the signature, and
-  installs it — see [Updating](./updating).
+  installs it, see [Updating](./updating).
 - **Three files instead of one.** `mb_remote.dll`, `mbrc_core.dll` and `mbrc-helper.exe` all
   belong in the Plugins folder.
 - **A rebuilt settings panel**, grouped by topic, with the addresses the plugin is reachable
   on shown directly.
-- **One-press problem reports** — capture a fault and attach the result to an issue.
+- **One-press problem reports**: capture a fault and attach the result to an issue.
 
 Running 1.4.x? Use the [v1.4 guide](/help/plugin/1.4/downloading) instead.
 
