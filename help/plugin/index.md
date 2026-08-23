@@ -4,23 +4,23 @@ outline: deep
 
 # Plugin Guide
 
-Learn how to download, install, and configure the MusicBee Remote plugin.
+Documentation for the MusicBee Remote plugin, the companion that runs on your PC.
+
+The plugin changed substantially in 1.5.0 — it now updates itself, ships as three files, and
+has a reorganised settings panel — so each version has its own guide. The version is shown in
+the footer of the plugin's settings panel, under **Tools → MusicBee Remote**.
 
 <div class="guide-cards">
-  <a href="./downloading" class="guide-card">
-    <span class="guide-card-icon">⬇️</span>
-    <span class="guide-card-title">Downloading</span>
-    <span class="guide-card-desc">Where to get the plugin</span>
+  <a href="/help/plugin/1.5/" class="guide-card guide-card-featured">
+    <span class="guide-card-badge">Latest</span>
+    <span class="guide-card-icon">🔌</span>
+    <span class="guide-card-title">Plugin Guide (v1.5)</span>
+    <span class="guide-card-desc">For 1.5.0 and newer. Automatic updates, the new settings panel, and troubleshooting.</span>
   </a>
-  <a href="./installation" class="guide-card">
-    <span class="guide-card-icon">📦</span>
-    <span class="guide-card-title">Installation</span>
-    <span class="guide-card-desc">Installer or manual setup</span>
-  </a>
-  <a href="./configuration" class="guide-card">
-    <span class="guide-card-icon">⚙️</span>
-    <span class="guide-card-title">Configuration</span>
-    <span class="guide-card-desc">Settings, filtering, and firewall</span>
+  <a href="/help/plugin/1.4/downloading" class="guide-card">
+    <span class="guide-card-icon">📄</span>
+    <span class="guide-card-title">Plugin Guide (v1.4)</span>
+    <span class="guide-card-desc">For 1.4.1 and earlier. Download, install and configure the older plugin.</span>
   </a>
 </div>
 
@@ -43,10 +43,33 @@ Learn how to download, install, and configure the MusicBee Remote plugin.
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.guide-card {
+  position: relative;
+}
+
 .guide-card:hover {
   border-color: var(--vp-c-brand-1);
   box-shadow: 0 4px 12px rgba(230, 81, 0, 0.08);
   text-decoration: none !important;
+}
+
+.guide-card-featured {
+  border-color: var(--vp-c-brand-soft);
+  background: rgba(230, 81, 0, 0.03);
+}
+
+.guide-card-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  padding: 2px 8px;
+  border-radius: 8px;
 }
 
 .guide-card-icon {
