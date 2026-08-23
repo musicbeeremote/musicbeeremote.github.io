@@ -17,13 +17,13 @@ next:
 
 The player is the home screen of the app and supports both dark and light themes. It shows:
 
-- **Album art** — Cover of the currently playing track, with dynamic color-matched background
-- **Track info** — Title, artist, and album with year
-- **Progress bar** — Current position and total duration; drag to seek
-- **Playback controls** — Repeat, Previous, Play/Pause, Next, Shuffle
-- **Volume** — Mute button and volume slider
-- **Heart icon** — Love or unlove a track on Last.fm
-- **Speaker icon** — Open output device selection
+- **Album art**: Cover of the currently playing track, with dynamic color-matched background
+- **Track info**: Title, artist, and album with year
+- **Progress bar**: Current position and total duration; drag to seek
+- **Playback controls**: Repeat, Previous, Play/Pause, Next, Shuffle
+- **Volume**: Mute button and volume slider
+- **Heart icon**: Love or unlove a track on Last.fm
+- **Speaker icon**: Open output device selection
 
 For streaming content (radio stations), an animated wave indicator replaces the progress bar, showing elapsed time instead.
 
@@ -36,19 +36,19 @@ For streaming content (radio stations), an animated wave indicator replaces the 
 
 Tap the **three-dot menu** on the player to open the player menu. From here you can:
 
-- **Rate the track** — Use the star rating bar
-- **Track Details** — View extended metadata
-- **Go to Album** — Navigate to the album in the library
-- **Go to Artist** — Navigate to the artist in the library
-- **Last.fm scrobbling** — Toggle scrobbling on/off
+- **Rate the track**: Use the star rating bar
+- **Track Details**: View extended metadata
+- **Go to Album**: Navigate to the album in the library
+- **Go to Artist**: Navigate to the artist in the library
+- **Last.fm scrobbling**: Toggle scrobbling on/off
 
 ## Ratings
 
 The rating bar in the player menu supports:
 
-- **Star ratings** — 1 to 5 stars (half-star precision can be enabled in Settings)
-- **Bomb rating** — Mark a track as disliked
-- **Clear** — Remove the rating
+- **Star ratings**: 1 to 5 stars (half-star precision can be enabled in Settings)
+- **Bomb rating**: Mark a track as disliked
+- **Clear**: Remove the rating
 
 The current rating can optionally be displayed on the player screen (enable in Settings).
 

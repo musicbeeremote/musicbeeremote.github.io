@@ -22,8 +22,8 @@ Before using MusicBee Remote, you need to install the companion plugin on your P
 
 ## Download Links
 
-- [GitHub Releases](https://github.com/musicbeeremote/mbrc-plugin/releases/latest) — Always has the latest version
-- [MusicBee Plugins page](http://getmusicbee.com/addons/plugins/75/musicbee-remote-plugin) — Also available through the MusicBee add-ons directory
+- [GitHub Releases](https://github.com/musicbeeremote/mbrc-plugin/releases/latest): Always has the latest version
+- [MusicBee Plugins page](http://getmusicbee.com/addons/plugins/75/musicbee-remote-plugin): Also available through the MusicBee add-ons directory
 
 ## Available Formats
 

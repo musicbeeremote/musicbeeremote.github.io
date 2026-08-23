@@ -16,7 +16,7 @@ There are two ways to install the application:
 
 ### Google Play Store (open testing)
 
-MusicBee Remote is currently available through the **open testing** channel on Google Play. Anyone with the link can join — no invitation is required.
+MusicBee Remote is currently available through the **open testing** channel on Google Play. Anyone with the link can join, and no invitation is required.
 
 1. Open the [MusicBee Remote listing on Google Play](https://play.google.com/store/apps/details?id=com.kelsos.mbrc) on your Android device.
 2. Scroll to the **Join the beta** section and tap **Join**. It can take a few minutes for your account to be enrolled.
@@ -28,8 +28,8 @@ To leave the beta, return to the listing and tap **Leave** under the beta sectio
 
 Download the latest APK from the [GitHub Releases](https://github.com/musicbeeremote/mbrc/releases/latest) page. Two variants are available:
 
-- **GitHub release** — Clean build without analytics or crash reporting
-- **Play release** — Includes Firebase Crashlytics for crash tracking
+- **GitHub release**: Clean build without analytics or crash reporting
+- **Play release**: Includes Firebase Crashlytics for crash tracking
 
 To install, download the APK on your device and enable installation from unknown sources if prompted.
 
@@ -48,9 +48,9 @@ When you first start the connection, the app automatically attempts to discover 
 
 The navigation drawer is the main way to move between screens. At the top, the **connection button** shows the current status:
 
-- **Green** — Connected (shows the connection name)
-- **Animating** — Connecting or reconnecting (shows attempt count)
-- **Grey** — Disconnected
+- **Green**: Connected (shows the connection name)
+- **Animating**: Connecting or reconnecting (shows attempt count)
+- **Grey**: Disconnected
 
 Tap the connection button to connect or disconnect. Below it you'll find navigation to all screens: **Home** (player), **Queue**, **Library**, **Playlists**, **Radio**, **Connection Manager**, **Settings**, and **Help & Feedback**.
 

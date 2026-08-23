@@ -45,7 +45,7 @@
 /* VitePress injects its own UNLAYERED base reset (incl. `h1..h6 { font-size:
    inherit }`). Tailwind's default `@import 'tailwindcss'` puts utilities in
    `@layer utilities`, and any layered rule loses to unlayered CSS regardless of
-   specificity — so heading utilities like `text-4xl`/`font-bold` were being
+   specificity, so heading utilities like `text-4xl`/`font-bold` were being
    silently overridden. Import the parts explicitly and keep utilities UNLAYERED
    so a single utility class (0,1,0) beats the element-selector reset (0,0,1). */
 @layer theme, base, components, utilities;
@@ -64,7 +64,7 @@
   --vp-c-default-3: var(--vp-c-gray-3);
   --vp-c-default-soft: var(--vp-c-gray-soft);
 
-  /* Deep Orange brand — matches the app's theme */
+  /* Deep Orange brand, matches the app's theme */
   --vp-c-brand-1: #e65100;
   --vp-c-brand-2: #bf360c;
   --vp-c-brand-3: #d84315;
@@ -236,7 +236,7 @@
   font-size: 0.82rem;
 }
 
-/* Active sidebar item — only the current page gets the indicator */
+/* Active sidebar item: only the current page gets the indicator */
 .VPSidebarItem.is-active.is-link > .item > .link > .text {
   color: var(--vp-c-brand-1) !important;
   font-weight: 600;

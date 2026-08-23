@@ -9,7 +9,7 @@ bsky: "kelsos.bsky.social"
 categories: [news, release]
 ---
 
-Lead paragraph — what shipped and why it matters.
+Lead paragraph: what shipped and why it matters.
 
 ---
 

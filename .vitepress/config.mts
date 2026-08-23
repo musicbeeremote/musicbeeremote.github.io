@@ -149,7 +149,7 @@ function structuredDataTag(relativePath: string, ctx: StructuredDataContext): He
 
 async function generateNewsFeed(siteConfig: SiteConfig): Promise<void> {
   const feed = new Feed({
-    title: 'MusicBee Remote — News',
+    title: 'MusicBee Remote News',
     description: 'Release notes and updates for MusicBee Remote',
     id: `${HOSTNAME}/news/`,
     link: `${HOSTNAME}/news/`,
@@ -225,7 +225,7 @@ export default defineConfig({
       {
         rel: 'alternate',
         type: 'application/rss+xml',
-        title: 'MusicBee Remote — News',
+        title: 'MusicBee Remote News',
         href: `${HOSTNAME}/news/feed.xml`,
       },
     ],

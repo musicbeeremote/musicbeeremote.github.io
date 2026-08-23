@@ -4,7 +4,7 @@ layout: landing
 hero:
   name: "MusicBee Remote"
   text: "for Android"
-  tagline: "Control MusicBee from your Android device. Browse your library, manage playlists, and enjoy your music — from anywhere in your home."
+  tagline: "Control MusicBee from your Android device. Browse your library, manage playlists, and enjoy your music, from anywhere in your home."
   actions:
     - text: Get it on Google Play
       link: https://play.google.com/store/apps/details?id=com.kelsos.mbrc
@@ -18,13 +18,13 @@ hero:
 
 features:
   - title: Playback Control
-    details: "Play, pause, skip, seek, adjust volume, shuffle, and repeat — all from your phone. Supports both regular tracks and streaming radio stations."
+    details: "Play, pause, skip, seek, adjust volume, shuffle, and repeat, all from your phone. Supports both regular tracks and streaming radio stations."
     image: /img/help/1.6/01_player_dark.webp
   - title: Library Browsing
     details: "Browse your entire music library by genre, artist, album, and track. Sort by name, artist, or album. Switch to album grid view for a visual experience."
     image: /img/help/1.6/13_library_albums_grid.webp
   - title: Playlists & Queue
-    details: "Browse playlists with folder navigation. Manage the now playing queue — reorder tracks, swipe to remove, and search within the queue."
+    details: "Browse playlists with folder navigation. Manage the now playing queue: reorder tracks, swipe to remove, and search within the queue."
     image: /img/help/1.6/09_now_playing.webp
   - title: Ratings & Last.fm
     details: "Rate tracks with stars (including half-stars), bomb ratings, and clear ratings. Love or ban tracks on Last.fm directly from the player."

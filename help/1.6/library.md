@@ -23,10 +23,10 @@ The library browser (accessible from the drawer) has four tabs: **Genres**, **Ar
 
 Each tab displays your synced metadata. Long-press or use the context menu on any item for actions:
 
-- **Play Now** — Clear the queue and play
-- **Queue Last** — Add to the end of the queue
-- **Queue Next** — Insert after the currently playing track
-- **Open** — Navigate to the subcategory (not available for tracks)
+- **Play Now**: Clear the queue and play
+- **Queue Last**: Add to the end of the queue
+- **Queue Next**: Insert after the currently playing track
+- **Open**: Navigate to the subcategory (not available for tracks)
 
 ### Track Actions
 
@@ -36,8 +36,8 @@ Each tab displays your synced metadata. Long-press or use the context menu on an
 
 Tracks have additional context menu actions:
 
-- **Play Artist** — Play all tracks by that artist
-- **Play & Queue All** — Add all matching tracks to the queue
+- **Play Artist**: Play all tracks by that artist
+- **Play & Queue All**: Add all matching tracks to the queue
 
 ### Genre Actions
 
@@ -55,8 +55,8 @@ Genres have a **Go to Albums** action that navigates directly to albums within t
 
 Tap the **three-dot menu** in the library toolbar for additional options:
 
-- **Album artists only** — Toggle to show only album artists (hides featured/compilation artists)
-- **Sync** — Refresh library metadata from MusicBee
+- **Album artists only**: Toggle to show only album artists (hides featured/compilation artists)
+- **Sync**: Refresh library metadata from MusicBee
 
 You can also **pull down to refresh** on any library tab to trigger a sync.
 
