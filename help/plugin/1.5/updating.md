@@ -38,11 +38,19 @@ The Updates group shows one status line and one button, and the button changes a
 | Downloaded, ready            | **Install and restart** | Closes MusicBee, swaps the files, reopens it |
 | Checking or downloading      | _(disabled)_            | Only one of these runs at a time             |
 
+![An update downloaded and ready to install](/img/help/plugin/1.5/02_update_ready.webp)
+
 Nothing is installed without you pressing the button. A downloaded update sits on disk until
 you choose to apply it, and it survives a later check — so you will not lose it by pressing
 **Check now** again.
 
 ## What happens when you press Install and restart
+
+The plugin tells you what is about to happen before anything is touched:
+
+![Confirmation before installing an update](/img/help/plugin/1.5/03_update_confirm.webp)
+
+Unsaved changes in the settings panel are lost, so press Save first if you have made any.
 
 1. The plugin checks the downloaded files against the release signature a second time.
 2. It starts a small helper program, `mbrc-helper.exe`, which does the actual replacing.
@@ -75,8 +83,9 @@ an installer-based MusicBee placed somewhere writable will not prompt either.
 
 ### When you are prompted
 
-The prompt appears **immediately after you press Install and restart, while MusicBee is still
-open**. That is deliberate: if you decline, the plugin can tell you so and leave the downloaded
+The confirmation dialog above warns you this is coming — "Windows may ask for permission to
+update the plugin files". The prompt itself appears **immediately after you confirm, while
+MusicBee is still open**. That is deliberate: if you decline, the plugin can tell you so and leave the downloaded
 update in place. Nothing has been changed, and you can press the button again later.
 
 The prompt is for `mbrc-helper.exe`, which ships with the plugin. It is not digitally signed,

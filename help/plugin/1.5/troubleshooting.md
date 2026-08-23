@@ -38,14 +38,25 @@ is verbose, and the default level already records errors.
 The **Start capture** button in the Diagnostics group records what happens while you
 reproduce a fault and saves it as a single file on your Desktop.
 
+Before it starts, the plugin tells you exactly what the file will contain:
+
+![What a problem report contains](/img/help/plugin/1.5/04_capture_confirm.webp)
+
 1. Press **Start capture**.
 2. Do the thing that goes wrong.
 3. Press **Stop and save**.
 
-The saved bundle contains the relevant slice of the log, your settings, and information about
-your MusicBee and Windows versions. Network addresses on your local network and file paths are
-kept, because they are usually the point; anything identifying is removed. Attach it to a
-[GitHub issue](https://github.com/musicbeeremote/mbrc-plugin/issues).
+While it runs, the panel shows how long it has been capturing and how long is left:
+
+![A capture in progress](/img/help/plugin/1.5/05_capture_running.webp)
+
+A capture stops on its own after 30 minutes, so forgetting about one cannot fill your disk.
+**Cancel** discards it without saving anything.
+
+The saved bundle contains the relevant slice of the log, your settings, your music folder
+paths, and this PC's local network addresses — no passwords. Those paths and addresses are
+kept because they are usually the point of the report, so look inside before sending it
+anywhere. Attach it to a [GitHub issue](https://github.com/musicbeeremote/mbrc-plugin/issues).
 
 ::: tip
 Capture for at least a few seconds. A capture that starts and stops immediately produces a
