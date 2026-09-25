@@ -334,6 +334,7 @@ export default defineConfig({
       {
         text: 'Docs',
         items: [
+          { text: 'App Guide (v1.7)', link: '/help/1.7/' },
           { text: 'App Guide (v1.6)', link: '/help/1.6/' },
           { text: 'App Guide (v1.5)', link: '/help/1.5/application' },
           { text: 'Plugin Setup', link: '/help/plugin/' },

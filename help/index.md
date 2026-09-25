@@ -5,8 +5,15 @@ outline: deep
 <script setup>
 import { onMounted, ref } from 'vue'
 
+const LATEST = '1.7'
+const GUIDE_LINKS = {
+  '1.5': '/help/1.5/application',
+  '1.6': '/help/1.6/',
+  '1.7': '/help/1.7/',
+}
+
 const version = ref(null)
-const docsVersion = ref('1.6')
+const docsVersion = ref(LATEST)
 
 onMounted(() => {
   const params = new URLSearchParams(window.location.search)
@@ -14,9 +21,11 @@ onMounted(() => {
   if (v) {
     version.value = v
     const [major, minor] = v.split('.').map(Number)
-    // Versions before 1.6.0 use the 1.5 (legacy) docs
     if (major < 1 || (major === 1 && minor < 6)) {
       docsVersion.value = '1.5'
+    }
+    else if (major === 1 && minor === 6) {
+      docsVersion.value = '1.6'
     }
   }
 })
@@ -28,9 +37,10 @@ Here you can learn how to get started with MusicBee Remote.
 
 <div v-if="version" class="custom-block tip">
   <p class="custom-block-title">App version {{ version }}</p>
-  <p v-if="docsVersion === '1.5'">
-    You are using an older version of the app. The documentation below matches your version.
-    <a href="/help/1.6/">View the latest documentation</a> for the newest features.
+  <p v-if="docsVersion !== LATEST">
+    You are using an older version of the app.
+    <a :href="GUIDE_LINKS[docsVersion]">The v{{ docsVersion }} guide</a> matches what you see in the app.
+    The latest guide below covers features added since.
   </p>
   <p v-else>
     You are viewing the documentation for the latest version of MusicBee Remote.
@@ -43,11 +53,16 @@ Here you can learn how to get started with MusicBee Remote.
     <span class="guide-card-title">Plugin Setup</span>
     <span class="guide-card-desc">Download, install, and configure the MusicBee plugin on your PC.</span>
   </a>
-  <a href="/help/1.6/" class="guide-card guide-card-featured">
+  <a href="/help/1.7/" class="guide-card guide-card-featured">
     <span class="guide-card-badge">Latest</span>
     <span class="guide-card-icon">📱</span>
+    <span class="guide-card-title">App Guide (v1.7)</span>
+    <span class="guide-card-desc">Full documentation for the current app, including Android 17 support.</span>
+  </a>
+  <a href="/help/1.6/" class="guide-card">
+    <span class="guide-card-icon">📱</span>
     <span class="guide-card-title">App Guide (v1.6)</span>
-    <span class="guide-card-desc">Full documentation for the new Compose UI with all features.</span>
+    <span class="guide-card-desc">Documentation for v1.6.x, the first release with the Compose UI.</span>
   </a>
   <a href="/help/1.5/application" class="guide-card">
     <span class="guide-card-icon">📄</span>
