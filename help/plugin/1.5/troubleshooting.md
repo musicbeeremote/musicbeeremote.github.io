@@ -14,19 +14,28 @@ The plugin writes its log to `mbrc-core.log` in its storage folder. The quickest
 **Open log folder** in the settings panel, which opens the right folder whichever way MusicBee
 is installed.
 
-| Installation          | Storage folder                                                                     |
-| --------------------- | ---------------------------------------------------------------------------------- |
-| Installer or portable | `%AppData%\MusicBee\mb_remote`                                                     |
-| Microsoft Store       | `%LocalAppData%\Packages\<MusicBee package>\LocalCache\Roaming\MusicBee\mb_remote` |
+| Installation    | Storage folder                                                                     |
+| --------------- | ---------------------------------------------------------------------------------- |
+| Installer       | `%AppData%\MusicBee\mb_remote`                                                     |
+| Portable        | `<MusicBee folder>\AppData\mb_remote`                                              |
+| Microsoft Store | `%LocalAppData%\Packages\<MusicBee package>\LocalCache\Roaming\MusicBee\mb_remote` |
+
+A portable MusicBee keeps everything beside its own executable, so its storage folder is the
+`AppData` folder inside the MusicBee folder, not the one in your user profile.
 
 The Store path is not a mistake: Windows redirects an app's `%AppData%` into its own storage,
-so the folder you see in Explorer is not the path MusicBee itself reports.
+so the folder you see in Explorer is not the path MusicBee itself reports. The log lines
+themselves show the unredirected `%AppData%` path; look in the `Packages` folder above.
 
 Files you may find there:
 
-- `mbrc-core.log`: the plugin's own log; older runs are kept compressed alongside it
+- `mbrc-core.log`: the plugin's own log, capped at 10 MB. The three previous logs are kept
+  compressed alongside it as `mbrc-core.1.log.gz` to `mbrc-core.3.log.gz`
+- `mbrc-bootstrap.log`: the earliest startup lines, written before the main log opens
+- `initialization_error.log`: only present if the plugin failed to start; it says why
 - `mbrc-helper.log`: written only when an update is applied; it is where an update that did
-  nothing explains itself
+  nothing explains itself. If the helper cannot reach the storage folder it writes to
+  `%Temp%\mbrc-helper.log` instead
 - `core_settings.json`: every setting, including the few with no panel control
 - `mbrc.redb`: the cached library metadata and artwork
 
@@ -43,8 +52,41 @@ else in either folder is touched, including files belonging to other MusicBee pl
 Your settings are not affected: `settings.xml` is only removed once `core_settings.json`
 exists, so the migration has already happened by then.
 
-**Debug logging** in the settings panel increases the detail. Leave it off for normal use: it
-is verbose, and the default level already records errors.
+### Log level
+
+The **Log level** dropdown in the settings panel's Advanced group sets how much detail is
+recorded:
+
+- **Normal**: the default. Startup, errors and warnings, with no message-by-message detail.
+- **Debug**: adds the messages exchanged with clients, with long lists sampled.
+- **Trace**: everything, including per-item timings such as each album cover as it is cached.
+  Verbose enough to fill the log in minutes on a large library.
+
+Leave it on Normal unless you are chasing a problem.
+
+#### Setting it without the panel
+
+If MusicBee crashes before you can reach the settings panel, set the level in
+`core_settings.json` instead:
+
+1. Close MusicBee.
+2. Open `core_settings.json` from the [storage folder](#logs) in a text editor.
+3. Set `log_level` to `"info"` (Normal), `"debug"` or `"trace"`:
+
+   ```json
+   {
+     "log_level": "debug"
+   }
+   ```
+
+   Change only that value and leave the rest of the file as it is. If the key is not there yet,
+   add it next to the others, keeping the commas between entries.
+
+4. Save the file and start MusicBee.
+
+The value must be in lower case and the file must stay valid JSON. If the plugin cannot read
+the file it ignores all of it and starts with default settings, so a typo resets more than the
+log level. Set it back to `"info"` once you are done.
 
 ## Sending a problem report
 

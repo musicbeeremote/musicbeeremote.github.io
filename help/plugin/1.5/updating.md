@@ -126,7 +126,8 @@ There are two channels:
 - **testing**: pre-releases as well, for trying fixes before they ship.
 
 There is no setting for this in the panel; switching channel is a deliberate act. Edit
-`update_channel` in `%AppData%\MusicBee\mb_remote\core_settings.json`:
+`update_channel` in `core_settings.json` in the plugin's
+[storage folder](/help/plugin/1.5/troubleshooting#logs):
 
 ```json
 {

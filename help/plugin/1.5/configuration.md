@@ -66,8 +66,10 @@ PC at all".
 
 ## Advanced
 
-**Log level** controls how much detail is written to the log. The default records errors;
-raise it only while investigating something, as the higher levels are verbose.
+**Log level** controls how much detail is written to the log. The default, Normal, records
+startup, warnings and errors; raise it only while investigating something, as the higher levels
+are verbose. It can also be set by hand, see
+[Troubleshooting](/help/plugin/1.5/troubleshooting#setting-it-without-the-panel).
 
 **Open log folder** opens the folder containing the logs and settings, including on Store
 installations, where that folder is not where you would expect.
@@ -99,7 +101,8 @@ it to your Desktop as one file to attach to a bug report, and **Cancel** discard
 
 ## Settings without a control
 
-A few settings live only in `%AppData%\MusicBee\mb_remote\core_settings.json`, deliberately -
+A few settings live only in `core_settings.json` in the plugin's
+[storage folder](/help/plugin/1.5/troubleshooting#logs), deliberately -
 `update_channel` is the one most likely to matter. Editing that file is safe: saving the panel
 merges its changes rather than rewriting the file, so a setting with no control keeps its
 value.
