@@ -3,6 +3,7 @@ import DefaultTheme from 'vitepress/theme';
 import { h } from 'vue';
 import Article from './Article.vue';
 import Author from './Author.vue';
+import Connect from './Connect.vue';
 import Date from './Date.vue';
 import Image from './Image.vue';
 import Landing from './Landing.vue';
@@ -24,6 +25,7 @@ export default {
     app.component('News', News);
     app.component('Date', Date);
     app.component('Author', Author);
+    app.component('Connect', Connect);
     app.component('Article', Article);
     app.component('landing', Landing);
     app.component('Image', Image);
