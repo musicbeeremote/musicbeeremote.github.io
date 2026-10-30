@@ -15,4 +15,7 @@ trustPolicyExclude:
 allowBuilds:
   esbuild: true
 overrides:
-  vite: 8.2.1
+  vite: 8.2.4
+minimumReleaseAgeExclude:
+  # Renovate security update: vite@8.2.4
+  - vite@8.2.4
