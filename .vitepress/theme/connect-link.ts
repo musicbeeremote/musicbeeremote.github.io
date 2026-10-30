@@ -1,10 +1,10 @@
 // Parses the plugin's QR code link (schema v1), with the same rules as the Android app:
 // https://github.com/musicbeeremote/mbrc/issues/66
 
-export const APP_PACKAGE = 'com.kelsos.mbrc';
+import { APP_PACKAGE, PLAY_STORE_URL } from './app-downloads';
 
-export const PLAY_STORE_URL = `https://play.google.com/store/apps/details?id=${APP_PACKAGE}`;
-
+/** The host the app's App Link names; the intent has to match it whatever host served the page. */
+const LINK_HOST = 'mbrc.kelsos.net';
 const SCHEMA_VERSION = 1;
 const MAX_HOSTS = 8;
 const MAX_NAME_LENGTH = 64;
@@ -46,7 +46,7 @@ function isPrivateIpv4(value: string): boolean {
 /** Reads the payload from a fragment or query string, with or without its leading `#` or `?`. */
 export function parseConnectLink(payload: string): ParseResult {
   const params = new URLSearchParams(payload.replace(/^[#?]/, ''));
-  if (!params.has('v'))
+  if (params.size === 0)
     return { kind: 'empty' };
 
   const version = Number(params.get('v'));
@@ -110,7 +110,7 @@ function serialize(link: ConnectLink): string {
  * page needs an intent. Its `#` is taken by the intent syntax, which moves the payload into
  * the query; the intent never loads a URL, so the query reaches no server.
  */
-export function intentUrl(link: ConnectLink, host: string): string {
+export function intentUrl(link: ConnectLink): string {
   const fallback = encodeURIComponent(PLAY_STORE_URL);
-  return `intent://${host}/connect?${serialize(link)}#Intent;scheme=https;package=${APP_PACKAGE};S.browser_fallback_url=${fallback};end`;
+  return `intent://${LINK_HOST}/connect?${serialize(link)}#Intent;scheme=https;package=${APP_PACKAGE};S.browser_fallback_url=${fallback};end`;
 }

@@ -234,6 +234,8 @@ export default defineConfig({
 
   sitemap: {
     hostname: HOSTNAME,
+    // /connect is noindex: it only means something with a QR code's payload.
+    transformItems: items => items.filter(item => !/^connect(?:\.html)?$/.test(item.url)),
   },
 
   appearance: true,

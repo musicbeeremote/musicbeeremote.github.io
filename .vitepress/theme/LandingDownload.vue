@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { githubApk, PLAY_STORE_URL } from './app-downloads';
 import { data as releases } from './releases.data.js';
 
 interface Download {
@@ -15,9 +16,7 @@ function formatSize(bytes: number): string {
   return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 }
 
-const appApk = computed(() =>
-  releases.app?.assets.find(a => a.name.includes('github') && a.name.endsWith('.apk')),
-);
+const appApk = githubApk(releases);
 
 const pluginExe = computed(() =>
   releases.plugin?.assets.find(a => a.name.endsWith('.exe') && !a.name.endsWith('.sha512')),
@@ -69,7 +68,7 @@ const pluginZip = computed(() =>
               </a>
               <a
                 class="inline-flex items-center transition-transform duration-200 hover:-translate-y-px"
-                href="https://play.google.com/store/apps/details?id=com.kelsos.mbrc"
+                :href="PLAY_STORE_URL"
                 aria-label="Get it on Google Play"
               >
                 <img

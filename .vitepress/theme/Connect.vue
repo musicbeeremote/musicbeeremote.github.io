@@ -1,9 +1,27 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
-import { intentUrl, parseConnectLink, type ParseResult, PLAY_STORE_URL } from './connect-link';
+import { githubApk, PLAY_STORE_URL } from './app-downloads';
+import { intentUrl, parseConnectLink, type ParseResult } from './connect-link';
 import { data as releases } from './releases.data.js';
 
-const SITE_HOST = 'mbrc.kelsos.net';
+/** What the page says when there is no usable link, and what the store links are for. */
+const MESSAGES = {
+  newer: {
+    title: 'Update MusicBee Remote',
+    body: 'This QR code comes from a newer MusicBee plugin than your app understands. Update the app, then scan it again.',
+    store: 'Update the app',
+  },
+  invalid: {
+    title: 'This link is incomplete',
+    body: 'Part of the connection details is missing or damaged. Scan the QR code in MusicBee again.',
+    store: 'Get the app',
+  },
+  empty: {
+    title: 'Connect your phone',
+    body: 'The MusicBee Remote plugin shows a QR code in its setup and settings. Scan it with your Android phone\'s camera to open the app with this PC\'s details filled in.',
+    store: 'Get the app',
+  },
+} as const;
 
 const result = ref<ParseResult>();
 const isAndroid = ref(false);
@@ -22,18 +40,10 @@ onMounted(() => {
 onBeforeUnmount(() => window.removeEventListener('hashchange', read));
 
 const link = computed(() => (result.value?.kind === 'ok' ? result.value.link : undefined));
-const openUrl = computed(() => (link.value ? intentUrl(link.value, SITE_HOST) : undefined));
+const message = computed(() => (result.value && result.value.kind !== 'ok' ? MESSAGES[result.value.kind] : undefined));
+const openUrl = computed(() => (link.value ? intentUrl(link.value) : undefined));
 const addresses = computed(() => link.value?.hosts.map(host => `${host}:${link.value?.port}`) ?? []);
-
-const storeLabel = computed(() => {
-  if (link.value)
-    return 'Don\'t have the app?';
-  return result.value?.kind === 'newer' ? 'Update the app' : 'Get the app';
-});
-
-const appApk = computed(() =>
-  releases.app?.assets.find(a => a.name.includes('github') && a.name.endsWith('.apk')),
-);
+const appApk = githubApk(releases);
 
 async function copyAddress(): Promise<void> {
   try {
@@ -113,37 +123,18 @@ async function copyAddress(): Promise<void> {
         </div>
       </template>
 
-      <template v-else-if="result.kind === 'newer'">
+      <template v-else-if="message">
         <h1 class="mb-3 text-3xl font-bold tracking-tight text-[var(--vp-c-text-1)]">
-          Update MusicBee Remote
+          {{ message.title }}
         </h1>
         <p class="mb-8 text-base leading-[1.7] text-[var(--vp-c-text-2)]">
-          This QR code comes from a newer MusicBee plugin than your app understands. Update the app, then scan it again.
-        </p>
-      </template>
-
-      <template v-else-if="result.kind === 'invalid'">
-        <h1 class="mb-3 text-3xl font-bold tracking-tight text-[var(--vp-c-text-1)]">
-          This link is incomplete
-        </h1>
-        <p class="mb-8 text-base leading-[1.7] text-[var(--vp-c-text-2)]">
-          Part of the connection details is missing or damaged. Scan the QR code in MusicBee again.
-        </p>
-      </template>
-
-      <template v-else>
-        <h1 class="mb-3 text-3xl font-bold tracking-tight text-[var(--vp-c-text-1)]">
-          Connect your phone
-        </h1>
-        <p class="mb-8 text-base leading-[1.7] text-[var(--vp-c-text-2)]">
-          The MusicBee Remote plugin shows a QR code in its setup and settings. Scan it with your Android phone's
-          camera to open the app with this PC's details filled in.
+          {{ message.body }}
         </p>
       </template>
 
       <div class="flex flex-col items-center gap-3 border-t border-[var(--vp-c-divider)] pt-6">
         <p class="m-0 text-sm text-[var(--vp-c-text-2)]">
-          {{ storeLabel }}
+          {{ link ? 'Don\'t have the app?' : message?.store }}
         </p>
         <div class="flex flex-wrap items-center justify-center gap-3">
           <a
