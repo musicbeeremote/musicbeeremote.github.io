@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.kelsos.mbrc",
+      "sha256_cert_fingerprints": [
+        "93:0B:FA:22:FC:C5:A4:30:A0:10:60:95:87:2A:DD:79:17:55:26:61:C3:65:84:E5:6E:AE:CB:77:3C:04:D6:CA"
+      ]
+    }
+  }
+]
